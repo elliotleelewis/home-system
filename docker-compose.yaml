@@ -11,6 +11,7 @@ services:
   proxy:
     image: nginx:latest
     depends_on:
+      - ui
       - shopvac
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
@@ -28,6 +29,14 @@ services:
       - "5432"
     networks:
       - database
+  ui:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    expose:
+      - "80"
+    networks:
+      - proxy
   shopvac:
     build:
       context: ./shopvac
