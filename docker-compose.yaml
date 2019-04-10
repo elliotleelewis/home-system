@@ -29,6 +29,8 @@ services:
       - "5432"
     networks:
       - database
+    environment:
+      - POSTGRES_USER=home-system
   ui:
     build:
       context: ./ui

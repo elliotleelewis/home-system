@@ -7,7 +7,7 @@
     "callable-types": true,
     "class-name": true,
     "completed-docs": [
-      true,
+      false,
       {
         "classes": true,
         "functions": true,
