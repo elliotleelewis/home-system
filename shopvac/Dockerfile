@@ -1,12 +1,27 @@
-FROM node:10
+FROM mcr.microsoft.com/dotnet/core/sdk:latest AS build-env
 WORKDIR /app
 
-# Install app dependencies
-COPY package.json yarn.lock ./
-RUN yarn --pure-lockfile
+ENV NODE_VERSION 10.15.1
+ENV NODE_DOWNLOAD_SHA ca1dfa9790876409c8d9ecab7b4cdb93e3276cedfc64d56ef1a4ff1778a40214
 
-# Bundle app source
-COPY . .
+# Install necessary utilities
+RUN curl -SL "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.gz" --output nodejs.tar.gz \
+	&& echo "$NODE_DOWNLOAD_SHA nodejs.tar.gz" | sha256sum -c - \
+	&& tar -xzf "nodejs.tar.gz" -C /usr/local --strip-components=1 \
+	&& rm nodejs.tar.gz \
+	&& ln -s /usr/local/bin/node /usr/local/bin/nodejs \
+	&& npm i -g yarn
 
-EXPOSE 8080
-CMD [ "npm", "start" ]
+# Copy csproj and restore as distinct layers
+COPY *.csproj ./
+RUN dotnet restore
+
+# Copy everything else and build
+COPY . ./
+RUN dotnet publish -c Release -o out
+
+# Build runtime image
+FROM mcr.microsoft.com/dotnet/core/aspnet:latest
+WORKDIR /app
+COPY --from=build-env /app/out .
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet shopvac.dll

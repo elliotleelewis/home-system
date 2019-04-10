@@ -5,10 +5,10 @@ networks:
   database:
 
 volumes:
-  mongo-data:
+  database-data:
 
 services:
-  nginx:
+  proxy:
     image: nginx:latest
     depends_on:
       - shopvac
@@ -20,12 +20,12 @@ services:
       - "443:443"
     networks:
       - proxy
-  mongodb:
-    image: mongo:latest
+  database:
+    image: postgres:latest
     volumes:
-      - mongo-data:/data/db
-    ports:
-      - "27017:27017"
+      - database-data:/var/lib/postgresql/data
+    expose:
+      - "5432"
     networks:
       - database
   shopvac:
@@ -33,7 +33,7 @@ services:
       context: ./shopvac
       dockerfile: Dockerfile
     depends_on:
-      - mongodb
+      - database
     volumes:
       - /app
     expose:
