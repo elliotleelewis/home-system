@@ -41,7 +41,7 @@
 				app.UseSwaggerUI((c) => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "shopvac"); });
 			}
 
-			app.UseSignalR((routes) => routes.MapHub<VacuumHub>("/signalr"));
+			app.UseSignalR((routes) => routes.MapHub<ShopvacHub>("/signalr"));
 
 			app.UseMvc();
 		}

@@ -30,6 +30,7 @@ services:
     networks:
       - database
     environment:
+      - POSTGRES_DB=home-system
       - POSTGRES_USER=home-system
   ui:
     build:

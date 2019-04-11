@@ -29,7 +29,7 @@
 				var services = scope.ServiceProvider;
 				var dbContext = services.GetRequiredService<PostgresContext>();
 
-				dbContext.Database.Migrate();
+				dbContext.Database.EnsureCreated();
 			}
 
 			return webHost;
