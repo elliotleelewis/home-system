@@ -1,4 +1,9 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { HubConnection } from '@aspnet/signalr';
+
+import HubConnectionMock from '../../mocks/hub-connection.mock.spec';
 
 import { ShopvacHomeComponent } from './shopvac-home.component';
 
@@ -9,6 +14,10 @@ describe('ShopvacHomeComponent', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [ShopvacHomeComponent],
+			imports: [HttpClientTestingModule, FormsModule],
+			providers: [
+				{ provide: HubConnection, useValue: HubConnectionMock },
+			],
 		}).compileComponents();
 	}));
 

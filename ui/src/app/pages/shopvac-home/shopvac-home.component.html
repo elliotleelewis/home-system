@@ -1,1 +1,83 @@
-<p>ShopVac Home</p>
+<div class="panel">
+	<div class="panel-heading">
+		<div class="level">
+			<div class="level-left">ShopVacs</div>
+			<div class="level-right">
+				<button
+					class="button"
+					[ngClass]="{ 'is-success': !create, 'is-danger': create }"
+					(click)="toggleCreate()"
+				>
+					<span class="icon is-small">
+						<i class="fas fa-plus" *ngIf="!create"></i>
+						<i class="fas fa-ban" *ngIf="create"></i>
+					</span>
+				</button>
+			</div>
+		</div>
+	</div>
+	<div
+		class="panel-block has-background-white"
+		*ngFor="let shopvac of shopvacs"
+	>
+		<div class="level">
+			<div class="level-left">
+				<input
+					id="shopvac-{{ shopvac.id }}"
+					class="switch"
+					type="checkbox"
+					[checked]="shopvac.isOpen"
+					(change)="updateShopvac(shopvac, $event)"
+				/>
+				<label for="shopvac-{{ shopvac.id }}">{{ shopvac.id }}</label>
+			</div>
+			<div class="level-right">
+				<button
+					class="button is-warning"
+					type="button"
+					(click)="activateShopvac(shopvac)"
+				>
+					Activate
+				</button>
+			</div>
+		</div>
+	</div>
+	<form
+		class="panel-block has-background-white"
+		*ngIf="create"
+		(ngSubmit)="createShopvac()"
+		#createForm="ngForm"
+	>
+		<div class="level">
+			<div class="level-left">
+				<input
+					id="create-shopvac-switch"
+					class="switch"
+					type="checkbox"
+					disabled
+				/>
+				<label for="create-shopvac-switch">&nbsp;</label>
+				<div class="field has-addons">
+					<div class="control">
+						<input
+							class="input"
+							type="text"
+							name="id"
+							[(ngModel)]="createModel.id"
+						/>
+					</div>
+					<div class="control">
+						<button class="button is-success" type="submit">
+							Create
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="level-right">
+				<button class="button is-warning" type="button" disabled>
+					Activate
+				</button>
+			</div>
+		</div>
+	</form>
+</div>

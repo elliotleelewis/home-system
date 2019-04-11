@@ -5,11 +5,3 @@
 :host {
 	min-height: 100vh;
 }
-.menu {
-	&.is-spaced {
-		padding: 1rem;
-	}
-	&.is-rounded {
-		border-radius: $radius;
-	}
-}

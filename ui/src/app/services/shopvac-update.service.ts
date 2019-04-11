@@ -1,21 +1,25 @@
 import { Injectable } from '@angular/core';
-import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
+import { HubConnection } from '@aspnet/signalr';
+import { Subject } from 'rxjs';
 
-import { environment } from '../../environments/environment';
+import { Shopvac } from '../models/shopvac';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class ShopvacUpdateService {
-	connection: HubConnection = new HubConnectionBuilder()
-		.withUrl(environment.shopvacUrl + '/signalr')
-		.build();
+	shopvacs = new Subject<Shopvac[]>();
+
+	constructor(private _hubConnection: HubConnection) {}
 
 	start(): void {
-		this.connection.start();
+		this._hubConnection.start();
+		this._hubConnection.on('Update', (shopvacs: Shopvac[]) => {
+			this.shopvacs.next(shopvacs);
+		});
 	}
 
 	stop(): void {
-		this.connection.stop();
+		this._hubConnection.stop();
 	}
 }

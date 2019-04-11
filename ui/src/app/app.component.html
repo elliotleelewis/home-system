@@ -2,24 +2,28 @@
 	<div class="container">
 		<div class="columns">
 			<div class="column is-one-quarter">
-				<h1 class="title has-text-centered">
+				<h1 class="title is-1 has-text-centered">
 					<a class="has-text-dark" [routerLink]="'/'">Home System</a>
 				</h1>
-				<aside class="menu is-spaced is-rounded has-background-white">
-					<p class="menu-label">
-						<span class="icon"><i class="fas fa-tools"></i></span>
-						ShopVac
-					</p>
-					<ul class="menu-list">
-						<li>
-							<a
-								[routerLink]="'/shopvac'"
-								[routerLinkActive]="'is-active'"
-								>Home</a
-							>
-						</li>
-					</ul>
-				</aside>
+				<div class="box">
+					<aside class="menu has-background-white">
+						<p class="menu-label">
+							<span class="icon"
+								><i class="fas fa-tools"></i
+							></span>
+							ShopVac
+						</p>
+						<ul class="menu-list">
+							<li>
+								<a
+									[routerLink]="'/shopvac'"
+									[routerLinkActive]="'is-active'"
+									>Home</a
+								>
+							</li>
+						</ul>
+					</aside>
+				</div>
 			</div>
 			<div class="column is-three-quarters">
 				<router-outlet></router-outlet>

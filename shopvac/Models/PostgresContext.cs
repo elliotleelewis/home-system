@@ -1,10 +1,9 @@
-﻿using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace shopvac.Models
+﻿namespace shopvac.Models
 {
+	using System;
+	using System.Linq;
+	using System.Threading;
+	using System.Threading.Tasks;
 	using Microsoft.EntityFrameworkCore;
 
 	public class PostgresContext : DbContext
