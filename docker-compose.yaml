@@ -34,7 +34,7 @@ services:
       - POSTGRES_USER=home-system
   ui:
     build:
-      context: ./ui
+      context: ./UI
       dockerfile: Dockerfile
     expose:
       - "80"
@@ -42,7 +42,7 @@ services:
       - proxy
   shopvac:
     build:
-      context: ./shopvac
+      context: ./ShopVac
       dockerfile: Dockerfile
     depends_on:
       - database
