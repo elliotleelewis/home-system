@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
+import { HubConnectionBuilder } from '@aspnet/signalr';
 
 import { environment } from '../environments/environment';
 
@@ -29,7 +29,7 @@ import { ShopVacHomeComponent } from './pages/shop-vac-home/shop-vac-home.compon
 	],
 	providers: [
 		{
-			provide: HubConnection,
+			provide: 'HUB_CONNECTION_SHOP_VAC',
 			useFactory: () =>
 				new HubConnectionBuilder()
 					.withUrl(environment.shopVacUrl + '/signalr')

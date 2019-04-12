@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-import { HubConnection } from '@aspnet/signalr';
 
 import HubConnectionMock from '../mocks/hub-connection.mock.spec';
 
@@ -9,7 +8,10 @@ describe('ShopVacUpdateService', () => {
 	beforeEach(() =>
 		TestBed.configureTestingModule({
 			providers: [
-				{ provide: HubConnection, useValue: HubConnectionMock },
+				{
+					provide: 'HUB_CONNECTION_SHOP_VAC',
+					useValue: HubConnectionMock,
+				},
 			],
 		}),
 	);
