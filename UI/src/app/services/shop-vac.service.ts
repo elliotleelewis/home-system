@@ -36,4 +36,18 @@ export class ShopVacService {
 			{},
 		);
 	}
+
+	openAll(): Observable<Object> {
+		return this._http.post(
+			environment.shopVacUrl + '/api/shopvac/open',
+			{},
+		)
+	}
+
+	closeAll(): Observable<Object> {
+		return this._http.post(
+			environment.shopVacUrl + '/api/shopvac/close',
+			{},
+		)
+	}
 }

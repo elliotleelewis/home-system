@@ -16,7 +16,7 @@ export class ShopVacHomeComponent implements OnInit, OnDestroy {
 	createForm: NgForm;
 	create = false;
 	createModel: ShopVacCreate = {
-		id: null,
+		id: '',
 		isOpen: false,
 	};
 
@@ -59,8 +59,13 @@ export class ShopVacHomeComponent implements OnInit, OnDestroy {
 		this.create = !this.create;
 	}
 
-	activateShopVac(shopVac: ShopVac): void {
-		this._shopVac.activate(shopVac).subscribe();
+	createShopVac(): void {
+		this._shopVac.create(this.createModel).subscribe();
+		this.create = false;
+		this.createModel = {
+			id: '',
+			isOpen: false,
+		};
 	}
 
 	updateShopVac(shopVac: ShopVac, event: Event): void {
@@ -71,9 +76,15 @@ export class ShopVacHomeComponent implements OnInit, OnDestroy {
 			.subscribe();
 	}
 
-	createShopVac(): void {
-		this._shopVac.create(this.createModel).subscribe();
-		this.create = false;
-		this.createForm.reset();
+	activateShopVac(shopVac: ShopVac): void {
+		this._shopVac.activate(shopVac).subscribe();
+	}
+
+	openAllShopVacs(): void {
+		this._shopVac.openAll().subscribe();
+	}
+
+	closeAllShopVacs(): void {
+		this._shopVac.closeAll().subscribe();
 	}
 }
