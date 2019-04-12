@@ -5,15 +5,22 @@
 			<div class="level-right">
 				<div class="field is-grouped">
 					<div class="control">
-						<button class="button" (click)="openAllShopVacs()">Open All</button>
+						<button class="button" (click)="openAllShopVacs()">
+							Open All
+						</button>
 					</div>
 					<div class="control">
-						<button class="button" (click)="closeAllShopVacs()">Close All</button>
+						<button class="button" (click)="closeAllShopVacs()">
+							Close All
+						</button>
 					</div>
 					<p class="control">
 						<button
 							class="button"
-							[ngClass]="{ 'is-success': !create, 'is-danger': create }"
+							[ngClass]="{
+								'is-success': !create,
+								'is-danger': create
+							}"
 							(click)="toggleCreate()"
 						>
 							<span class="icon is-small">

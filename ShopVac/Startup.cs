@@ -1,4 +1,9 @@
-﻿namespace ShopVac
+﻿// <copyright file="Startup.cs" company="Elliot Lewis">
+// Copyright (c) Elliot Lewis. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+
+namespace ShopVac
 {
 	using System.IO;
 	using System.Linq;
@@ -14,19 +19,20 @@
 
 	public class Startup
 	{
-		private IConfiguration Configuration { get; }
-		private IHostingEnvironment Environment { get; }
-
 		public Startup(IConfiguration configuration, IHostingEnvironment environment)
 		{
-			Configuration = configuration;
-			Environment = environment;
+			this.Configuration = configuration;
+			this.Environment = environment;
 		}
+
+		private IConfiguration Configuration { get; }
+
+		private IHostingEnvironment Environment { get; }
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app)
 		{
-			if (Environment.IsDevelopment())
+			if (this.Environment.IsDevelopment())
 			{
 				app.UseCors();
 				app.UseDeveloperExceptionPage();
@@ -49,7 +55,7 @@
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			if (Environment.IsDevelopment())
+			if (this.Environment.IsDevelopment())
 			{
 				services.AddCors((options) =>
 				{
@@ -64,7 +70,7 @@
 			}
 
 			services.AddDbContext<PostgresContext>((options) =>
-				options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+				options.UseNpgsql(this.Configuration.GetConnectionString("DefaultConnection")));
 
 			services.AddSignalR();
 
@@ -72,7 +78,7 @@
 
 			services.AddSwaggerGen((c) =>
 			{
-				c.SwaggerDoc("v1", new Info {Title = "ShopVac", Version = "v1"});
+				c.SwaggerDoc("v1", new Info { Title = "ShopVac", Version = "v1" });
 				c.IncludeXmlComments(Path.Combine(System.AppContext.BaseDirectory, "ShopVac.xml"));
 			});
 		}

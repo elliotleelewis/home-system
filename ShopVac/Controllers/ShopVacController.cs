@@ -1,5 +1,7 @@
-using Microsoft.AspNetCore.SignalR;
-using ShopVac.Hubs;
+// <copyright file="ShopVacController.cs" company="Elliot Lewis">
+// Copyright (c) Elliot Lewis. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
 
 namespace ShopVac.Controllers
 {
@@ -7,7 +9,9 @@ namespace ShopVac.Controllers
 	using System.Linq;
 	using System.Threading.Tasks;
 	using Microsoft.AspNetCore.Mvc;
+	using Microsoft.AspNetCore.SignalR;
 	using Microsoft.EntityFrameworkCore;
+	using ShopVac.Hubs;
 	using ShopVac.Models;
 	using ShopVac.Models.Dto;
 
@@ -39,11 +43,12 @@ namespace ShopVac.Controllers
 			{
 				s.IsOpen = true;
 			}
+
 			await this._dbContext.SaveChangesAsync();
 
-			this._hubContext.Clients.All.Update(await this._dbContext.ShopVacs.ToListAsync());
+			await this._hubContext.Clients.All.Update(await this._dbContext.ShopVacs.ToListAsync());
 
-			return NoContent();
+			return this.NoContent();
 		}
 
 		[HttpPost("[action]", Name = "CloseAll")]
@@ -55,11 +60,12 @@ namespace ShopVac.Controllers
 			{
 				s.IsOpen = false;
 			}
+
 			await this._dbContext.SaveChangesAsync();
 
-			this._hubContext.Clients.All.Update(await this._dbContext.ShopVacs.ToListAsync());
+			await this._hubContext.Clients.All.Update(await this._dbContext.ShopVacs.ToListAsync());
 
-			return NoContent();
+			return this.NoContent();
 		}
 
 		[HttpGet("{id}", Name = "Get")]
@@ -68,8 +74,9 @@ namespace ShopVac.Controllers
 			var shopVac = await this._dbContext.ShopVacs.FindAsync(id);
 			if (shopVac == null)
 			{
-				return NotFound();
+				return this.NotFound();
 			}
+
 			return shopVac;
 		}
 
@@ -81,8 +88,9 @@ namespace ShopVac.Controllers
 			var activate = shopVacs.Find((s) => s.Id == id);
 			if (activate == null)
 			{
-				return NotFound();
+				return this.NotFound();
 			}
+
 			activate.IsOpen = true;
 
 			var deactivate = shopVacs.Where((s) => s.Id != id).ToList();
@@ -93,9 +101,9 @@ namespace ShopVac.Controllers
 
 			await this._dbContext.SaveChangesAsync();
 
-			this._hubContext.Clients.All.Update(await this._dbContext.ShopVacs.ToListAsync());
+			await this._hubContext.Clients.All.Update(await this._dbContext.ShopVacs.ToListAsync());
 
-			return NoContent();
+			return this.NoContent();
 		}
 
 		[HttpPost]
@@ -108,10 +116,10 @@ namespace ShopVac.Controllers
 			});
 			await this._dbContext.SaveChangesAsync();
 
-			this._hubContext.Clients.All.Update(await this._dbContext.ShopVacs.ToListAsync());
+			await this._hubContext.Clients.All.Update(await this._dbContext.ShopVacs.ToListAsync());
 
 			var shopVac = await this._dbContext.ShopVacs.FindAsync(dto.Id);
-			return CreatedAtRoute("Get", new { id = dto.Id }, shopVac);
+			return this.CreatedAtRoute("Get", new { id = dto.Id }, shopVac);
 		}
 
 		[HttpPut("{id}")]
@@ -122,9 +130,9 @@ namespace ShopVac.Controllers
 			shopVac.IsOpen = dto.IsOpen;
 			await this._dbContext.SaveChangesAsync();
 
-			this._hubContext.Clients.All.Update(await this._dbContext.ShopVacs.ToListAsync());
+			await this._hubContext.Clients.All.Update(await this._dbContext.ShopVacs.ToListAsync());
 
-			return NoContent();
+			return this.NoContent();
 		}
 
 		[HttpDelete("{id}")]
@@ -135,9 +143,9 @@ namespace ShopVac.Controllers
 			this._dbContext.ShopVacs.Remove(shopVac);
 			await this._dbContext.SaveChangesAsync();
 
-			this._hubContext.Clients.All.Update(await this._dbContext.ShopVacs.ToListAsync());
+			await this._hubContext.Clients.All.Update(await this._dbContext.ShopVacs.ToListAsync());
 
-			return NoContent();
+			return this.NoContent();
 		}
 	}
 }

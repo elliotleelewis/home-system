@@ -1,4 +1,9 @@
-﻿namespace ShopVac.Models
+﻿// <copyright file="PostgresContext.cs" company="Elliot Lewis">
+// Copyright (c) Elliot Lewis. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+
+namespace ShopVac.Models
 {
 	using System;
 	using System.Linq;
@@ -8,28 +13,32 @@
 
 	public class PostgresContext : DbContext
 	{
-		public DbSet<ShopVac> ShopVacs { get; set; }
-
 		public PostgresContext(DbContextOptions options)
 			: base(options)
 		{
 		}
 
+		public DbSet<ShopVac> ShopVacs { get; set; }
+
 		public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default(CancellationToken))
 		{
-			var AddedEntities = ChangeTracker.Entries<IEntityDate>().Where((E) => E.State == EntityState.Added).ToList();
+			this.ChangeTracker
+				.Entries<IEntityDate>()
+				.Where((e) => e.State == EntityState.Added)
+				.ToList()
+				.ForEach((e) =>
+				{
+					e.Property("CreatedAt").CurrentValue = DateTime.Now;
+				});
 
-			AddedEntities.ForEach((E) =>
-			{
-				E.Property("CreatedAt").CurrentValue = DateTime.Now;
-			});
-
-			var EditedEntities = ChangeTracker.Entries<IEntityDate>().Where(E => E.State == EntityState.Modified).ToList();
-
-			EditedEntities.ForEach((E) =>
-			{
-				E.Property("UpdatedAt").CurrentValue = DateTime.Now;
-			});
+			this.ChangeTracker
+				.Entries<IEntityDate>()
+				.Where((e) => e.State == EntityState.Modified)
+				.ToList()
+				.ForEach((e) =>
+				{
+					e.Property("UpdatedAt").CurrentValue = DateTime.Now;
+				});
 
 			return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
 		}
