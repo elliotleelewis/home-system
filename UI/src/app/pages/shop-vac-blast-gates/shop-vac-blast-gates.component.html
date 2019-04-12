@@ -1,16 +1,16 @@
 <div class="panel">
 	<div class="panel-heading">
 		<div class="level">
-			<div class="level-left">ShopVacs</div>
+			<div class="level-left">Blast Gates</div>
 			<div class="level-right">
 				<div class="field is-grouped">
 					<div class="control">
-						<button class="button" (click)="openAllShopVacs()">
+						<button class="button" (click)="openAllBlastGates()">
 							Open All
 						</button>
 					</div>
 					<div class="control">
-						<button class="button" (click)="closeAllShopVacs()">
+						<button class="button" (click)="closeAllBlastGates()">
 							Close All
 						</button>
 					</div>
@@ -35,25 +35,27 @@
 	</div>
 	<div
 		class="panel-block has-background-white"
-		*ngFor="let shopVac of shopVacs"
+		*ngFor="let blastGate of blastGates"
 	>
 		<div class="level">
 			<div class="level-left">
 				<input
-					id="shop-vac-{{ shopVac.id }}"
+					id="blast-gate-{{ blastGate.id }}"
 					class="switch"
 					type="checkbox"
 					name="is-open"
-					[(ngModel)]="shopVac.isOpen"
-					(change)="updateShopVac(shopVac, $event)"
+					[(ngModel)]="blastGate.isOpen"
+					(change)="updateBlastGate(blastGate, $event)"
 				/>
-				<label for="shop-vac-{{ shopVac.id }}">{{ shopVac.id }}</label>
+				<label for="blast-gate-{{ blastGate.id }}">{{
+					blastGate.id
+				}}</label>
 			</div>
 			<div class="level-right">
 				<button
 					class="button is-warning"
 					type="button"
-					(click)="activateShopVac(shopVac)"
+					(click)="activateBlastGate(blastGate)"
 				>
 					Activate
 				</button>
@@ -63,19 +65,19 @@
 	<form
 		class="panel-block has-background-white"
 		*ngIf="create"
-		(ngSubmit)="createShopVac()"
+		(ngSubmit)="createBlastGate()"
 		#createForm="ngForm"
 	>
 		<div class="level">
 			<div class="level-left">
 				<input
-					id="create-shop-vac-switch"
+					id="create-blast-gate-switch"
 					class="switch"
 					type="checkbox"
 					name="is-open"
 					[(ngModel)]="createModel.isOpen"
 				/>
-				<label for="create-shop-vac-switch">&nbsp;</label>
+				<label for="create-blast-gate-switch">&nbsp;</label>
 				<div class="field has-addons">
 					<div class="control">
 						<input

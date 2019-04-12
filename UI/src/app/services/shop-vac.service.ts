@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment';
-import { ShopVacCreate } from '../models/dto/shop-vac-create';
-import { ShopVacUpdate } from '../models/dto/shop-vac-update';
-import { ShopVac } from '../models/shop-vac';
+import { BlastGate } from '../models/shop-vac/blast-gate';
+import { BlastGateCreate } from '../models/shop-vac/dto/blast-gate-create';
+import { BlastGateUpdate } from '../models/shop-vac/dto/blast-gate-update';
 
 @Injectable({
 	providedIn: 'root',
@@ -13,40 +13,62 @@ import { ShopVac } from '../models/shop-vac';
 export class ShopVacService {
 	constructor(private _http: HttpClient) {}
 
-	getAll(): Observable<ShopVac[]> {
-		return this._http.get<ShopVac[]>(
-			environment.shopVacUrl + '/api/shopvac',
+	getAllBlastGates(): Observable<BlastGate[]> {
+		return this._http.get<BlastGate[]>(
+			environment.shopVacUrl + '/api/blastgates',
 		);
 	}
 
-	create(create: ShopVacCreate): Observable<Object> {
-		return this._http.post(environment.shopVacUrl + '/api/shopvac', create);
+	getBlastGate(id: string): Observable<BlastGate[]> {
+		return this._http.get<BlastGate[]>(
+			environment.shopVacUrl + '/api/blastgates/' + id,
+		);
 	}
 
-	update(shopVac: ShopVac, update: ShopVacUpdate): Observable<Object> {
+	createBlastGate(create: BlastGateCreate): Observable<Object> {
+		return this._http.post(
+			environment.shopVacUrl + '/api/blastgates',
+			create,
+		);
+	}
+
+	updateBlastGate(
+		blastGate: BlastGate,
+		update: BlastGateUpdate,
+	): Observable<Object> {
 		return this._http.put(
-			environment.shopVacUrl + '/api/shopvac/' + shopVac.id,
+			environment.shopVacUrl + '/api/blastgates/' + blastGate.id,
 			update,
 		);
 	}
 
-	activate(shopVac: ShopVac): Observable<Object> {
-		return this._http.post(
-			environment.shopVacUrl + '/api/shopvac/' + shopVac.id + '/activate',
+	deleteBlastGate(blastGate: BlastGate): Observable<Object> {
+		return this._http.delete(
+			environment.shopVacUrl + '/api/blastgates/' + blastGate.id,
 			{},
 		);
 	}
 
-	openAll(): Observable<Object> {
+	activateBlastGate(blastGate: BlastGate): Observable<Object> {
 		return this._http.post(
-			environment.shopVacUrl + '/api/shopvac/open',
+			environment.shopVacUrl +
+				'/api/blastgates/' +
+				blastGate.id +
+				'/activate',
 			{},
 		);
 	}
 
-	closeAll(): Observable<Object> {
+	openAllBlastGates(): Observable<Object> {
 		return this._http.post(
-			environment.shopVacUrl + '/api/shopvac/close',
+			environment.shopVacUrl + '/api/blastgates/open',
+			{},
+		);
+	}
+
+	closeAllBlastGates(): Observable<Object> {
+		return this._http.post(
+			environment.shopVacUrl + '/api/blastgates/close',
 			{},
 		);
 	}

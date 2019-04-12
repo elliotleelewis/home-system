@@ -9,10 +9,10 @@ import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
-import { ShopVacHomeComponent } from './pages/shop-vac-home/shop-vac-home.component';
+import { ShopVacBlastGatesComponent } from './pages/shop-vac-blast-gates/shop-vac-blast-gates.component';
 
 @NgModule({
-	declarations: [AppComponent, HomeComponent, ShopVacHomeComponent],
+	declarations: [AppComponent, HomeComponent, ShopVacBlastGatesComponent],
 	imports: [
 		HttpClientModule,
 		FormsModule,
@@ -20,7 +20,10 @@ import { ShopVacHomeComponent } from './pages/shop-vac-home/shop-vac-home.compon
 		RouterModule.forRoot(
 			[
 				{ path: '', component: HomeComponent },
-				{ path: 'shopvac', component: ShopVacHomeComponent },
+				{
+					path: 'shop-vac/blast-gates',
+					component: ShopVacBlastGatesComponent,
+				},
 			],
 			{
 				useHash: true,

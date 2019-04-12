@@ -9,6 +9,6 @@ namespace ShopVac.Hubs
 
 	public class ShopVacHub : Hub<ITypedHubClient>
 	{
-		// NOOP
+		// NO-OP
 	}
 }

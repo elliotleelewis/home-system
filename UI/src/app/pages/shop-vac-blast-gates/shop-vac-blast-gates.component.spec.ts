@@ -4,15 +4,15 @@ import { FormsModule } from '@angular/forms';
 
 import HubConnectionMock from '../../mocks/hub-connection.mock.spec';
 
-import { ShopVacHomeComponent } from './shop-vac-home.component';
+import { ShopVacBlastGatesComponent } from './shop-vac-blast-gates.component';
 
-describe('ShopVacHomeComponent', () => {
-	let component: ShopVacHomeComponent;
-	let fixture: ComponentFixture<ShopVacHomeComponent>;
+describe('ShopVacBlastGatesComponent', () => {
+	let component: ShopVacBlastGatesComponent;
+	let fixture: ComponentFixture<ShopVacBlastGatesComponent>;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [ShopVacHomeComponent],
+			declarations: [ShopVacBlastGatesComponent],
 			imports: [HttpClientTestingModule, FormsModule],
 			providers: [
 				{
@@ -24,7 +24,7 @@ describe('ShopVacHomeComponent', () => {
 	}));
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(ShopVacHomeComponent);
+		fixture = TestBed.createComponent(ShopVacBlastGatesComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

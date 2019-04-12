@@ -11,6 +11,6 @@ namespace ShopVac.Hubs
 
 	public interface ITypedHubClient
 	{
-		Task Update(List<ShopVac> shopVacs);
+		Task BlastGatesUpdate(List<BlastGate> blastGates);
 	}
 }

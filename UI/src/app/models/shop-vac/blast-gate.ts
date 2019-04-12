@@ -1,4 +1,4 @@
-export interface ShopVac {
+export interface BlastGate {
 	id: string;
 	isOpen: boolean;
 	createdAt: Date;

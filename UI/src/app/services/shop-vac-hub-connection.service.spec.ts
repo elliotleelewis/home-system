@@ -2,9 +2,9 @@ import { TestBed } from '@angular/core/testing';
 
 import HubConnectionMock from '../mocks/hub-connection.mock.spec';
 
-import { ShopVacUpdateService } from './shop-vac-update.service';
+import { ShopVacHubConnectionService } from './shop-vac-hub-connection.service';
 
-describe('ShopVacUpdateService', () => {
+describe('ShopVacHubConnectionService', () => {
 	beforeEach(() =>
 		TestBed.configureTestingModule({
 			providers: [
@@ -17,7 +17,9 @@ describe('ShopVacUpdateService', () => {
 	);
 
 	it('should be created', () => {
-		const service: ShopVacUpdateService = TestBed.get(ShopVacUpdateService);
+		const service: ShopVacHubConnectionService = TestBed.get(
+			ShopVacHubConnectionService,
+		);
 		expect(service).toBeTruthy();
 	});
 });

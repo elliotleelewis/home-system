@@ -18,7 +18,7 @@ namespace ShopVac.Models
 		{
 		}
 
-		public DbSet<ShopVac> ShopVacs { get; set; }
+		public DbSet<BlastGate> BlastGates { get; set; }
 
 		public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default(CancellationToken))
 		{
