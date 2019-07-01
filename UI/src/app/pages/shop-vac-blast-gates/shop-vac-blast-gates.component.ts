@@ -12,7 +12,7 @@ import { ShopVacService } from '../../services/shop-vac.service';
 	styleUrls: ['./shop-vac-blast-gates.component.scss'],
 })
 export class ShopVacBlastGatesComponent implements OnInit, OnDestroy {
-	@ViewChild('createForm')
+	@ViewChild('createForm', { static: false })
 	createForm: NgForm;
 	create = false;
 	createModel: BlastGateCreate = {
