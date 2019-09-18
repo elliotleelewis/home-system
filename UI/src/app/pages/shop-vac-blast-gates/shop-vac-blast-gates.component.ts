@@ -1,5 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { BlastGate } from '../../models/shop-vac/blast-gate';
 import { BlastGateCreate } from '../../models/shop-vac/dto/blast-gate-create';
@@ -12,27 +11,25 @@ import { ShopVacService } from '../../services/shop-vac.service';
 	styleUrls: ['./shop-vac-blast-gates.component.scss'],
 })
 export class ShopVacBlastGatesComponent implements OnInit, OnDestroy {
-	@ViewChild('createForm', { static: false })
-	createForm: NgForm;
 	create = false;
 	createModel: BlastGateCreate = {
 		id: '',
 		isOpen: false,
 	};
 
-	private _blastGates: BlastGate[] = [];
+	private gates: BlastGate[] = [];
 
 	constructor(
-		private _shopVac: ShopVacService,
-		private _shopVacUpdate: ShopVacHubConnectionService,
+		private shopVacService: ShopVacService,
+		private shopVacHubConnectionService: ShopVacHubConnectionService,
 	) {}
 
 	get blastGates(): BlastGate[] {
-		return this._blastGates;
+		return this.gates;
 	}
 
 	set blastGates(blastGates: BlastGate[]) {
-		this._blastGates = blastGates
+		this.gates = blastGates
 			.map((blastGate) => {
 				blastGate.createdAt = new Date(String(blastGate.createdAt));
 				blastGate.updatedAt = new Date(String(blastGate.updatedAt));
@@ -42,17 +39,17 @@ export class ShopVacBlastGatesComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnInit(): void {
-		this._shopVacUpdate.start();
-		this._shopVac.getAllBlastGates().subscribe((blastGates) => {
+		this.shopVacHubConnectionService.start();
+		this.shopVacService.getAllBlastGates().subscribe((blastGates) => {
 			this.blastGates = blastGates;
-			this._shopVacUpdate.blastGates.subscribe(
+			this.shopVacHubConnectionService.blastGates.subscribe(
 				(updatedBlastGates) => (this.blastGates = updatedBlastGates),
 			);
 		});
 	}
 
 	ngOnDestroy(): void {
-		this._shopVacUpdate.stop();
+		this.shopVacHubConnectionService.stop();
 	}
 
 	toggleCreate(): void {
@@ -60,7 +57,7 @@ export class ShopVacBlastGatesComponent implements OnInit, OnDestroy {
 	}
 
 	createBlastGate(): void {
-		this._shopVac.createBlastGate(this.createModel).subscribe();
+		this.shopVacService.createBlastGate(this.createModel).subscribe();
 		this.create = false;
 		this.createModel = {
 			id: '',
@@ -69,7 +66,7 @@ export class ShopVacBlastGatesComponent implements OnInit, OnDestroy {
 	}
 
 	updateBlastGate(blastGate: BlastGate, event: Event): void {
-		this._shopVac
+		this.shopVacService
 			.updateBlastGate(blastGate, {
 				isOpen: (event.target as HTMLInputElement).checked,
 			})
@@ -77,14 +74,14 @@ export class ShopVacBlastGatesComponent implements OnInit, OnDestroy {
 	}
 
 	activateBlastGate(blastGate: BlastGate): void {
-		this._shopVac.activateBlastGate(blastGate).subscribe();
+		this.shopVacService.activateBlastGate(blastGate).subscribe();
 	}
 
 	openAllBlastGates(): void {
-		this._shopVac.openAllBlastGates().subscribe();
+		this.shopVacService.openAllBlastGates().subscribe();
 	}
 
 	closeAllBlastGates(): void {
-		this._shopVac.closeAllBlastGates().subscribe();
+		this.shopVacService.closeAllBlastGates().subscribe();
 	}
 }

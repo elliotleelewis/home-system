@@ -12,20 +12,17 @@ export class ShopVacHubConnectionService {
 
 	constructor(
 		@Inject('HUB_CONNECTION_SHOP_VAC')
-		private _hubConnection: HubConnection,
+		private hubConnection: HubConnection,
 	) {}
 
 	start(): void {
-		this._hubConnection.start();
-		this._hubConnection.on(
-			'BlastGatesUpdate',
-			(blastGates: BlastGate[]) => {
-				this.blastGates.next(blastGates);
-			},
-		);
+		this.hubConnection.start();
+		this.hubConnection.on('BlastGatesUpdate', (blastGates: BlastGate[]) => {
+			this.blastGates.next(blastGates);
+		});
 	}
 
 	stop(): void {
-		this._hubConnection.stop();
+		this.hubConnection.stop();
 	}
 }
