@@ -18,7 +18,7 @@
     "@angular/platform-browser": "^8.0.0",
     "@angular/platform-browser-dynamic": "^8.0.0",
     "@angular/router": "^8.0.0",
-    "@aspnet/signalr": "~1.1.0",
+    "@microsoft/signalr": "~3.0.0",
     "@fortawesome/fontawesome-free": "^5.0.0",
     "bulma": "~0.8.0",
     "bulma-switch": "^2.0.0",
