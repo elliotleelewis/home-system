@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { HubConnection } from '@aspnet/signalr';
+import { HubConnection } from '@microsoft/signalr';
 import { Subject } from 'rxjs';
 
 import { BlastGate } from '../models/shop-vac/blast-gate';

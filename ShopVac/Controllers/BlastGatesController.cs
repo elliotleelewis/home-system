@@ -2,7 +2,6 @@
 // Copyright (c) Elliot Lewis. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-
 namespace ShopVac.Controllers
 {
 	using System.Collections.Generic;
@@ -10,7 +9,6 @@ namespace ShopVac.Controllers
 	using System.Threading.Tasks;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.AspNetCore.SignalR;
-	using Microsoft.EntityFrameworkCore;
 	using ShopVac.Hubs;
 	using ShopVac.Models;
 	using ShopVac.Models.Dto;
@@ -29,15 +27,15 @@ namespace ShopVac.Controllers
 		}
 
 		[HttpGet]
-		public async Task<ActionResult<List<BlastGate>>> GetAll()
+		public ActionResult<IEnumerable<BlastGate>> GetAll()
 		{
-			return await this._dbContext.BlastGates.ToListAsync();
+			return this._dbContext.BlastGates;
 		}
 
 		[HttpPost("[action]", Name = "OpenAll")]
 		public async Task<ActionResult> Open()
 		{
-			var blastGates = await this._dbContext.BlastGates.ToListAsync();
+			var blastGates = this._dbContext.BlastGates;
 
 			foreach (var s in blastGates)
 			{
@@ -46,7 +44,7 @@ namespace ShopVac.Controllers
 
 			await this._dbContext.SaveChangesAsync();
 
-			await this._hubContext.Clients.All.BlastGatesUpdate(await this._dbContext.BlastGates.ToListAsync());
+			await this._hubContext.Clients.All.BlastGatesUpdate(this._dbContext.BlastGates);
 
 			return this.NoContent();
 		}
@@ -54,7 +52,7 @@ namespace ShopVac.Controllers
 		[HttpPost("[action]", Name = "CloseAll")]
 		public async Task<ActionResult> Close()
 		{
-			var blastGates = await this._dbContext.BlastGates.ToListAsync();
+			var blastGates = this._dbContext.BlastGates;
 
 			foreach (var s in blastGates)
 			{
@@ -63,7 +61,7 @@ namespace ShopVac.Controllers
 
 			await this._dbContext.SaveChangesAsync();
 
-			await this._hubContext.Clients.All.BlastGatesUpdate(await this._dbContext.BlastGates.ToListAsync());
+			await this._hubContext.Clients.All.BlastGatesUpdate(this._dbContext.BlastGates);
 
 			return this.NoContent();
 		}
@@ -83,9 +81,9 @@ namespace ShopVac.Controllers
 		[HttpPost("{id}/[action]", Name = "Activate")]
 		public async Task<ActionResult> Activate(string id)
 		{
-			var blastGates = await this._dbContext.BlastGates.ToListAsync();
+			var blastGates = this._dbContext.BlastGates;
 
-			var activate = blastGates.Find((s) => s.Id == id);
+			var activate = await blastGates.FindAsync(id);
 			if (activate == null)
 			{
 				return this.NotFound();
@@ -93,7 +91,7 @@ namespace ShopVac.Controllers
 
 			activate.IsOpen = true;
 
-			var deactivate = blastGates.Where((s) => s.Id != id).ToList();
+			var deactivate = blastGates.Where((s) => s.Id != id);
 			foreach (var s in deactivate)
 			{
 				s.IsOpen = false;
@@ -101,7 +99,7 @@ namespace ShopVac.Controllers
 
 			await this._dbContext.SaveChangesAsync();
 
-			await this._hubContext.Clients.All.BlastGatesUpdate(await this._dbContext.BlastGates.ToListAsync());
+			await this._hubContext.Clients.All.BlastGatesUpdate(this._dbContext.BlastGates);
 
 			return this.NoContent();
 		}
@@ -116,7 +114,7 @@ namespace ShopVac.Controllers
 			});
 			await this._dbContext.SaveChangesAsync();
 
-			await this._hubContext.Clients.All.BlastGatesUpdate(await this._dbContext.BlastGates.ToListAsync());
+			await this._hubContext.Clients.All.BlastGatesUpdate(this._dbContext.BlastGates);
 
 			var blastGate = await this._dbContext.BlastGates.FindAsync(dto.Id);
 			return this.CreatedAtRoute("Get", new { id = dto.Id }, blastGate);
@@ -126,11 +124,15 @@ namespace ShopVac.Controllers
 		public async Task<ActionResult> Update(string id, [FromBody] BlastGateUpdate dto)
 		{
 			var blastGate = await this._dbContext.BlastGates.FindAsync(id);
+			if (blastGate == null)
+			{
+				return this.NotFound();
+			}
 
 			blastGate.IsOpen = dto.IsOpen;
 			await this._dbContext.SaveChangesAsync();
 
-			await this._hubContext.Clients.All.BlastGatesUpdate(await this._dbContext.BlastGates.ToListAsync());
+			await this._hubContext.Clients.All.BlastGatesUpdate(this._dbContext.BlastGates);
 
 			return this.NoContent();
 		}
@@ -138,12 +140,16 @@ namespace ShopVac.Controllers
 		[HttpDelete("{id}")]
 		public async Task<ActionResult> Delete(string id)
 		{
-			var shopVac = await this._dbContext.BlastGates.FindAsync(id);
+			var blastGate = await this._dbContext.BlastGates.FindAsync(id);
+			if (blastGate == null)
+			{
+				return this.NotFound();
+			}
 
-			this._dbContext.BlastGates.Remove(shopVac);
+			this._dbContext.BlastGates.Remove(blastGate);
 			await this._dbContext.SaveChangesAsync();
 
-			await this._hubContext.Clients.All.BlastGatesUpdate(await this._dbContext.BlastGates.ToListAsync());
+			await this._hubContext.Clients.All.BlastGatesUpdate(this._dbContext.BlastGates);
 
 			return this.NoContent();
 		}
