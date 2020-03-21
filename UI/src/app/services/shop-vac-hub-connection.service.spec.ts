@@ -17,7 +17,7 @@ describe('ShopVacHubConnectionService', () => {
 	);
 
 	it('should be created', () => {
-		const service: ShopVacHubConnectionService = TestBed.get(
+		const service: ShopVacHubConnectionService = TestBed.inject(
 			ShopVacHubConnectionService,
 		);
 		expect(service).toBeTruthy();
