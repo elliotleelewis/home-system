@@ -43,14 +43,18 @@ namespace ShopVac
 				app.UseSwaggerUI((c) => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "ShopVac"); });
 			}
 
-			app.UseAuthorization();
 			app.UseHttpsRedirection();
 			app.UseResponseCaching();
 			app.UseResponseCompression();
 
 			app.UseRouting();
+
+			app.UseAuthentication();
+			app.UseAuthorization();
+
 			app.UseEndpoints((endpoints) =>
 			{
+				endpoints.EnableDependencyInjection();
 				endpoints.MapControllerRoute(
 					name: "default",
 					pattern: "{controller}/{action=Index}/{id?}");
