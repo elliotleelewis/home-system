@@ -1,7 +1,6 @@
 {
   "private": true,
   "scripts": {
-    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "start": "ng serve",
     "build": "ng build --prod",
     "postbuild": "node ./purify-css.js",
@@ -23,8 +22,8 @@
     "@angular/platform-browser": "^9.0.0",
     "@angular/platform-browser-dynamic": "^9.0.0",
     "@angular/router": "^9.0.0",
-    "@microsoft/signalr": "~3.1.0",
     "@fortawesome/fontawesome-free": "^5.0.0",
+    "@microsoft/signalr": "~3.1.0",
     "bulma": "^0.8.0",
     "bulma-switch": "^2.0.0",
     "classlist.js": "1.1.20150312",
@@ -50,8 +49,8 @@
     "karma-jasmine": "^3.0.0",
     "karma-jasmine-html-reporter": "^1.0.0",
     "prettier": "^2.0.0",
-    "purify-css": "^1.0.0",
     "protractor": "^5.0.0",
+    "purify-css": "^1.0.0",
     "stylelint": "^13.0.0",
     "stylelint-config-prettier": "^8.0.0",
     "stylelint-config-rational-order": "^0.1.0",
