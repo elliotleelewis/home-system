@@ -12,7 +12,7 @@
 		<PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.0" />
 		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.4" />
 		<PackageReference Include="StyleCop.Analyzers" Version="1.1.118" PrivateAssets="All" />
-		<PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.1" />
 	</ItemGroup>
 
 	<ItemGroup>
