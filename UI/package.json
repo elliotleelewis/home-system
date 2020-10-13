@@ -27,7 +27,7 @@
     "bulma-switch": "^2.0.0",
     "classlist.js": "1.1.20150312",
     "rxjs": "~6.6.0",
-    "tslib": "~1.13.0",
+    "tslib": "~1.14.0",
     "web-animations-js": "^2.0.0",
     "zone.js": "^0.10.0"
   },
