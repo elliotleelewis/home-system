@@ -9,7 +9,7 @@ volumes:
 
 services:
   proxy:
-    image: nginx:latest
+    image: nginx:alpine
     depends_on:
       - ui
       - shopvac
@@ -22,7 +22,7 @@ services:
     networks:
       - proxy
   database:
-    image: postgres:latest
+    image: postgres:alpine
     volumes:
       - database-data:/var/lib/postgresql/data
     expose:
