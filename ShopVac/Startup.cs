@@ -6,10 +6,10 @@ namespace ShopVac
 {
 	using System.IO;
 	using System.Linq;
-	using Microsoft.AspNet.OData.Extensions;
-	using Microsoft.AspNet.OData.Formatter;
 	using Microsoft.AspNetCore.Builder;
 	using Microsoft.AspNetCore.Hosting;
+	using Microsoft.AspNetCore.OData;
+	using Microsoft.AspNetCore.OData.Formatter;
 	using Microsoft.AspNetCore.Routing;
 	using Microsoft.EntityFrameworkCore;
 	using Microsoft.Extensions.Configuration;
@@ -54,7 +54,6 @@ namespace ShopVac
 
 			app.UseEndpoints((endpoints) =>
 			{
-				endpoints.EnableDependencyInjection();
 				endpoints.MapControllerRoute(
 					name: "default",
 					pattern: "{controller}/{action=Index}/{id?}");
