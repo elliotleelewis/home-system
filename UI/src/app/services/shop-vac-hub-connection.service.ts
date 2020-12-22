@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { HubConnection } from '@microsoft/signalr';
-import { Subject } from 'rxjs';
+import { from, Observable, Subject } from 'rxjs';
 
 import { BlastGate } from '../models/shop-vac/blast-gate';
 
@@ -8,21 +8,25 @@ import { BlastGate } from '../models/shop-vac/blast-gate';
 	providedIn: 'root',
 })
 export class ShopVacHubConnectionService {
-	blastGates = new Subject<BlastGate[]>();
+	_blastGates = new Subject<BlastGate[]>();
 
 	constructor(
 		@Inject('HUB_CONNECTION_SHOP_VAC')
 		private hubConnection: HubConnection,
 	) {}
 
-	start(): void {
-		this.hubConnection.start();
-		this.hubConnection.on('BlastGatesUpdate', (blastGates: BlastGate[]) => {
-			this.blastGates.next(blastGates);
-		});
+	get blastGates(): Observable<BlastGate[]> {
+		return this._blastGates.asObservable();
 	}
 
-	stop(): void {
-		this.hubConnection.stop();
+	start(): Observable<void> {
+		this.hubConnection.on('BlastGatesUpdate', (blastGates: BlastGate[]) => {
+			this._blastGates.next(blastGates);
+		});
+		return from(this.hubConnection.start());
+	}
+
+	stop(): Observable<void> {
+		return from(this.hubConnection.stop());
 	}
 }

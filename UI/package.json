@@ -13,32 +13,32 @@
     "prettier:fix": "prettier --write \"**/*.{md,ts,js,scss,html,json,yml}\" --ignore-path .gitignore"
   },
   "dependencies": {
-    "@angular/animations": "^9.0.0",
-    "@angular/common": "^9.0.0",
-    "@angular/compiler": "^9.0.0",
-    "@angular/core": "^9.0.0",
-    "@angular/forms": "^9.0.0",
-    "@angular/platform-browser": "^9.0.0",
-    "@angular/platform-browser-dynamic": "^9.0.0",
-    "@angular/router": "^9.0.0",
+    "@angular/animations": "^11.0.0",
+    "@angular/common": "^11.0.0",
+    "@angular/compiler": "^11.0.0",
+    "@angular/core": "^11.0.0",
+    "@angular/forms": "^11.0.0",
+    "@angular/platform-browser": "^11.0.0",
+    "@angular/platform-browser-dynamic": "^11.0.0",
+    "@angular/router": "^11.0.0",
     "@fortawesome/fontawesome-free": "^5.0.0",
     "@microsoft/signalr": "~3.1.0",
     "bulma": "^0.9.0",
     "bulma-switch": "^2.0.0",
     "classlist.js": "1.1.20150312",
     "rxjs": "~6.6.0",
-    "tslib": "~1.14.0",
+    "subsink": "^1.0.0",
+    "tslib": "^2.0.0",
     "web-animations-js": "^2.0.0",
-    "zone.js": "^0.10.0"
+    "zone.js": "^0.11.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.901.0",
-    "@angular/cli": "^9.0.0",
-    "@angular/compiler-cli": "^9.0.0",
-    "@angular/language-service": "^9.0.0",
+    "@angular-devkit/build-angular": "^0.1100.0",
+    "@angular/cli": "^11.0.0",
+    "@angular/compiler-cli": "^11.0.0",
+    "@angular/language-service": "^11.0.0",
     "@types/jasmine": "^3.0.0",
-    "@types/jasminewd2": "^2.0.0",
-    "@types/node": "^12.0.0",
+    "@types/node": "^14.0.0",
     "codelyzer": "^6.0.0",
     "jasmine-core": "^3.0.0",
     "karma": "^5.0.0",
@@ -57,14 +57,10 @@
     "ts-node": "^9.0.0",
     "tslint": "^6.0.0",
     "tslint-config-prettier": "^1.0.0",
-    "typescript": "~3.8.0"
+    "typescript": "~4.0.0"
   },
   "browserslist": [
-    "> 0.5%",
-    "last 2 versions",
-    "Firefox ESR",
-    "not dead",
-    "not IE 9-11"
+    "defaults"
   ],
   "prettier": {
     "arrowParens": "always",
