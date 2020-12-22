@@ -1,4 +1,4 @@
-FROM node:14 AS build-env
+FROM node:14-alpine AS build-env
 WORKDIR /app
 
 # Install api dependencies
@@ -10,7 +10,7 @@ COPY . .
 RUN yarn build
 
 # Build runtime image
-FROM nginx:latest
+FROM nginx:alpine
 COPY nginx.conf /etc/nginx/nginx.conf
 WORKDIR /usr/share/nginx/html
 COPY --from=build-env /app/dist/ .
