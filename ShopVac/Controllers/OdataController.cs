@@ -5,8 +5,8 @@
 namespace ShopVac.Controllers
 {
 	using System.Collections.Generic;
-	using Microsoft.AspNet.OData;
 	using Microsoft.AspNetCore.Mvc;
+	using Microsoft.AspNetCore.OData.Query;
 	using ShopVac.Models;
 
 	[Route("api/[controller]")]

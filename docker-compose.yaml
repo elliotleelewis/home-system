@@ -32,6 +32,7 @@ services:
     environment:
       - POSTGRES_DB=home-system
       - POSTGRES_USER=home-system
+      - POSTGRES_HOST_AUTH_METHOD=trust
   ui:
     build:
       context: ./UI
