@@ -1,4 +1,4 @@
-FROM node:10 AS build-env
+FROM node:14 AS build-env
 WORKDIR /app
 
 # Install api dependencies

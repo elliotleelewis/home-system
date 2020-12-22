@@ -1,5 +1,5 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 
 import HubConnectionMock from '../../mocks/hub-connection.mock.spec';
@@ -10,18 +10,20 @@ describe('ShopVacBlastGatesComponent', () => {
 	let component: ShopVacBlastGatesComponent;
 	let fixture: ComponentFixture<ShopVacBlastGatesComponent>;
 
-	beforeEach(async(() => {
-		TestBed.configureTestingModule({
-			declarations: [ShopVacBlastGatesComponent],
-			imports: [HttpClientTestingModule, FormsModule],
-			providers: [
-				{
-					provide: 'HUB_CONNECTION_SHOP_VAC',
-					useValue: HubConnectionMock,
-				},
-			],
-		}).compileComponents();
-	}));
+	beforeEach(
+		waitForAsync(() => {
+			TestBed.configureTestingModule({
+				declarations: [ShopVacBlastGatesComponent],
+				imports: [HttpClientTestingModule, FormsModule],
+				providers: [
+					{
+						provide: 'HUB_CONNECTION_SHOP_VAC',
+						useValue: HubConnectionMock,
+					},
+				],
+			}).compileComponents();
+		}),
+	);
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ShopVacBlastGatesComponent);
