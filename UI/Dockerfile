@@ -1,4 +1,4 @@
-FROM node:14-alpine AS build-env
+FROM node:16-alpine AS build-env
 WORKDIR /app
 
 # Install api dependencies
