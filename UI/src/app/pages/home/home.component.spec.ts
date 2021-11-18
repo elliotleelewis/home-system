@@ -8,7 +8,7 @@ describe('HomeComponent', () => {
 
 	beforeEach(
 		waitForAsync(() => {
-			TestBed.configureTestingModule({
+			void TestBed.configureTestingModule({
 				declarations: [HomeComponent],
 			}).compileComponents();
 		}),

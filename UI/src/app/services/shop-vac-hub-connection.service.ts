@@ -8,7 +8,7 @@ import { BlastGate } from '../models/shop-vac/blast-gate';
 	providedIn: 'root',
 })
 export class ShopVacHubConnectionService {
-	_blastGates = new Subject<BlastGate[]>();
+	private _blastGates = new Subject<BlastGate[]>();
 
 	constructor(
 		@Inject('HUB_CONNECTION_SHOP_VAC')

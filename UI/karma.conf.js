@@ -11,7 +11,8 @@ module.exports = function (config) {
 			require('karma-jasmine'),
 			require('karma-chrome-launcher'),
 			require('karma-jasmine-html-reporter'),
-			require('karma-coverage-istanbul-reporter'),
+			require('karma-junit-reporter'),
+			require('karma-coverage'),
 			require('@angular-devkit/build-angular/plugins/karma'),
 		],
 		client: {
@@ -22,12 +23,18 @@ module.exports = function (config) {
 			outputFile: 'karma.xml',
 			useBrowserName: false,
 		},
-		coverageIstanbulReporter: {
+		coverageReporter: {
 			dir: './reports/coverage',
-			reports: ['html', 'lcovonly', 'text-summary'],
-			fixWebpackSourcePaths: true,
+			subdir: '.',
+			includeAllSources: true,
+			reporters: [
+				{ type: 'cobertura' },
+				{ type: 'lcovonly' },
+				{ type: 'html' },
+				{ type: 'text' },
+			],
 		},
-		reporters: ['progress', 'kjhtml', 'coverage-istanbul'],
+		reporters: ['progress', 'kjhtml', 'junit', 'coverage'],
 		port: 9876,
 		colors: true,
 		logLevel: config.LOG_INFO,
@@ -37,8 +44,8 @@ module.exports = function (config) {
 		restartOnFileChange: true,
 		customLaunchers: {
 			CustomChrome: {
-			  base: 'ChromeHeadless',
-			  flags: isDocker() ? ['--no-sandbox'] : []
+				base: 'ChromeHeadless',
+				flags: isDocker() ? ['--no-sandbox'] : [],
 			},
 		},
 	});

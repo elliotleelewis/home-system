@@ -35,7 +35,7 @@
 	</div>
 	<div
 		class="panel-block has-background-white"
-		*ngFor="let blastGate of blastGates"
+		*ngFor="let blastGate of blastGates; trackBy: trackByBlastGatesId"
 	>
 		<div class="level">
 			<div class="level-left">

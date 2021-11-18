@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HubConnectionBuilder } from '@microsoft/signalr';
 
-import { environment } from '../environments/environment';
+import { ENVIRONMENT } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -35,7 +35,7 @@ import { ShopVacBlastGatesComponent } from './pages/shop-vac-blast-gates/shop-va
 			provide: 'HUB_CONNECTION_SHOP_VAC',
 			useFactory: () =>
 				new HubConnectionBuilder()
-					.withUrl(environment.shopVacUrl + '/signalr')
+					.withUrl(ENVIRONMENT.shopVacUrl + '/signalr')
 					.build(),
 		},
 	],
