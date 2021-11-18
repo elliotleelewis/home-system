@@ -8,6 +8,9 @@ RUN yarn --pure-lockfile
 # Copy everything else
 COPY . .
 
+# Install pipeline dependencies
+RUN apk add --no-cache chromium
+
 # Run pipeline steps
 RUN yarn test
 RUN yarn lint
