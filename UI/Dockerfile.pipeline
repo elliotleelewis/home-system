@@ -10,6 +10,7 @@ COPY . .
 
 # Install pipeline dependencies
 RUN apk add --no-cache chromium
+ENV CHROME_BIN /usr/bin/chromium
 
 # Run pipeline steps
 RUN yarn test
