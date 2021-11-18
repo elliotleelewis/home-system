@@ -1,6 +1,8 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 
+const isDocker = require('is-docker');
+
 module.exports = function (config) {
 	config.set({
 		basePath: '',
@@ -9,7 +11,8 @@ module.exports = function (config) {
 			require('karma-jasmine'),
 			require('karma-chrome-launcher'),
 			require('karma-jasmine-html-reporter'),
-			require('karma-coverage-istanbul-reporter'),
+			require('karma-junit-reporter'),
+			require('karma-coverage'),
 			require('@angular-devkit/build-angular/plugins/karma'),
 		],
 		client: {
@@ -20,18 +23,30 @@ module.exports = function (config) {
 			outputFile: 'karma.xml',
 			useBrowserName: false,
 		},
-		coverageIstanbulReporter: {
+		coverageReporter: {
 			dir: './reports/coverage',
-			reports: ['html', 'lcovonly', 'text-summary'],
-			fixWebpackSourcePaths: true,
+			subdir: '.',
+			includeAllSources: true,
+			reporters: [
+				{ type: 'cobertura' },
+				{ type: 'lcovonly' },
+				{ type: 'html' },
+				{ type: 'text' },
+			],
 		},
-		reporters: ['progress', 'kjhtml', 'coverage-istanbul'],
+		reporters: ['progress', 'kjhtml', 'junit', 'coverage'],
 		port: 9876,
 		colors: true,
 		logLevel: config.LOG_INFO,
 		autoWatch: true,
-		browsers: ['ChromeHeadless'],
+		browsers: ['CustomChrome'],
 		singleRun: false,
 		restartOnFileChange: true,
+		customLaunchers: {
+			CustomChrome: {
+				base: 'ChromeHeadless',
+				flags: isDocker() ? ['--no-sandbox'] : [],
+			},
+		},
 	});
 };

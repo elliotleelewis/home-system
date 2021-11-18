@@ -12,7 +12,7 @@ describe('ShopVacBlastGatesComponent', () => {
 
 	beforeEach(
 		waitForAsync(() => {
-			TestBed.configureTestingModule({
+			void TestBed.configureTestingModule({
 				declarations: [ShopVacBlastGatesComponent],
 				imports: [HttpClientTestingModule, FormsModule],
 				providers: [

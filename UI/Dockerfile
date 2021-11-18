@@ -5,8 +5,10 @@ WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn --pure-lockfile
 
-# Copy everything else and build
+# Copy everything else
 COPY . .
+
+# Build app
 RUN yarn build
 
 # Build runtime image

@@ -20,6 +20,7 @@ describe('ShopVacHubConnectionService', () => {
 		const service: ShopVacHubConnectionService = TestBed.inject(
 			ShopVacHubConnectionService,
 		);
+
 		expect(service).toBeTruthy();
 	});
 });

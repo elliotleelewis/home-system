@@ -12,6 +12,7 @@ describe('ShopVacService', () => {
 
 	it('should be created', () => {
 		const service: ShopVacService = TestBed.inject(ShopVacService);
+
 		expect(service).toBeTruthy();
 	});
 });
