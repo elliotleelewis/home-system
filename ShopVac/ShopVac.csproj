@@ -6,6 +6,7 @@
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<CodeAnalysisRuleSet>stylecop.ruleset</CodeAnalysisRuleSet>
 		<RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+		<DefaultItemExcludes>$(DefaultItemExcludes);Tests\**\*</DefaultItemExcludes>
 	</PropertyGroup>
 
 	<ItemGroup>
