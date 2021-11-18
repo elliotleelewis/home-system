@@ -68,8 +68,8 @@ namespace ShopVac
 			services.AddResponseCaching();
 			services.AddResponseCompression();
 
-			services.AddControllers();
-			services.AddOData();
+			services.AddControllers()
+				.AddOData();
 			services.AddSignalR();
 
 			if (this.Environment.IsDevelopment())
