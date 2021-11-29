@@ -1,0 +1,21 @@
+overwrite: true
+schema: '../node_modules/@app/schema/schema.graphql'
+hooks:
+  afterAllFileWrite:
+    - yarn run prettier:fix ||
+documents: './src/**/api.ts'
+generates:
+  src/:
+    preset: near-operation-file
+    presetConfig:
+      extension: .generated.ts
+      baseTypesPath: ../../node_modules/@app/schema
+    plugins:
+      - add:
+          content: '/* eslint-disable @typescript-eslint/array-type,@typescript-eslint/naming-convention */'
+      - add:
+          placement: 'append'
+          content: '/* eslint-enable */'
+      - 'typescript-operations'
+    config:
+      avoidOptionals: true

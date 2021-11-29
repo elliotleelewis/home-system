@@ -1,0 +1,29 @@
+type BlastGate {
+	id: ID!
+	name: String!
+	isOpen: Boolean!
+}
+
+input BlastGateInput {
+	id: ID
+	name: String!
+	isOpen: Boolean!
+}
+
+type Query {
+	blastGates: [BlastGate!]!
+	blastGate(blastGateId: ID!): BlastGate!
+}
+
+type Mutation {
+	upsertBlastGate(blastGateInput: BlastGateInput!): BlastGate!
+	deleteBlastGate(blastGateId: ID!): Boolean!
+	openAllBlastGates: Boolean!
+	closeAllBlastGates: Boolean!
+	activateBlastGate(blastGateId: ID!): BlastGate!
+}
+
+schema {
+	query: Query
+	mutation: Mutation
+}

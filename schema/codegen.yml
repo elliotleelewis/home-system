@@ -1,0 +1,14 @@
+overwrite: true
+schema: '../node_modules/@app/schema/schema.graphql'
+hooks:
+  afterAllFileWrite:
+    - yarn run prettier:fix ||
+documents: '../client/src/**/api.ts'
+generates:
+  ./schema.generated.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-resolvers'
+    config:
+      avoidOptionals: true
+      constEnums: true

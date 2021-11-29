@@ -1,0 +1,56 @@
+version: '3'
+
+networks:
+  proxy:
+  database:
+
+volumes:
+  database-data:
+
+services:
+  proxy:
+    image: nginx:alpine
+    depends_on:
+      - client
+      - server
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./logs/nginx:/var/log/nginx
+    ports:
+      - '80:80'
+      - '443:443'
+    networks:
+      - proxy
+  database:
+    image: postgres:alpine
+    volumes:
+      - database-data:/var/lib/postgresql/data
+    expose:
+      - '5432'
+    networks:
+      - database
+    environment:
+      - POSTGRES_DB=home-system
+      - POSTGRES_USER=home-system
+      - POSTGRES_HOST_AUTH_METHOD=trust
+  client:
+    build:
+      context: ./
+      dockerfile: Dockerfile.client
+    expose:
+      - '80'
+    networks:
+      - proxy
+  server:
+    build:
+      context: ./
+      dockerfile: Dockerfile.server
+    depends_on:
+      - database
+    volumes:
+      - /app
+    expose:
+      - '8080'
+    networks:
+      - proxy
+      - database
