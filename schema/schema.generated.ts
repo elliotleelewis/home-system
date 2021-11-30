@@ -37,7 +37,7 @@ export type BlastGateInput = {
 
 export type Mutation = {
 	__typename?: 'Mutation';
-	activateBlastGate: BlastGate;
+	activateBlastGate: Scalars['Boolean'];
 	closeAllBlastGates: Scalars['Boolean'];
 	deleteBlastGate: Scalars['Boolean'];
 	openAllBlastGates: Scalars['Boolean'];
@@ -208,7 +208,7 @@ export type MutationResolvers<
 	ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation'],
 > = {
 	activateBlastGate: Resolver<
-		ResolversTypes['BlastGate'],
+		ResolversTypes['Boolean'],
 		ParentType,
 		ContextType,
 		RequireFields<MutationActivateBlastGateArgs, 'blastGateId'>

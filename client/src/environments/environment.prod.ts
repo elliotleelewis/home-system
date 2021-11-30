@@ -1,4 +1,4 @@
 export const ENVIRONMENT = {
 	production: true,
-	shopVacUrl: '/server',
+	serverUrl: '/server',
 };

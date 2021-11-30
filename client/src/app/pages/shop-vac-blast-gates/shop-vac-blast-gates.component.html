@@ -44,11 +44,11 @@
 					class="switch"
 					type="checkbox"
 					name="is-open"
-					[(ngModel)]="blastGate.isOpen"
-					(change)="updateBlastGate(blastGate, $event)"
+					[ngModel]="blastGate.isOpen"
+					(ngModelChange)="updateBlastGate(blastGate, $event)"
 				/>
 				<label for="blast-gate-{{ blastGate.id }}">{{
-					blastGate.id
+					blastGate.name
 				}}</label>
 			</div>
 			<div class="level-right">
@@ -74,7 +74,7 @@
 					class="switch"
 					type="checkbox"
 					name="is-open"
-					[(ngModel)]="createModel.isOpen"
+					[(ngModel)]="createModel.blastGateInput.isOpen"
 				/>
 				<label for="create-blast-gate-switch">&nbsp;</label>
 				<div class="field has-addons">
@@ -82,8 +82,8 @@
 						<input
 							class="input"
 							type="text"
-							name="id"
-							[(ngModel)]="createModel.id"
+							name="name"
+							[(ngModel)]="createModel.blastGateInput.name"
 						/>
 					</div>
 					<div class="control">

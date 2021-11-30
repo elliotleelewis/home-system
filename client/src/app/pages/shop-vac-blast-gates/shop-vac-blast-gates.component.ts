@@ -1,16 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Apollo } from 'apollo-angular';
-import { merge } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { BlastGate, MutationUpsertBlastGateArgs } from '@app/schema';
 import { SubSink } from 'subsink';
 
-import { BlastGate } from '../../models/shop-vac/blast-gate';
-import { BlastGateCreate } from '../../models/shop-vac/dto/blast-gate-create';
-import { ShopVacHubConnectionService } from '../../services/shop-vac-hub-connection.service';
 import { ShopVacService } from '../../services/shop-vac.service';
-
-import { BLAST_GATES } from './api';
-import { BlastGatesQuery } from './api.generated';
 
 @Component({
 	selector: 'app-shop-vac-blast-gates',
@@ -19,58 +11,28 @@ import { BlastGatesQuery } from './api.generated';
 })
 export class ShopVacBlastGatesComponent implements OnInit, OnDestroy {
 	create = false;
-	createModel: BlastGateCreate = {
-		id: '',
-		isOpen: false,
+	createModel: MutationUpsertBlastGateArgs = {
+		blastGateInput: {
+			id: null,
+			name: '',
+			isOpen: false,
+		},
 	};
 
-	private _blastGates: BlastGate[] = [];
+	blastGates: BlastGate[] = [];
+
 	private _subs = new SubSink();
 
-	constructor(
-		private apollo: Apollo,
-		private shopVacService: ShopVacService,
-		private shopVacHubConnectionService: ShopVacHubConnectionService,
-	) {}
-
-	get blastGates(): BlastGate[] {
-		return this._blastGates;
-	}
-
-	set blastGates(blastGates: BlastGate[]) {
-		this._blastGates = blastGates
-			.map((blastGate) => {
-				blastGate.createdAt = new Date(String(blastGate.createdAt));
-				blastGate.updatedAt = new Date(String(blastGate.updatedAt));
-				return blastGate;
-			})
-			.sort((a, b) => a.createdAt.valueOf() - b.createdAt.valueOf());
-	}
+	constructor(private shopVacService: ShopVacService) {}
 
 	ngOnInit(): void {
-		this._subs.sink = this.shopVacHubConnectionService
-			.start()
-			.pipe(
-				switchMap(() =>
-					merge(
-						this.shopVacService.getAllBlastGates(),
-						this.shopVacHubConnectionService.blastGates,
-					),
-				),
-			)
+		this._subs.sink = this.shopVacService
+			.getAllBlastGates()
 			.subscribe((blastGates) => (this.blastGates = blastGates));
-
-		this._subs.sink = this.apollo
-			.query<BlastGatesQuery>({
-				query: BLAST_GATES,
-			})
-			.subscribe((query) => console.log(query));
 	}
 
 	ngOnDestroy(): void {
-		this._subs.sink = this.shopVacHubConnectionService
-			.stop()
-			.subscribe(() => this._subs.unsubscribe());
+		this._subs.unsubscribe();
 	}
 
 	trackByBlastGatesId(_: number, blastGate: BlastGate): string {
@@ -83,26 +45,33 @@ export class ShopVacBlastGatesComponent implements OnInit, OnDestroy {
 
 	createBlastGate(): void {
 		this._subs.sink = this.shopVacService
-			.createBlastGate(this.createModel)
+			.upsertBlastGate(this.createModel)
 			.subscribe();
 		this.create = false;
 		this.createModel = {
-			id: '',
-			isOpen: false,
+			blastGateInput: {
+				id: null,
+				name: '',
+				isOpen: false,
+			},
 		};
 	}
 
-	updateBlastGate(blastGate: BlastGate, event: Event): void {
+	updateBlastGate({ id, name }: BlastGate, event: Event): void {
 		this._subs.sink = this.shopVacService
-			.updateBlastGate(blastGate, {
-				isOpen: (event.target as HTMLInputElement).checked,
+			.upsertBlastGate({
+				blastGateInput: {
+					id,
+					name,
+					isOpen: (event.target as HTMLInputElement).checked,
+				},
 			})
 			.subscribe();
 	}
 
 	activateBlastGate(blastGate: BlastGate): void {
 		this._subs.sink = this.shopVacService
-			.activateBlastGate(blastGate)
+			.activateBlastGate({ blastGateId: blastGate.id })
 			.subscribe();
 	}
 

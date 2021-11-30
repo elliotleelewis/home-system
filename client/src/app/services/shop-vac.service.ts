@@ -1,75 +1,152 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import {
+	BlastGate,
+	MutationActivateBlastGateArgs,
+	MutationDeleteBlastGateArgs,
+	MutationUpsertBlastGateArgs,
+	QueryBlastGateArgs,
+} from '@app/schema';
+import { Apollo } from 'apollo-angular';
+import { QueryRef } from 'apollo-angular/query-ref';
+import { map, Observable, tap } from 'rxjs';
 
-import { ENVIRONMENT } from '../../environments/environment';
-import { BlastGate } from '../models/shop-vac/blast-gate';
-import { BlastGateCreate } from '../models/shop-vac/dto/blast-gate-create';
-import { BlastGateUpdate } from '../models/shop-vac/dto/blast-gate-update';
+import {
+	ACTIVATE_BLAST_GATE,
+	BLAST_GATE,
+	BLAST_GATES,
+	CLOSE_ALL_BLAST_GATES,
+	DELETE_BLAST_GATE,
+	OPEN_ALL_BLAST_GATES,
+	UPSERT_BLAST_GATE,
+} from './api';
+import {
+	ActivateBlastGateMutation,
+	ActivateBlastGateMutationVariables,
+	BlastGateQuery,
+	BlastGateQueryVariables,
+	BlastGatesQuery,
+	BlastGatesQueryVariables,
+	CloseAllBlastGatesMutation,
+	CloseAllBlastGatesMutationVariables,
+	DeleteBlastGateMutation,
+	DeleteBlastGateMutationVariables,
+	OpenAllBlastGatesMutation,
+	OpenAllBlastGatesMutationVariables,
+	UpsertBlastGateMutation,
+	UpsertBlastGateMutationVariables,
+} from './api.generated';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class ShopVacService {
-	constructor(private http: HttpClient) {}
+	getAllBlastGatesQuery?: QueryRef<BlastGatesQuery, BlastGatesQueryVariables>;
+
+	constructor(private apollo: Apollo) {}
 
 	getAllBlastGates(): Observable<BlastGate[]> {
-		return this.http.get<BlastGate[]>(
-			ENVIRONMENT.shopVacUrl + '/api/blastgates',
-		);
+		let query: QueryRef<BlastGatesQuery, BlastGatesQueryVariables>;
+		if (this.getAllBlastGatesQuery) {
+			query = this.getAllBlastGatesQuery;
+		} else {
+			query = this.apollo.watchQuery<
+				BlastGatesQuery,
+				BlastGatesQueryVariables
+			>({
+				query: BLAST_GATES,
+			});
+			this.getAllBlastGatesQuery = query;
+		}
+		return query.valueChanges.pipe(map((q) => q.data.blastGates));
 	}
 
-	getBlastGate(id: string): Observable<BlastGate[]> {
-		return this.http.get<BlastGate[]>(
-			ENVIRONMENT.shopVacUrl + '/api/blastgates/' + id,
-		);
+	getBlastGate({ blastGateId }: QueryBlastGateArgs): Observable<BlastGate> {
+		return this.apollo
+			.watchQuery<BlastGateQuery, BlastGateQueryVariables>({
+				query: BLAST_GATE,
+				variables: {
+					blastGateId,
+				},
+			})
+			.valueChanges.pipe(map((query) => query.data.blastGate));
 	}
 
-	createBlastGate(create: BlastGateCreate): Observable<object> {
-		return this.http.post(
-			ENVIRONMENT.shopVacUrl + '/api/blastgates',
-			create,
-		);
+	upsertBlastGate({
+		blastGateInput,
+	}: MutationUpsertBlastGateArgs): Observable<BlastGate | null> {
+		return this.apollo
+			.mutate<UpsertBlastGateMutation, UpsertBlastGateMutationVariables>({
+				mutation: UPSERT_BLAST_GATE,
+				variables: {
+					blastGateInput,
+				},
+			})
+			.pipe(
+				tap(() => void this.getAllBlastGatesQuery?.refetch()),
+				map((mutation) => mutation.data?.upsertBlastGate ?? null),
+			);
 	}
 
-	updateBlastGate(
-		blastGate: BlastGate,
-		update: BlastGateUpdate,
-	): Observable<object> {
-		return this.http.put(
-			ENVIRONMENT.shopVacUrl + '/api/blastgates/' + blastGate.id,
-			update,
-		);
+	deleteBlastGate({
+		blastGateId,
+	}: MutationDeleteBlastGateArgs): Observable<boolean | null> {
+		return this.apollo
+			.mutate<DeleteBlastGateMutation, DeleteBlastGateMutationVariables>({
+				mutation: DELETE_BLAST_GATE,
+				variables: {
+					blastGateId,
+				},
+			})
+			.pipe(
+				tap(() => void this.getAllBlastGatesQuery?.refetch()),
+				map((mutation) => mutation.data?.deleteBlastGate ?? null),
+			);
 	}
 
-	deleteBlastGate(blastGate: BlastGate): Observable<object> {
-		return this.http.delete(
-			ENVIRONMENT.shopVacUrl + '/api/blastgates/' + blastGate.id,
-			{},
-		);
+	activateBlastGate({
+		blastGateId,
+	}: MutationActivateBlastGateArgs): Observable<boolean | null> {
+		return this.apollo
+			.mutate<
+				ActivateBlastGateMutation,
+				ActivateBlastGateMutationVariables
+			>({
+				mutation: ACTIVATE_BLAST_GATE,
+				variables: {
+					blastGateId,
+				},
+			})
+			.pipe(
+				tap(() => void this.getAllBlastGatesQuery?.refetch()),
+				map((mutation) => mutation.data?.activateBlastGate ?? null),
+			);
 	}
 
-	activateBlastGate(blastGate: BlastGate): Observable<object> {
-		return this.http.post(
-			ENVIRONMENT.shopVacUrl +
-				'/api/blastgates/' +
-				blastGate.id +
-				'/activate',
-			{},
-		);
+	openAllBlastGates(): Observable<boolean | null> {
+		return this.apollo
+			.mutate<
+				OpenAllBlastGatesMutation,
+				OpenAllBlastGatesMutationVariables
+			>({
+				mutation: OPEN_ALL_BLAST_GATES,
+			})
+			.pipe(
+				tap(() => void this.getAllBlastGatesQuery?.refetch()),
+				map((mutation) => mutation.data?.openAllBlastGates ?? null),
+			);
 	}
 
-	openAllBlastGates(): Observable<object> {
-		return this.http.post(
-			ENVIRONMENT.shopVacUrl + '/api/blastgates/open',
-			{},
-		);
-	}
-
-	closeAllBlastGates(): Observable<object> {
-		return this.http.post(
-			ENVIRONMENT.shopVacUrl + '/api/blastgates/close',
-			{},
-		);
+	closeAllBlastGates(): Observable<boolean | null> {
+		return this.apollo
+			.mutate<
+				CloseAllBlastGatesMutation,
+				CloseAllBlastGatesMutationVariables
+			>({
+				mutation: CLOSE_ALL_BLAST_GATES,
+			})
+			.pipe(
+				tap(() => void this.getAllBlastGatesQuery?.refetch()),
+				map((mutation) => mutation.data?.closeAllBlastGates ?? null),
+			);
 	}
 }

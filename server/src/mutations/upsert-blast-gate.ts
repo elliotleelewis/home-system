@@ -1,3 +1,5 @@
+import { v4 as uuid } from 'uuid';
+
 import { BlastGate, MutationUpsertBlastGateArgs } from '../../../schema';
 
 export const upsertBlastGate = (
@@ -6,6 +8,6 @@ export const upsertBlastGate = (
 ): BlastGate => {
 	return {
 		...blastGateInput,
-		id: blastGateInput.id ?? '12345',
+		id: blastGateInput.id ?? uuid(),
 	};
 };

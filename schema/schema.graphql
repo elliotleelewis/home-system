@@ -20,7 +20,7 @@ type Mutation {
 	deleteBlastGate(blastGateId: ID!): Boolean!
 	openAllBlastGates: Boolean!
 	closeAllBlastGates: Boolean!
-	activateBlastGate(blastGateId: ID!): BlastGate!
+	activateBlastGate(blastGateId: ID!): Boolean!
 }
 
 schema {

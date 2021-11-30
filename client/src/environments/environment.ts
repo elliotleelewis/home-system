@@ -13,5 +13,5 @@ import 'zone.js/plugins/zone-error';
 
 export const ENVIRONMENT = {
 	production: false,
-	shopVacUrl: 'http://localhost:4000',
+	serverUrl: 'http://localhost:8080',
 };

@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { InMemoryCache } from '@apollo/client';
-import { HubConnectionBuilder } from '@microsoft/signalr';
 import { APOLLO_OPTIONS } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 
@@ -35,19 +34,13 @@ import { ShopVacBlastGatesComponent } from './pages/shop-vac-blast-gates/shop-va
 	],
 	providers: [
 		{
-			provide: 'HUB_CONNECTION_SHOP_VAC',
-			useFactory: () =>
-				new HubConnectionBuilder()
-					.withUrl(ENVIRONMENT.shopVacUrl + '/signalr')
-					.build(),
-		},
-		{
 			provide: APOLLO_OPTIONS,
 			useFactory: (httpLink: HttpLink) => ({
 				cache: new InMemoryCache(),
 				link: httpLink.create({
-					uri: 'http://localhost:8080/graphql',
+					uri: `${ENVIRONMENT.serverUrl}/graphql`,
 				}),
+				connectToDevTools: !ENVIRONMENT.production,
 			}),
 			deps: [HttpLink],
 		},

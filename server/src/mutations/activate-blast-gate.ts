@@ -1,12 +1,8 @@
-import { BlastGate, MutationActivateBlastGateArgs } from '@app/schema';
+import { MutationActivateBlastGateArgs } from '@app/schema';
 
 export const activateBlastGate = (
 	_: {},
-	{ blastGateId }: MutationActivateBlastGateArgs,
-): BlastGate => {
-	return {
-		id: blastGateId,
-		name: 'Test 1',
-		isOpen: true,
-	};
+	{ blastGateId: _blastGateId }: MutationActivateBlastGateArgs,
+): boolean => {
+	return true;
 };

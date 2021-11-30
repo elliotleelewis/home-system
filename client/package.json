@@ -16,6 +16,10 @@
     "prettier": "prettier --check \"**/*.{md,ts,js,scss,html,json,yml}\" --config ../package.json --ignore-path ../.gitignore",
     "prettier:fix": "prettier --write \"**/*.{md,ts,js,scss,html,json,yml}\" --config ../package.json --ignore-path ../.gitignore"
   },
+  "optionalDependencies": {
+    "@types/react": "^17.0.0",
+    "react": "^17.0.0"
+  },
   "dependencies": {
     "@angular/animations": "~13.0.0",
     "@angular/common": "~13.0.0",
@@ -28,7 +32,6 @@
     "@apollo/client": "~3.5.0",
     "@app/schema": "*",
     "@fortawesome/fontawesome-free": "^5.0.0",
-    "@microsoft/signalr": "~5.0.0",
     "apollo-angular": "^2.0.0",
     "bulma": "^0.9.0",
     "bulma-switch": "^2.0.0",
