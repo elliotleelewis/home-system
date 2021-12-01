@@ -16,10 +16,6 @@
     "prettier": "prettier --check \"**/*.{md,ts,js,scss,html,json,yml}\" --config ../package.json --ignore-path ../.gitignore",
     "prettier:fix": "prettier --write \"**/*.{md,ts,js,scss,html,json,yml}\" --config ../package.json --ignore-path ../.gitignore"
   },
-  "optionalDependencies": {
-    "@types/react": "^17.0.0",
-    "react": "^17.0.0"
-  },
   "dependencies": {
     "@angular/animations": "~13.0.0",
     "@angular/common": "~13.0.0",
