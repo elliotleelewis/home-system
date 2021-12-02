@@ -1,8 +1,6 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-
-import HubConnectionMock from '../../mocks/hub-connection.mock.spec';
+import { ApolloTestingModule } from 'apollo-angular/testing';
 
 import { ShopVacBlastGatesComponent } from './shop-vac-blast-gates.component';
 
@@ -14,13 +12,7 @@ describe('ShopVacBlastGatesComponent', () => {
 		waitForAsync(() => {
 			void TestBed.configureTestingModule({
 				declarations: [ShopVacBlastGatesComponent],
-				imports: [HttpClientTestingModule, FormsModule],
-				providers: [
-					{
-						provide: 'HUB_CONNECTION_SHOP_VAC',
-						useValue: HubConnectionMock,
-					},
-				],
+				imports: [ApolloTestingModule, FormsModule],
 			}).compileComponents();
 		}),
 	);

@@ -1,11 +1,10 @@
 import { BlastGate } from '@app/schema';
 
-import { prisma } from '../../prisma';
+import { PRISMA } from '../../prisma';
 
-export const blastGates = async (): Promise<BlastGate[]> => {
-	return prisma.blastGate.findMany({
+export const blastGates = async (): Promise<BlastGate[]> =>
+	PRISMA.blastGate.findMany({
 		orderBy: {
 			createdAt: 'asc',
 		},
 	});
-};

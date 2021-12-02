@@ -12,4 +12,6 @@ RUN yarn --pure-lockfile
 COPY . .
 
 # Run pipeline
-RUN yarn run prettier
+RUN yarn run prettier \
+    && yarn run lint \
+    && yarn run stylelint
