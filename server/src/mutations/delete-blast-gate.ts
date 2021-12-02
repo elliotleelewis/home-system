@@ -1,9 +1,14 @@
 import { MutationDeleteBlastGateArgs } from '../../../schema';
+import { prisma } from '../../prisma';
 
-export const deleteBlastGate = (
+export const deleteBlastGate = async (
 	_: {},
 	{ blastGateId }: MutationDeleteBlastGateArgs,
-): boolean => {
-	console.log(blastGateId);
+): Promise<boolean> => {
+	await prisma.blastGate.delete({
+		where: {
+			id: blastGateId,
+		},
+	});
 	return true;
 };

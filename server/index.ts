@@ -1,6 +1,7 @@
 import { GraphQLFileLoader } from '@graphql-tools/graphql-file-loader';
 import { loadSchemaSync } from '@graphql-tools/load';
 import { makeExecutableSchema } from '@graphql-tools/schema';
+import { config } from 'dotenv';
 import * as cors from 'cors';
 import * as express from 'express';
 import { graphqlHTTP } from 'express-graphql';
@@ -15,6 +16,9 @@ import {
 	upsertBlastGate,
 } from './src/mutations';
 import { blastGate, blastGates } from './src/queries';
+import { prisma } from './prisma';
+
+config();
 
 // Construct a schema, using GraphQL schema language
 const schema = loadSchemaSync('../node_modules/@app/schema/schema.graphql', {
@@ -55,4 +59,8 @@ app.use('/graphql', [
 	}),
 ]);
 app.listen(port);
+
+process.on('SIGTERM', () => prisma.$disconnect());
+process.on('SIGINT', () => prisma.$disconnect());
+
 console.log(`Running a GraphQL API server at http://localhost:${port}/graphql`);

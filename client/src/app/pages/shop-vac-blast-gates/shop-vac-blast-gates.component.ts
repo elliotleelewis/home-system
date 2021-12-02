@@ -27,7 +27,7 @@ export class ShopVacBlastGatesComponent implements OnInit, OnDestroy {
 
 	ngOnInit(): void {
 		this._subs.sink = this.shopVacService
-			.getAllBlastGates()
+			.getBlastGates()
 			.subscribe((blastGates) => (this.blastGates = blastGates));
 	}
 

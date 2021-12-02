@@ -1,12 +1,20 @@
 import { BlastGate, QueryBlastGateArgs } from '@app/schema';
 
-export const blastGate = (
+import { prisma } from '../../prisma';
+
+export const blastGate = async (
 	_: {},
 	{ blastGateId }: QueryBlastGateArgs,
-): BlastGate => {
-	return {
-		id: blastGateId,
-		name: 'Test 1',
-		isOpen: true,
-	};
+): Promise<BlastGate> => {
+	const bg = await prisma.blastGate.findUnique({
+		where: {
+			id: blastGateId,
+		},
+	});
+
+	if (bg === null) {
+		throw new Error(`Cannot find BlastGate with id: ${blastGateId}`);
+	}
+
+	return bg;
 };

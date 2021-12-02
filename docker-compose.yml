@@ -54,3 +54,5 @@ services:
     networks:
       - proxy
       - database
+    environment:
+      - DATABASE_URL=postgresql://home-system:@database:5432/home-system

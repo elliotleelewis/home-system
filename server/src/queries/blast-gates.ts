@@ -1,12 +1,11 @@
 import { BlastGate } from '@app/schema';
-import { v4 as uuid } from 'uuid';
 
-export const blastGates = (): BlastGate[] => {
-	return [
-		{
-			id: uuid(),
-			name: 'Test 1',
-			isOpen: true,
+import { prisma } from '../../prisma';
+
+export const blastGates = async (): Promise<BlastGate[]> => {
+	return prisma.blastGate.findMany({
+		orderBy: {
+			createdAt: 'asc',
 		},
-	];
+	});
 };

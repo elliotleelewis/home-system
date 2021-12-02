@@ -45,7 +45,7 @@
 					type="checkbox"
 					name="is-open"
 					[ngModel]="blastGate.isOpen"
-					(ngModelChange)="updateBlastGate(blastGate, $event)"
+					(change)="updateBlastGate(blastGate, $event)"
 				/>
 				<label for="blast-gate-{{ blastGate.id }}">{{
 					blastGate.name

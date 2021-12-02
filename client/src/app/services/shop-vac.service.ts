@@ -40,24 +40,20 @@ import {
 	providedIn: 'root',
 })
 export class ShopVacService {
-	getAllBlastGatesQuery?: QueryRef<BlastGatesQuery, BlastGatesQueryVariables>;
+	getBlastGatesQuery?: QueryRef<BlastGatesQuery, BlastGatesQueryVariables>;
 
 	constructor(private apollo: Apollo) {}
 
-	getAllBlastGates(): Observable<BlastGate[]> {
-		let query: QueryRef<BlastGatesQuery, BlastGatesQueryVariables>;
-		if (this.getAllBlastGatesQuery) {
-			query = this.getAllBlastGatesQuery;
-		} else {
-			query = this.apollo.watchQuery<
-				BlastGatesQuery,
-				BlastGatesQueryVariables
-			>({
-				query: BLAST_GATES,
-			});
-			this.getAllBlastGatesQuery = query;
-		}
-		return query.valueChanges.pipe(map((q) => q.data.blastGates));
+	getBlastGates(): Observable<BlastGate[]> {
+		this.getBlastGatesQuery ??= this.apollo.watchQuery<
+			BlastGatesQuery,
+			BlastGatesQueryVariables
+		>({
+			query: BLAST_GATES,
+		});
+		return this.getBlastGatesQuery.valueChanges.pipe(
+			map((q) => q.data.blastGates),
+		);
 	}
 
 	getBlastGate({ blastGateId }: QueryBlastGateArgs): Observable<BlastGate> {
@@ -82,7 +78,7 @@ export class ShopVacService {
 				},
 			})
 			.pipe(
-				tap(() => void this.getAllBlastGatesQuery?.refetch()),
+				tap(() => void this.getBlastGatesQuery?.refetch()),
 				map((mutation) => mutation.data?.upsertBlastGate ?? null),
 			);
 	}
@@ -98,7 +94,7 @@ export class ShopVacService {
 				},
 			})
 			.pipe(
-				tap(() => void this.getAllBlastGatesQuery?.refetch()),
+				tap(() => void this.getBlastGatesQuery?.refetch()),
 				map((mutation) => mutation.data?.deleteBlastGate ?? null),
 			);
 	}
@@ -117,7 +113,7 @@ export class ShopVacService {
 				},
 			})
 			.pipe(
-				tap(() => void this.getAllBlastGatesQuery?.refetch()),
+				tap(() => void this.getBlastGatesQuery?.refetch()),
 				map((mutation) => mutation.data?.activateBlastGate ?? null),
 			);
 	}
@@ -131,7 +127,7 @@ export class ShopVacService {
 				mutation: OPEN_ALL_BLAST_GATES,
 			})
 			.pipe(
-				tap(() => void this.getAllBlastGatesQuery?.refetch()),
+				tap(() => void this.getBlastGatesQuery?.refetch()),
 				map((mutation) => mutation.data?.openAllBlastGates ?? null),
 			);
 	}
@@ -145,7 +141,7 @@ export class ShopVacService {
 				mutation: CLOSE_ALL_BLAST_GATES,
 			})
 			.pipe(
-				tap(() => void this.getAllBlastGatesQuery?.refetch()),
+				tap(() => void this.getBlastGatesQuery?.refetch()),
 				map((mutation) => mutation.data?.closeAllBlastGates ?? null),
 			);
 	}
