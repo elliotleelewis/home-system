@@ -1,0 +1,40 @@
+{
+  "private": true,
+  "license": "MIT",
+  "workspaces": [
+    "client",
+    "schema",
+    "server"
+  ],
+  "scripts": {
+    "prettier": "prettier --check \"**/*.{md,ts,js,scss,html,json,yml,prisma}\" --ignore-path .gitignore",
+    "prettier:fix": "prettier --write \"**/*.{md,ts,js,scss,html,json,yml,prisma}\" --ignore-path .gitignore"
+  },
+  "devDependencies": {
+    "prettier": "~2.5.0",
+    "prettier-plugin-prisma": "~3.6.0"
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "bracketSpacing": true,
+    "endOfLine": "lf",
+    "overrides": [
+      {
+        "files": [
+          "*.json",
+          "*.md",
+          "*.yml"
+        ],
+        "options": {
+          "tabWidth": 2,
+          "useTabs": false
+        }
+      }
+    ],
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 4,
+    "trailingComma": "all",
+    "useTabs": true
+  }
+}

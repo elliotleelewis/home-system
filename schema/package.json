@@ -1,0 +1,19 @@
+{
+  "name": "@app/schema",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "./schema.generated.ts",
+  "scripts": {
+    "codegen": "graphql-codegen --config codegen.yml",
+    "codegen:watch": "graphql-codegen --config codegen.yml --watch",
+    "prettier": "prettier --check \"**/*.{md,ts,js,scss,html,json,yml}\" --config ../package.json --ignore-path ../.gitignore",
+    "prettier:fix": "prettier --write \"**/*.{md,ts,js,scss,html,json,yml}\" --config ../package.json --ignore-path ../.gitignore"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^2.0.0",
+    "@graphql-codegen/typescript": "^2.0.0",
+    "@graphql-codegen/typescript-resolvers": "^2.0.0",
+    "graphql": "^15.0.0",
+    "prettier": "~2.5.0"
+  }
+}

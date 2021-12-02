@@ -1,0 +1,20 @@
+FROM node:16-alpine AS build-env
+WORKDIR /app
+
+# Install dependencies
+COPY package.json yarn.lock ./
+COPY client/package.json ./client/
+COPY schema/package.json ./schema/
+COPY server/package.json ./server/
+RUN yarn --pure-lockfile
+
+# Run schema codegen
+COPY ./schema ./schema/
+RUN yarn --cwd ./schema run codegen
+
+# Copy everything else
+COPY ./server ./server/
+RUN yarn --cwd ./server run db:codegen
+
+# Set run command
+CMD cd ./server && yarn run db:deploy && yarn run start

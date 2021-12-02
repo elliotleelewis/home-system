@@ -1,0 +1,15 @@
+FROM node:16-alpine AS build-env
+WORKDIR /app
+
+# Install dependencies
+COPY package.json yarn.lock ./
+COPY client/package.json ./client/
+COPY schema/package.json ./schema/
+COPY server/package.json ./server/
+RUN yarn --pure-lockfile
+
+# Copy everything else
+COPY . .
+
+# Run pipeline
+RUN yarn run prettier

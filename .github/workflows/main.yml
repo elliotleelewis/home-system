@@ -10,7 +10,8 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - run: docker build -f ./UI/Dockerfile.pipeline ./UI
-      - run: docker build ./UI
-      - run: docker build -f ./ShopVac/Dockerfile.pipeline ./ShopVac
-      - run: docker build ./ShopVac
+      - run: docker build -f ./Dockerfile.pipeline ./
+      - run: docker build -f ./Dockerfile.client ./
+      - run: docker build -f ./Dockerfile.client-pipeline ./
+      - run: docker build -f ./Dockerfile.server ./
+      - run: docker build -f ./Dockerfile.server-pipeline ./
