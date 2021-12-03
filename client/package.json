@@ -8,7 +8,7 @@
     "postbuild": "node ./purify-css.js",
     "codegen": "graphql-codegen --config codegen.yml",
     "codegen:watch": "graphql-codegen --config codegen.yml --watch",
-    "test": "ng test --watch false"
+    "test": "ng test"
   },
   "dependencies": {
     "@angular/animations": "~13.0.0",
@@ -22,7 +22,7 @@
     "@apollo/client": "~3.5.0",
     "@app/schema": "*",
     "@fortawesome/fontawesome-free": "^5.0.0",
-    "apollo-angular": "^2.0.0",
+    "apollo-angular": "^3.0.0-alpha.2",
     "bulma": "^0.9.0",
     "bulma-switch": "^2.0.0",
     "graphql": "^15.0.0",
@@ -32,6 +32,7 @@
     "zone.js": "^0.11.0"
   },
   "devDependencies": {
+    "@angular-builders/jest": "~13.0.0",
     "@angular-devkit/build-angular": "~13.0.0",
     "@angular/cli": "~13.0.0",
     "@angular/compiler-cli": "~13.0.0",
@@ -40,16 +41,11 @@
     "@graphql-codegen/cli": "^2.0.0",
     "@graphql-codegen/near-operation-file-preset": "^2.0.0",
     "@graphql-codegen/typescript-operations": "^2.0.0",
-    "@types/jasmine": "^3.0.0",
+    "@types/jest": "^27.0.0",
     "@types/node": "^16.0.0",
     "is-docker": "^2.0.0",
-    "jasmine-core": "^3.0.0",
-    "karma": "^6.0.0",
-    "karma-chrome-launcher": "^3.0.0",
-    "karma-coverage": "^2.0.0",
-    "karma-jasmine": "^4.0.0",
-    "karma-jasmine-html-reporter": "^1.0.0",
-    "karma-junit-reporter": "^2.0.0",
+    "jest": "^27.0.0",
+    "jest-preset-angular": "^11.0.0",
     "purify-css": "^1.0.0",
     "ts-node": "^10.0.0",
     "typescript": "~4.4.0"

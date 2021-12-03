@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { InMemoryCache } from '@apollo/client/core';
-import { APOLLO_OPTIONS } from 'apollo-angular';
+import { APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 
 import { ENVIRONMENT } from '../environments/environment';
@@ -31,6 +31,7 @@ import { ShopVacBlastGatesComponent } from './pages/shop-vac-blast-gates/shop-va
 				useHash: true,
 			},
 		),
+		ApolloModule,
 	],
 	providers: [
 		{

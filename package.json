@@ -27,7 +27,7 @@
     "eslint-plugin-eslint-comments": "^3.0.0",
     "eslint-plugin-file-progress": "^1.0.0",
     "eslint-plugin-import": "^2.0.0",
-    "eslint-plugin-jasmine": "^4.0.0",
+    "eslint-plugin-jest": "^25.0.0",
     "eslint-plugin-jsdoc": "^37.0.0",
     "eslint-plugin-prefer-arrow": "^1.0.0",
     "postcss": "^8.0.0",
@@ -79,13 +79,13 @@
         },
         "plugins": [
           "file-progress",
-          "jasmine",
+          "jest",
           "jsdoc"
         ],
         "extends": [
           "eslint:recommended",
           "plugin:eslint-comments/recommended",
-          "plugin:jasmine/recommended",
+          "plugin:jest/recommended",
           "plugin:@typescript-eslint/recommended",
           "plugin:@typescript-eslint/recommended-requiring-type-checking",
           "plugin:@angular-eslint/ng-cli-compat",

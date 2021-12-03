@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { ApolloTestingModule } from 'apollo-angular/testing';
+import { of } from 'rxjs';
+
+import { ShopVacService } from '../../services/shop-vac.service';
 
 import { ShopVacBlastGatesComponent } from './shop-vac-blast-gates.component';
 
@@ -8,11 +10,20 @@ describe('ShopVacBlastGatesComponent', () => {
 	let component: ShopVacBlastGatesComponent;
 	let fixture: ComponentFixture<ShopVacBlastGatesComponent>;
 
+	let mockShopVacService: Partial<ShopVacService>;
+
 	beforeEach(
 		waitForAsync(() => {
+			mockShopVacService = {
+				getBlastGates: jest.fn(() => of([])),
+			};
+
 			void TestBed.configureTestingModule({
 				declarations: [ShopVacBlastGatesComponent],
-				imports: [ApolloTestingModule, FormsModule],
+				imports: [FormsModule],
+				providers: [
+					{ provide: ShopVacService, useValue: mockShopVacService },
+				],
 			}).compileComponents();
 		}),
 	);
