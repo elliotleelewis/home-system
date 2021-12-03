@@ -1,13 +1,13 @@
 import { MutationActivateBlastGateArgs } from '@app/schema';
 
-import { prisma } from '../../prisma';
+import { PRISMA } from '../../prisma';
 
 export const activateBlastGate = async (
-	_: {},
+	_: unknown,
 	{ blastGateId }: MutationActivateBlastGateArgs,
 ): Promise<boolean> => {
-	await prisma.$transaction([
-		prisma.blastGate.update({
+	await PRISMA.$transaction([
+		PRISMA.blastGate.update({
 			where: {
 				id: blastGateId,
 			},
@@ -15,8 +15,9 @@ export const activateBlastGate = async (
 				isOpen: true,
 			},
 		}),
-		prisma.blastGate.updateMany({
+		PRISMA.blastGate.updateMany({
 			where: {
+				// eslint-disable-next-line @typescript-eslint/naming-convention
 				NOT: {
 					id: blastGateId,
 				},

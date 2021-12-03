@@ -1,12 +1,12 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import { ApolloTestingModule } from 'apollo-angular/testing';
 
 import { ShopVacService } from './shop-vac.service';
 
 describe('ShopVacService', () => {
 	beforeEach(() =>
 		TestBed.configureTestingModule({
-			imports: [HttpClientTestingModule],
+			imports: [ApolloTestingModule],
 		}),
 	);
 

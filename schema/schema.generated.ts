@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/array-type,@typescript-eslint/ban-types,@typescript-eslint/naming-convention,@typescript-eslint/no-explicit-any,id-blacklist */
 import { GraphQLResolveInfo } from 'graphql';
+
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = {
@@ -259,3 +261,5 @@ export type Resolvers<ContextType = any> = {
 	Mutation: MutationResolvers<ContextType>;
 	Query: QueryResolvers<ContextType>;
 };
+
+/* eslint-enable */

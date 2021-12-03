@@ -1,12 +1,12 @@
 import { BlastGate, QueryBlastGateArgs } from '@app/schema';
 
-import { prisma } from '../../prisma';
+import { PRISMA } from '../../prisma';
 
 export const blastGate = async (
-	_: {},
+	_: unknown,
 	{ blastGateId }: QueryBlastGateArgs,
 ): Promise<BlastGate> => {
-	const bg = await prisma.blastGate.findUnique({
+	const bg = await PRISMA.blastGate.findUnique({
 		where: {
 			id: blastGateId,
 		},

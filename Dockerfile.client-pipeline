@@ -13,7 +13,13 @@ COPY ./schema ./schema/
 RUN yarn --cwd ./schema run codegen
 
 # Copy everything else
+COPY tsconfig.json ./
 COPY ./client ./client/
 
+# Install pipeline dependencies
+RUN apk add --no-cache chromium
+ENV CHROME_BIN /usr/bin/chromium-browser
+
 # Run pipeline
-# TODO
+RUN cd ./client \
+    && yarn run test

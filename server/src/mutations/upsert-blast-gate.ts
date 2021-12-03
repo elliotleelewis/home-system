@@ -1,13 +1,13 @@
+import { BlastGate, MutationUpsertBlastGateArgs } from '@app/schema';
 import { v4 as uuid } from 'uuid';
 
-import { BlastGate, MutationUpsertBlastGateArgs } from '../../../schema';
-import { prisma } from '../../prisma';
+import { PRISMA } from '../../prisma';
 
 export const upsertBlastGate = async (
-	_: {},
+	_: unknown,
 	{ blastGateInput }: MutationUpsertBlastGateArgs,
-): Promise<BlastGate> => {
-	return await prisma.blastGate.upsert({
+): Promise<BlastGate> =>
+	await PRISMA.blastGate.upsert({
 		create: {
 			name: blastGateInput.name,
 			isOpen: blastGateInput.isOpen,
@@ -20,4 +20,3 @@ export const upsertBlastGate = async (
 			id: blastGateInput.id ?? uuid(),
 		},
 	});
-};

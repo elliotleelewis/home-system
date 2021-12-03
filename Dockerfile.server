@@ -13,8 +13,11 @@ COPY ./schema ./schema/
 RUN yarn --cwd ./schema run codegen
 
 # Copy everything else
+COPY tsconfig.json ./
 COPY ./server ./server/
 RUN yarn --cwd ./server run db:codegen
 
 # Set run command
-CMD cd ./server && yarn run db:deploy && yarn run start
+CMD cd ./server \
+	&& yarn run db:deploy \
+	&& yarn run start

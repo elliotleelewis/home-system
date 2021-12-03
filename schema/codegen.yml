@@ -2,10 +2,15 @@ overwrite: true
 schema: '../node_modules/@app/schema/schema.graphql'
 hooks:
   afterAllFileWrite:
-    - yarn run prettier:fix ||
+    - prettier --write --config ../package.json
 generates:
   ./schema.generated.ts:
     plugins:
+      - add:
+          content: '/* eslint-disable @typescript-eslint/array-type,@typescript-eslint/ban-types,@typescript-eslint/naming-convention,@typescript-eslint/no-explicit-any,id-blacklist */'
+      - add:
+          placement: 'append'
+          content: '/* eslint-enable */'
       - 'typescript'
       - 'typescript-resolvers'
     config:
