@@ -9,8 +9,8 @@
   "scripts": {
     "prettier": "prettier --check \"**/*.{md,ts,js,scss,html,json,yml,prisma}\" --ignore-path .gitignore",
     "prettier:fix": "prettier --write \"**/*.{md,ts,js,scss,html,json,yml,prisma}\" --ignore-path .gitignore",
-    "lint": "eslint \"**/*.{ts,html}\"",
-    "lint:fix": "eslint --fix \"**/*.{ts,html}\"",
+    "lint": "eslint \"**/*.{ts,js,html}\" --ignore-path .gitignore",
+    "lint:fix": "eslint --fix \"**/*.{ts,js,html}\" --ignore-path .gitignore",
     "stylelint": "stylelint \"**/*.{scss,html}\" --ignore-path .gitignore",
     "stylelint:fix": "stylelint \"**/*.{scss,html}\" --fix --ignore-path .gitignore"
   },
@@ -66,6 +66,46 @@
   },
   "eslintConfig": {
     "root": true,
+    "plugins": [
+      "file-progress"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:eslint-comments/recommended"
+    ],
+    "rules": {
+      "file-progress/activate": "warn",
+      "curly": "error",
+      "eqeqeq": [
+        "error",
+        "always"
+      ],
+      "lines-between-class-members": [
+        "error",
+        "always",
+        {
+          "exceptAfterSingleLine": true
+        }
+      ],
+      "max-classes-per-file": [
+        "error",
+        1
+      ],
+      "no-empty": "error",
+      "no-restricted-imports": [
+        "error",
+        {
+          "paths": [
+            "rxjs/Rx",
+            "subsink/dist/subsink"
+          ],
+          "patterns": [
+            "app/*",
+            "rxjs/internal/*"
+          ]
+        }
+      ]
+    },
     "overrides": [
       {
         "files": [
@@ -78,13 +118,10 @@
           "createDefaultProgram": true
         },
         "plugins": [
-          "file-progress",
           "jest",
           "jsdoc"
         ],
         "extends": [
-          "eslint:recommended",
-          "plugin:eslint-comments/recommended",
           "plugin:jest/recommended",
           "plugin:@typescript-eslint/recommended",
           "plugin:@typescript-eslint/recommended-requiring-type-checking",
@@ -248,7 +285,6 @@
           "@typescript-eslint/no-unused-vars": "error",
           "@typescript-eslint/no-var-requires": "error",
           "@typescript-eslint/unbound-method": "off",
-          "file-progress/activate": "warn",
           "import/first": "error",
           "import/newline-after-import": "error",
           "import/order": [
@@ -272,38 +308,23 @@
           ],
           "jsdoc/newline-after-description": "error",
           "jsdoc/no-types": "error",
-          "curly": "error",
-          "eqeqeq": [
-            "error",
-            "always"
-          ],
-          "lines-between-class-members": [
-            "error",
-            "always",
-            {
-              "exceptAfterSingleLine": true
-            }
-          ],
-          "max-classes-per-file": [
-            "error",
-            1
-          ],
-          "no-empty": "error",
-          "no-restricted-imports": [
-            "error",
-            {
-              "paths": [
-                "rxjs/Rx",
-                "subsink/dist/subsink"
-              ],
-              "patterns": [
-                "app/*",
-                "rxjs/internal/*"
-              ]
-            }
-          ],
           "no-underscore-dangle": "off"
         }
+      },
+      {
+        "files": [
+          "*.js"
+        ],
+        "parserOptions": {
+          "ecmaVersion": 2017
+        },
+        "env": {
+          "es6": true,
+          "node": true
+        },
+        "extends": [
+          "prettier"
+        ]
       },
       {
         "files": [
