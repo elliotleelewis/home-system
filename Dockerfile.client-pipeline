@@ -13,6 +13,7 @@ COPY ./schema ./schema/
 RUN yarn --cwd ./schema run codegen
 
 # Copy everything else
+COPY tsconfig.json ./
 COPY ./client ./client/
 
 # Install pipeline dependencies
