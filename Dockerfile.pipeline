@@ -8,8 +8,13 @@ COPY schema/package.json ./schema/
 COPY server/package.json ./server/
 RUN yarn --pure-lockfile
 
+# Run schema codegen
+COPY ./schema ./schema/
+RUN yarn --cwd ./schema run codegen
+
 # Copy everything else
 COPY . .
+RUN yarn --cwd ./server run db:codegen
 
 # Run pipeline
 RUN yarn run prettier \

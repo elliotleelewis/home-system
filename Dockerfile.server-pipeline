@@ -14,6 +14,8 @@ RUN yarn --cwd ./schema run codegen
 
 # Copy everything else
 COPY ./server ./server/
+RUN yarn --cwd ./server run db:codegen
 
 # Run pipeline
 # TODO
+RUN cd ./server
