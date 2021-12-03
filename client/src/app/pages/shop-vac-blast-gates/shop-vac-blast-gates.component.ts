@@ -1,4 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	ChangeDetectorRef,
+	Component,
+	OnDestroy,
+	OnInit,
+} from '@angular/core';
 import { BlastGate, MutationUpsertBlastGateArgs } from '@app/schema';
 import { SubSink } from 'subsink';
 
@@ -8,6 +14,7 @@ import { ShopVacService } from '../../services/shop-vac.service';
 	selector: 'app-shop-vac-blast-gates',
 	templateUrl: './shop-vac-blast-gates.component.html',
 	styleUrls: ['./shop-vac-blast-gates.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ShopVacBlastGatesComponent implements OnInit, OnDestroy {
 	create = false;
@@ -23,12 +30,18 @@ export class ShopVacBlastGatesComponent implements OnInit, OnDestroy {
 
 	private _subs = new SubSink();
 
-	constructor(private shopVacService: ShopVacService) {}
+	constructor(
+		private changeDetectorRef: ChangeDetectorRef,
+		private shopVacService: ShopVacService,
+	) {}
 
 	ngOnInit(): void {
 		this._subs.sink = this.shopVacService
 			.getBlastGates()
-			.subscribe((blastGates) => (this.blastGates = blastGates));
+			.subscribe((blastGates) => {
+				this.blastGates = blastGates;
+				this.changeDetectorRef.detectChanges();
+			});
 	}
 
 	ngOnDestroy(): void {
