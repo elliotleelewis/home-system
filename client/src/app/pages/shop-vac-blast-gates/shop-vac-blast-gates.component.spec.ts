@@ -27,9 +27,7 @@ describe('ShopVacBlastGatesComponent', () => {
 			};
 
 			void TestBed.configureTestingModule({
-				declarations: [
-					ShopVacBlastGatesComponent,
-				],
+				declarations: [ShopVacBlastGatesComponent],
 				imports: [FormsModule],
 				providers: [
 					{ provide: ShopVacService, useValue: mockShopVacService },
