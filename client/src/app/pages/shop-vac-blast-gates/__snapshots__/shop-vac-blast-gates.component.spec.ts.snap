@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShopVacBlastGatesComponent should render 1`] = `
+<app-shop-vac-blast-gates
+  __ngContext__={[Function LRootView]}
+  _subs={[Function SubSink]}
+  blastGates={[Function Array]}
+  changeDetectorRef={[Function ViewRef$1]}
+  create="false"
+  createModel={[Function Object]}
+  shopVacService={[Function Object]}
+>
+  <div
+    class="panel"
+  >
+    <div
+      class="panel-heading"
+    >
+      <div
+        class="level"
+      >
+        <div
+          class="level-left"
+        >
+          Blast Gates
+        </div>
+        <div
+          class="level-right"
+        >
+          <div
+            class="field is-grouped"
+          >
+            <div
+              class="control"
+            >
+              <button
+                class="button"
+              >
+                 Open All 
+              </button>
+            </div>
+            <div
+              class="control"
+            >
+              <button
+                class="button"
+              >
+                 Close All 
+              </button>
+            </div>
+            <p
+              class="control"
+            >
+              <button
+                class="button is-success"
+              >
+                <span
+                  class="icon is-small"
+                >
+                  <i
+                    class="fas fa-plus"
+                  />
+                </span>
+              </button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-blast-gate
+      class="panel-block has-background-white"
+    />
+  </div>
+</app-shop-vac-blast-gates>
+`;

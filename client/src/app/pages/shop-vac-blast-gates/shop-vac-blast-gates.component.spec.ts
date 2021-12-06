@@ -15,11 +15,21 @@ describe('ShopVacBlastGatesComponent', () => {
 	beforeEach(
 		waitForAsync(() => {
 			mockShopVacService = {
-				getBlastGates: jest.fn(() => of([])),
+				getBlastGates: jest.fn(() =>
+					of([
+						{
+							id: '12345',
+							name: 'Test',
+							isOpen: true,
+						},
+					]),
+				),
 			};
 
 			void TestBed.configureTestingModule({
-				declarations: [ShopVacBlastGatesComponent],
+				declarations: [
+					ShopVacBlastGatesComponent,
+				],
 				imports: [FormsModule],
 				providers: [
 					{ provide: ShopVacService, useValue: mockShopVacService },
@@ -36,5 +46,9 @@ describe('ShopVacBlastGatesComponent', () => {
 
 	it('should create', () => {
 		expect(component).toBeTruthy();
+	});
+
+	it('should render', () => {
+		expect(fixture).toMatchSnapshot();
 	});
 });
