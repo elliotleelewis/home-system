@@ -2,10 +2,9 @@ import { Resolvers } from '@app/schema';
 import { GraphQLFileLoader } from '@graphql-tools/graphql-file-loader';
 import { loadSchemaSync } from '@graphql-tools/load';
 import { makeExecutableSchema } from '@graphql-tools/schema';
-import * as cors from 'cors';
+import { ApolloServer } from 'apollo-server-express';
 import { config } from 'dotenv';
 import * as express from 'express';
-import { graphqlHTTP } from 'express-graphql';
 
 import { PRISMA } from './prisma';
 import {
@@ -48,21 +47,28 @@ const resolvers: Resolvers = {
 
 const executableSchema = makeExecutableSchema({ typeDefs: schema, resolvers });
 
+const apolloServer = new ApolloServer({
+	schema: executableSchema,
+});
+
 const port = 8080;
 
 const app = express();
-app.use('/graphql', [
-	cors({
-		origin: '*',
-	}),
-	graphqlHTTP({
-		schema: executableSchema,
-		graphiql: true,
-	}),
-]);
 app.listen(port);
 
 process.on('SIGTERM', () => void PRISMA.$disconnect());
 process.on('SIGINT', () => void PRISMA.$disconnect());
 
-console.log(`Running a GraphQL API server at http://localhost:${port}/graphql`);
+void apolloServer.start().then(() => {
+	apolloServer.applyMiddleware({
+		app,
+		cors: {
+			origin: '*',
+		},
+		path: '/graphql',
+	});
+
+	console.log(
+		`Running a GraphQL API server at http://localhost:${port}/graphql`,
+	);
+});

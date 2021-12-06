@@ -15,7 +15,15 @@ describe('ShopVacBlastGatesComponent', () => {
 	beforeEach(
 		waitForAsync(() => {
 			mockShopVacService = {
-				getBlastGates: jest.fn(() => of([])),
+				getBlastGates: jest.fn(() =>
+					of([
+						{
+							id: '12345',
+							name: 'Test',
+							isOpen: true,
+						},
+					]),
+				),
 			};
 
 			void TestBed.configureTestingModule({
@@ -36,5 +44,9 @@ describe('ShopVacBlastGatesComponent', () => {
 
 	it('should create', () => {
 		expect(component).toBeTruthy();
+	});
+
+	it('should render', () => {
+		expect(fixture).toMatchSnapshot();
 	});
 });

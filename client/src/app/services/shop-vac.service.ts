@@ -78,8 +78,12 @@ export class ShopVacService {
 				},
 			})
 			.pipe(
-				tap(() => void this.getBlastGatesQuery?.refetch()),
 				map((mutation) => mutation.data?.upsertBlastGate ?? null),
+				tap(
+					() =>
+						blastGateInput.id === null &&
+						void this.getBlastGatesQuery?.refetch(),
+				),
 			);
 	}
 
@@ -94,14 +98,19 @@ export class ShopVacService {
 				},
 			})
 			.pipe(
-				tap(() => void this.getBlastGatesQuery?.refetch()),
 				map((mutation) => mutation.data?.deleteBlastGate ?? null),
+				tap(() =>
+					this.apollo.client.cache.evict({
+						id: blastGateId,
+						broadcast: true,
+					}),
+				),
 			);
 	}
 
 	activateBlastGate({
 		blastGateId,
-	}: MutationActivateBlastGateArgs): Observable<boolean | null> {
+	}: MutationActivateBlastGateArgs): Observable<BlastGate[] | null> {
 		return this.apollo
 			.mutate<
 				ActivateBlastGateMutation,
@@ -112,13 +121,10 @@ export class ShopVacService {
 					blastGateId,
 				},
 			})
-			.pipe(
-				tap(() => void this.getBlastGatesQuery?.refetch()),
-				map((mutation) => mutation.data?.activateBlastGate ?? null),
-			);
+			.pipe(map((mutation) => mutation.data?.activateBlastGate ?? null));
 	}
 
-	openAllBlastGates(): Observable<boolean | null> {
+	openAllBlastGates(): Observable<BlastGate[] | null> {
 		return this.apollo
 			.mutate<
 				OpenAllBlastGatesMutation,
@@ -126,13 +132,10 @@ export class ShopVacService {
 			>({
 				mutation: OPEN_ALL_BLAST_GATES,
 			})
-			.pipe(
-				tap(() => void this.getBlastGatesQuery?.refetch()),
-				map((mutation) => mutation.data?.openAllBlastGates ?? null),
-			);
+			.pipe(map((mutation) => mutation.data?.openAllBlastGates ?? null));
 	}
 
-	closeAllBlastGates(): Observable<boolean | null> {
+	closeAllBlastGates(): Observable<BlastGate[] | null> {
 		return this.apollo
 			.mutate<
 				CloseAllBlastGatesMutation,
@@ -140,9 +143,6 @@ export class ShopVacService {
 			>({
 				mutation: CLOSE_ALL_BLAST_GATES,
 			})
-			.pipe(
-				tap(() => void this.getBlastGatesQuery?.refetch()),
-				map((mutation) => mutation.data?.closeAllBlastGates ?? null),
-			);
+			.pipe(map((mutation) => mutation.data?.closeAllBlastGates ?? null));
 	}
 }

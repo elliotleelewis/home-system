@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BlastGateComponent should render 1`] = `
+<app-blast-gate
+  __ngContext__={[Function LRootView]}
+  activateBlastGate={[Function EventEmitter_]}
+  blastGate={[Function Object]}
+  deleteBlastGate={[Function EventEmitter_]}
+  isMenuOpen="false"
+  updateBlastGate={[Function EventEmitter_]}
+>
+  <div
+    class="level"
+  >
+    <div
+      class="level-left"
+    >
+      <input
+        class="switch ng-untouched ng-pristine ng-valid"
+        id="blast-gate-12345"
+        name="is-open"
+        type="checkbox"
+      />
+      <label
+        for="blast-gate-12345"
+      >
+        Test
+      </label>
+    </div>
+    <div
+      class="level-right"
+    >
+      <button
+        class="button is-warning"
+        type="button"
+      >
+         Activate 
+      </button>
+      <div
+        class="dropdown is-hoverable is-right ml-2"
+      >
+        <div
+          class="dropdown-trigger"
+        >
+          <button
+            class="button is-default"
+          >
+            <span
+              class="icon"
+            >
+              <i
+                class="fas fa-ellipsis-v"
+              />
+            </span>
+          </button>
+        </div>
+        <div
+          class="dropdown-menu"
+          id="dropdown-menu"
+          role="menu"
+        >
+          <div
+            class="dropdown-content"
+          >
+            <a
+              class="dropdown-item"
+              href="javascript:void(0)"
+              role="button"
+            >
+              <span
+                class="icon"
+              >
+                <i
+                  class="fas fa-trash-alt"
+                />
+              </span>
+              Delete 
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-blast-gate>
+`;

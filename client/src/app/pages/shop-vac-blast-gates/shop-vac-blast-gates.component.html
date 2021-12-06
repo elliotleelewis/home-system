@@ -33,35 +33,14 @@
 			</div>
 		</div>
 	</div>
-	<div
+	<app-blast-gate
 		class="panel-block has-background-white"
 		*ngFor="let blastGate of blastGates; trackBy: trackByBlastGatesId"
-	>
-		<div class="level">
-			<div class="level-left">
-				<input
-					id="blast-gate-{{ blastGate.id }}"
-					class="switch"
-					type="checkbox"
-					name="is-open"
-					[ngModel]="blastGate.isOpen"
-					(change)="updateBlastGate(blastGate, $event)"
-				/>
-				<label for="blast-gate-{{ blastGate.id }}">{{
-					blastGate.name
-				}}</label>
-			</div>
-			<div class="level-right">
-				<button
-					class="button is-warning"
-					type="button"
-					(click)="activateBlastGate(blastGate)"
-				>
-					Activate
-				</button>
-			</div>
-		</div>
-	</div>
+		[blastGate]="blastGate"
+		(updateBlastGate)="updateBlastGate($event)"
+		(deleteBlastGate)="deleteBlastGate($event)"
+		(activateBlastGate)="activateBlastGate($event)"
+	></app-blast-gate>
 	<form
 		class="panel-block has-background-white"
 		*ngIf="create"

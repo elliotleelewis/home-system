@@ -38,18 +38,30 @@ export const DELETE_BLAST_GATE = gql`
 
 export const ACTIVATE_BLAST_GATE = gql`
 	mutation ActivateBlastGate($blastGateId: ID!) {
-		activateBlastGate(blastGateId: $blastGateId)
+		activateBlastGate(blastGateId: $blastGateId) {
+			id
+			name
+			isOpen
+		}
 	}
 `;
 
 export const OPEN_ALL_BLAST_GATES = gql`
 	mutation OpenAllBlastGates {
-		openAllBlastGates
+		openAllBlastGates {
+			id
+			name
+			isOpen
+		}
 	}
 `;
 
 export const CLOSE_ALL_BLAST_GATES = gql`
 	mutation CloseAllBlastGates {
-		closeAllBlastGates
+		closeAllBlastGates {
+			id
+			name
+			isOpen
+		}
 	}
 `;

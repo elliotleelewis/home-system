@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppComponent should render 1`] = `
+<app-root
+  __ngContext__={[Function LRootView]}
+>
+  <section
+    class="section"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="columns"
+      >
+        <div
+          class="column is-one-quarter"
+        >
+          <h1
+            class="title is-1 has-text-centered"
+          >
+            <a
+              class="has-text-dark"
+              href="/"
+            >
+              Home System
+            </a>
+          </h1>
+          <div
+            class="box"
+          >
+            <aside
+              class="menu has-background-white"
+            >
+              <p
+                class="menu-label"
+              >
+                <span
+                  class="icon"
+                >
+                  <i
+                    class="fas fa-tools"
+                  />
+                </span>
+                 ShopVac 
+              </p>
+              <ul
+                class="menu-list"
+              >
+                <li>
+                  <a
+                    href="/shop-vac/blast-gates"
+                  >
+                    Blast Gates
+                  </a>
+                </li>
+              </ul>
+            </aside>
+          </div>
+        </div>
+        <div
+          class="column is-three-quarters"
+        >
+          <router-outlet />
+        </div>
+      </div>
+    </div>
+  </section>
+</app-root>
+`;
