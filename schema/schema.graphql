@@ -18,9 +18,9 @@ type Query {
 type Mutation {
 	upsertBlastGate(blastGateInput: BlastGateInput!): BlastGate!
 	deleteBlastGate(blastGateId: ID!): Boolean!
-	openAllBlastGates: Boolean!
-	closeAllBlastGates: Boolean!
-	activateBlastGate(blastGateId: ID!): Boolean!
+	openAllBlastGates: [BlastGate!]!
+	closeAllBlastGates: [BlastGate!]!
+	activateBlastGate(blastGateId: ID!): [BlastGate!]!
 }
 
 schema {

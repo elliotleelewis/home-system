@@ -1,11 +1,12 @@
-import { MutationActivateBlastGateArgs } from '@app/schema';
+import { BlastGate, MutationActivateBlastGateArgs } from '@app/schema';
 
 import { PRISMA } from '../../prisma';
+import { blastGates } from '../queries';
 
 export const activateBlastGate = async (
 	_: unknown,
 	{ blastGateId }: MutationActivateBlastGateArgs,
-): Promise<boolean> => {
+): Promise<BlastGate[]> => {
 	await PRISMA.$transaction([
 		PRISMA.blastGate.update({
 			where: {
@@ -27,5 +28,5 @@ export const activateBlastGate = async (
 			},
 		}),
 	]);
-	return true;
+	return blastGates();
 };

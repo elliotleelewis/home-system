@@ -11,10 +11,16 @@ import { ENVIRONMENT } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
+import { BlastGateComponent } from './pages/shop-vac-blast-gates/components/blast-gate/blast-gate.component';
 import { ShopVacBlastGatesComponent } from './pages/shop-vac-blast-gates/shop-vac-blast-gates.component';
 
 @NgModule({
-	declarations: [AppComponent, HomeComponent, ShopVacBlastGatesComponent],
+	declarations: [
+		AppComponent,
+		HomeComponent,
+		ShopVacBlastGatesComponent,
+		BlastGateComponent,
+	],
 	imports: [
 		HttpClientModule,
 		FormsModule,

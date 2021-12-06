@@ -1,10 +1,13 @@
-import { PRISMA } from '../../prisma';
+import { BlastGate } from '@app/schema';
 
-export const openAllBlastGates = async (): Promise<boolean> => {
+import { PRISMA } from '../../prisma';
+import { blastGates } from '../queries';
+
+export const openAllBlastGates = async (): Promise<BlastGate[]> => {
 	await PRISMA.blastGate.updateMany({
 		data: {
 			isOpen: true,
 		},
 	});
-	return true;
+	return blastGates();
 };

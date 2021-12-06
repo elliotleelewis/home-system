@@ -70,15 +70,21 @@ export class ShopVacBlastGatesComponent implements OnInit, OnDestroy {
 		};
 	}
 
-	updateBlastGate({ id, name }: BlastGate, event: Event): void {
+	updateBlastGate({ id, name, isOpen }: BlastGate): void {
 		this._subs.sink = this.shopVacService
 			.upsertBlastGate({
 				blastGateInput: {
 					id,
 					name,
-					isOpen: (event.target as HTMLInputElement).checked,
+					isOpen,
 				},
 			})
+			.subscribe();
+	}
+
+	deleteBlastGate(blastGate: BlastGate): void {
+		this._subs.sink = this.shopVacService
+			.deleteBlastGate({ blastGateId: blastGate.id })
 			.subscribe();
 	}
 

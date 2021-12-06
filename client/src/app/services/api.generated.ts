@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/array-type,@typescript-eslint/naming-convention */
+/* eslint-disable @typescript-eslint/array-type,@typescript-eslint/ban-types,@typescript-eslint/naming-convention,@typescript-eslint/no-explicit-any,id-blacklist */
 import * as Types from '../../../../node_modules/@app/schema';
 
 export type BlastGatesQueryVariables = Types.Exact<{ [key: string]: never }>;
@@ -56,7 +56,12 @@ export type ActivateBlastGateMutationVariables = Types.Exact<{
 
 export type ActivateBlastGateMutation = {
 	__typename?: 'Mutation';
-	activateBlastGate: boolean;
+	activateBlastGate: Array<{
+		__typename?: 'BlastGate';
+		id: string;
+		name: string;
+		isOpen: boolean;
+	}>;
 };
 
 export type OpenAllBlastGatesMutationVariables = Types.Exact<{
@@ -65,7 +70,12 @@ export type OpenAllBlastGatesMutationVariables = Types.Exact<{
 
 export type OpenAllBlastGatesMutation = {
 	__typename?: 'Mutation';
-	openAllBlastGates: boolean;
+	openAllBlastGates: Array<{
+		__typename?: 'BlastGate';
+		id: string;
+		name: string;
+		isOpen: boolean;
+	}>;
 };
 
 export type CloseAllBlastGatesMutationVariables = Types.Exact<{
@@ -74,7 +84,12 @@ export type CloseAllBlastGatesMutationVariables = Types.Exact<{
 
 export type CloseAllBlastGatesMutation = {
 	__typename?: 'Mutation';
-	closeAllBlastGates: boolean;
+	closeAllBlastGates: Array<{
+		__typename?: 'BlastGate';
+		id: string;
+		name: string;
+		isOpen: boolean;
+	}>;
 };
 
 /* eslint-enable */
