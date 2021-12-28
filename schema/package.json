@@ -11,6 +11,6 @@
     "@graphql-codegen/cli": "^2.0.0",
     "@graphql-codegen/typescript": "^2.0.0",
     "@graphql-codegen/typescript-resolvers": "^2.0.0",
-    "graphql": "^15.0.0"
+    "graphql": "^16.0.0"
   }
 }
