@@ -1,9 +1,11 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+import { MockComponents } from 'ng-mocks';
 import { of } from 'rxjs';
 
 import { ShopVacService } from '../../services/shop-vac.service';
 
+import { BlastGateComponent } from './components/blast-gate/blast-gate.component';
 import { ShopVacBlastGatesComponent } from './shop-vac-blast-gates.component';
 
 describe('ShopVacBlastGatesComponent', () => {
@@ -27,7 +29,10 @@ describe('ShopVacBlastGatesComponent', () => {
 			};
 
 			void TestBed.configureTestingModule({
-				declarations: [ShopVacBlastGatesComponent],
+				declarations: [
+					ShopVacBlastGatesComponent,
+					MockComponents(BlastGateComponent),
+				],
 				imports: [FormsModule],
 				providers: [
 					{ provide: ShopVacService, useValue: mockShopVacService },
