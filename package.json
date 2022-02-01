@@ -33,7 +33,7 @@
     "postcss": "^8.0.0",
     "postcss-html": "^1.0.0",
     "prettier": "~2.5.0",
-    "prettier-plugin-prisma": "~3.8.0",
+    "prettier-plugin-prisma": "~3.9.0",
     "stylelint": "^14.0.0",
     "stylelint-config-prettier": "^9.0.0",
     "stylelint-config-rational-order": "^0.1.0",
