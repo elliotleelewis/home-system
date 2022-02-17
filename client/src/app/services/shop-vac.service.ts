@@ -6,8 +6,7 @@ import {
 	MutationUpsertBlastGateArgs,
 	QueryBlastGateArgs,
 } from '@app/schema';
-import { Apollo } from 'apollo-angular';
-import { QueryRef } from 'apollo-angular/query-ref';
+import { Apollo, QueryRef } from 'apollo-angular';
 import { map, Observable, tap } from 'rxjs';
 
 import {
