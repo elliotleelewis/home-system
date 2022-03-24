@@ -14,32 +14,30 @@ describe('ShopVacBlastGatesComponent', () => {
 
 	let mockShopVacService: Partial<ShopVacService>;
 
-	beforeEach(
-		waitForAsync(() => {
-			mockShopVacService = {
-				getBlastGates: jest.fn(() =>
-					of([
-						{
-							id: '12345',
-							name: 'Test',
-							isOpen: true,
-						},
-					]),
-				),
-			};
+	beforeEach(waitForAsync(() => {
+		mockShopVacService = {
+			getBlastGates: jest.fn(() =>
+				of([
+					{
+						id: '12345',
+						name: 'Test',
+						isOpen: true,
+					},
+				]),
+			),
+		};
 
-			void TestBed.configureTestingModule({
-				declarations: [
-					ShopVacBlastGatesComponent,
-					MockComponents(BlastGateComponent),
-				],
-				imports: [FormsModule],
-				providers: [
-					{ provide: ShopVacService, useValue: mockShopVacService },
-				],
-			}).compileComponents();
-		}),
-	);
+		void TestBed.configureTestingModule({
+			declarations: [
+				ShopVacBlastGatesComponent,
+				MockComponents(BlastGateComponent),
+			],
+			imports: [FormsModule],
+			providers: [
+				{ provide: ShopVacService, useValue: mockShopVacService },
+			],
+		}).compileComponents();
+	}));
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ShopVacBlastGatesComponent);
