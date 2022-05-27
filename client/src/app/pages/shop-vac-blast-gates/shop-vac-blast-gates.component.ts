@@ -13,7 +13,6 @@ import { ShopVacService } from '../../services/shop-vac.service';
 @Component({
 	selector: 'app-shop-vac-blast-gates',
 	templateUrl: './shop-vac-blast-gates.component.html',
-	styleUrls: ['./shop-vac-blast-gates.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ShopVacBlastGatesComponent implements OnInit, OnDestroy {

@@ -7,7 +7,7 @@ import {
 	QueryBlastGateArgs,
 } from '@app/schema';
 import { Apollo, QueryRef } from 'apollo-angular';
-import { map, Observable, tap } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
 
 import {
 	ACTIVATE_BLAST_GATE,
