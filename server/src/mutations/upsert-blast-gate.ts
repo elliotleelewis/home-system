@@ -1,4 +1,4 @@
-import { BlastGate, MutationUpsertBlastGateArgs } from '@app/schema';
+import type { BlastGate, MutationUpsertBlastGateArgs } from '@app/schema';
 import { v4 as uuid } from 'uuid';
 
 import { PRISMA } from '../../prisma';

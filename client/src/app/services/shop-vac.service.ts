@@ -1,13 +1,15 @@
-import { Injectable } from '@angular/core';
-import {
+import { Inject, Injectable } from '@angular/core';
+import type {
 	BlastGate,
 	MutationActivateBlastGateArgs,
 	MutationDeleteBlastGateArgs,
 	MutationUpsertBlastGateArgs,
 	QueryBlastGateArgs,
 } from '@app/schema';
-import { Apollo, QueryRef } from 'apollo-angular';
-import { Observable, map, tap } from 'rxjs';
+import type { QueryRef } from 'apollo-angular';
+import { Apollo } from 'apollo-angular';
+import type { Observable } from 'rxjs';
+import { map, tap } from 'rxjs';
 
 import {
 	ACTIVATE_BLAST_GATE,
@@ -18,7 +20,7 @@ import {
 	OPEN_ALL_BLAST_GATES,
 	UPSERT_BLAST_GATE,
 } from './api';
-import {
+import type {
 	ActivateBlastGateMutation,
 	ActivateBlastGateMutationVariables,
 	BlastGateQuery,
@@ -41,7 +43,7 @@ import {
 export class ShopVacService {
 	getBlastGatesQuery?: QueryRef<BlastGatesQuery, BlastGatesQueryVariables>;
 
-	constructor(private apollo: Apollo) {}
+	constructor(@Inject(Apollo) private apollo: Apollo) {}
 
 	getBlastGates(): Observable<BlastGate[]> {
 		this.getBlastGatesQuery ??= this.apollo.watchQuery<

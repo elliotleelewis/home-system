@@ -5,7 +5,7 @@ import {
 	Input,
 	Output,
 } from '@angular/core';
-import { BlastGate } from '@app/schema';
+import type { BlastGate } from '@app/schema';
 
 @Component({
 	selector: 'app-blast-gate',

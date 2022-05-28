@@ -1,10 +1,10 @@
-import { Resolvers } from '@app/schema';
+import type { Resolvers } from '@app/schema';
 import { GraphQLFileLoader } from '@graphql-tools/graphql-file-loader';
 import { loadSchemaSync } from '@graphql-tools/load';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import { ApolloServer } from 'apollo-server-express';
 import { config } from 'dotenv';
-import * as express from 'express';
+import express from 'express';
 
 import { PRISMA } from './prisma';
 import {
