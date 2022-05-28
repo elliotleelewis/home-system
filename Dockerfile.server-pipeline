@@ -19,4 +19,5 @@ RUN yarn --cwd ./server run db:codegen
 
 # Run pipeline
 # TODO
-RUN cd ./server
+RUN cd ./server \
+   && yarn run build

@@ -1,4 +1,4 @@
-import { BlastGate, QueryBlastGateArgs } from '@app/schema';
+import type { BlastGate, QueryBlastGateArgs } from '@app/schema';
 
 import { PRISMA } from '../../prisma';
 

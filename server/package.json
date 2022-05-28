@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon ./index.ts",
+    "build": "tsc --noEmit",
     "db:codegen": "prisma generate",
     "db:migrate": "prisma migrate dev --name deploy",
     "db:deploy": "prisma migrate deploy",

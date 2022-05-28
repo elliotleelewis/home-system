@@ -1,4 +1,4 @@
-import { BlastGate, MutationActivateBlastGateArgs } from '@app/schema';
+import type { BlastGate, MutationActivateBlastGateArgs } from '@app/schema';
 
 import { PRISMA } from '../../prisma';
 import { blastGates } from '../queries';
