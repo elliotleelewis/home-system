@@ -15,11 +15,11 @@
     "stylelint:fix": "stylelint \"**/*.{scss,html}\" --fix --ignore-path .gitignore"
   },
   "devDependencies": {
-    "@angular-eslint/builder": "~13.3.0",
-    "@angular-eslint/eslint-plugin": "~13.3.0",
-    "@angular-eslint/eslint-plugin-template": "~13.3.0",
-    "@angular-eslint/schematics": "~13.3.0",
-    "@angular-eslint/template-parser": "~13.3.0",
+    "@angular-eslint/builder": "~13.4.0",
+    "@angular-eslint/eslint-plugin": "~13.4.0",
+    "@angular-eslint/eslint-plugin-template": "~13.4.0",
+    "@angular-eslint/schematics": "~13.4.0",
+    "@angular-eslint/template-parser": "~13.4.0",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
     "eslint": "^8.0.0",
