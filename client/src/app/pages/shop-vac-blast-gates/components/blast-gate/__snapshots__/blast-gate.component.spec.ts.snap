@@ -2,7 +2,7 @@
 
 exports[`BlastGateComponent should render 1`] = `
 <app-blast-gate
-  __ngContext__={[Function LRootView]}
+  __ngContext__={[Function Number]}
   activateBlastGate={[Function EventEmitter_]}
   blastGate={[Function Object]}
   deleteBlastGate={[Function EventEmitter_]}

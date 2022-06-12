@@ -2,7 +2,7 @@
 
 exports[`HomeComponent should render 1`] = `
 <app-home
-  __ngContext__={[Function LRootView]}
+  __ngContext__={[Function Number]}
 >
   <section
     class="hero is-info is-bold is-small"

@@ -2,7 +2,7 @@
 
 exports[`AppComponent should render 1`] = `
 <app-root
-  __ngContext__={[Function LRootView]}
+  __ngContext__={[Function Number]}
 >
   <section
     class="section"
