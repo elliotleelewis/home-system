@@ -1,5 +1,3 @@
-import 'jest-preset-angular/setup-jest';
-
 /**
  * Monkey patch console warn and error to fail if a test makes calls to console.warn or console.error.
  */
