@@ -1,8 +1,8 @@
 // Variables
-$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
+$fa-font-path: '../webfonts';
 
 // Imports
-@import '~bulma/bulma';
-@import '~bulma-switch/src/sass/index';
-@import '~@fortawesome/fontawesome-free/scss/fontawesome';
-@import '~@fortawesome/fontawesome-free/scss/solid';
+@import 'bulma/bulma';
+@import 'bulma-switch/src/sass/index';
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+@import '@fortawesome/fontawesome-free/scss/solid';
