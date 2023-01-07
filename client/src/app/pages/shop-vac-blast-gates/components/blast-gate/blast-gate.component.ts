@@ -18,13 +18,16 @@ export class BlastGateComponent {
 	blastGate!: BlastGate;
 
 	@Output()
-	readonly updateBlastGate: EventEmitter<BlastGate> = new EventEmitter<BlastGate>();
+	readonly updateBlastGate: EventEmitter<BlastGate> =
+		new EventEmitter<BlastGate>();
 
 	@Output()
-	readonly deleteBlastGate: EventEmitter<BlastGate> = new EventEmitter<BlastGate>();
+	readonly deleteBlastGate: EventEmitter<BlastGate> =
+		new EventEmitter<BlastGate>();
 
 	@Output()
-	readonly activateBlastGate: EventEmitter<BlastGate> = new EventEmitter<BlastGate>();
+	readonly activateBlastGate: EventEmitter<BlastGate> =
+		new EventEmitter<BlastGate>();
 
 	isMenuOpen = false;
 
