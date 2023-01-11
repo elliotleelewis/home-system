@@ -1,8 +1,8 @@
-import { TestBed } from "@angular/core/testing";
+import { TestBed } from '@angular/core/testing';
 import {
 	BrowserDynamicTestingModule,
 	platformBrowserDynamicTesting,
-} from "@angular/platform-browser-dynamic/testing";
+} from '@angular/platform-browser-dynamic/testing';
 
 /**
  * Monkey patch console warn and error to fail if a test makes calls to console.warn or console.error.
