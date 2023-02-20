@@ -1,9 +1,3 @@
-import { TestBed } from '@angular/core/testing';
-import {
-	BrowserDynamicTestingModule,
-	platformBrowserDynamicTesting,
-} from '@angular/platform-browser-dynamic/testing';
-
 /**
  * Monkey patch console warn and error to fail if a test makes calls to console.warn or console.error.
  */
@@ -19,11 +13,3 @@ console.error = (message?: unknown, ...optionalParams: unknown[]): void => {
 		`Test contained console error:\n${String(message)}${params}`,
 	);
 };
-
-/**
- * Initialize testing environment.
- */
-TestBed.initTestEnvironment(
-	BrowserDynamicTestingModule,
-	platformBrowserDynamicTesting(),
-);
