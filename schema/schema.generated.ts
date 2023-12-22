@@ -197,7 +197,8 @@ export type ResolversParentTypes = {
 
 export type BlastGateResolvers<
 	ContextType = any,
-	ParentType extends ResolversParentTypes['BlastGate'] = ResolversParentTypes['BlastGate'],
+	ParentType extends
+		ResolversParentTypes['BlastGate'] = ResolversParentTypes['BlastGate'],
 > = {
 	id: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
 	isOpen: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
@@ -207,7 +208,8 @@ export type BlastGateResolvers<
 
 export type MutationResolvers<
 	ContextType = any,
-	ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation'],
+	ParentType extends
+		ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation'],
 > = {
 	activateBlastGate: Resolver<
 		Array<ResolversTypes['BlastGate']>,
@@ -241,7 +243,8 @@ export type MutationResolvers<
 
 export type QueryResolvers<
 	ContextType = any,
-	ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query'],
+	ParentType extends
+		ResolversParentTypes['Query'] = ResolversParentTypes['Query'],
 > = {
 	blastGate: Resolver<
 		ResolversTypes['BlastGate'],

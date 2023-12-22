@@ -15,25 +15,26 @@
     "stylelint:fix": "stylelint \"**/*.{scss,html}\" --fix --ignore-path .gitignore"
   },
   "devDependencies": {
-    "@angular-eslint/builder": "~15.2.0",
-    "@angular-eslint/eslint-plugin": "~15.2.0",
-    "@angular-eslint/eslint-plugin-template": "~15.2.0",
-    "@angular-eslint/schematics": "~15.2.0",
-    "@angular-eslint/template-parser": "~15.2.0",
-    "@typescript-eslint/eslint-plugin": "^5.0.0",
-    "@typescript-eslint/parser": "^5.0.0",
+    "@angular-eslint/builder": "~16.3.0",
+    "@angular-eslint/eslint-plugin": "~16.3.0",
+    "@angular-eslint/eslint-plugin-template": "~16.3.0",
+    "@angular-eslint/schematics": "~16.3.0",
+    "@angular-eslint/template-parser": "~16.3.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
     "eslint": "^8.0.0",
-    "eslint-config-prettier": "^8.0.0",
+    "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-eslint-comments": "^3.0.0",
     "eslint-plugin-file-progress": "^1.0.0",
     "eslint-plugin-import": "^2.0.0",
     "eslint-plugin-jest": "^27.0.0",
-    "eslint-plugin-jsdoc": "^41.0.0",
+    "eslint-plugin-jsdoc": "^46.0.0",
     "eslint-plugin-prefer-arrow": "^1.0.0",
+    "eslint-utils": "^3.0.0",
     "postcss": "^8.0.0",
     "postcss-html": "^1.0.0",
-    "prettier": "~2.8.0",
-    "prettier-plugin-prisma": "~4.17.0",
+    "prettier": "~3.1.0",
+    "prettier-plugin-prisma": "~5.0.0",
     "stylelint": "^15.0.0",
     "stylelint-config-prettier": "^9.0.0",
     "stylelint-config-rational-order": "^0.1.0",
@@ -43,6 +44,9 @@
     "typescript": "~4.9.0"
   },
   "prettier": {
+    "plugins": [
+      "prettier-plugin-prisma"
+    ],
     "arrowParens": "always",
     "bracketSpacing": true,
     "endOfLine": "lf",
@@ -125,6 +129,7 @@
           "createDefaultProgram": true
         },
         "plugins": [
+          "import",
           "jest",
           "jsdoc"
         ],
@@ -132,8 +137,7 @@
           "plugin:jest/recommended",
           "plugin:@typescript-eslint/recommended",
           "plugin:@typescript-eslint/recommended-requiring-type-checking",
-          "plugin:@angular-eslint/ng-cli-compat",
-          "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
+          "plugin:@angular-eslint/recommended",
           "prettier"
         ],
         "rules": {
@@ -314,8 +318,14 @@
               ]
             }
           ],
-          "jsdoc/newline-after-description": "error",
           "jsdoc/no-types": "error",
+          "jsdoc/tag-lines": [
+            "error",
+            "any",
+            {
+              "startLines": 1
+            }
+          ],
           "no-underscore-dangle": "off"
         }
       },
@@ -342,15 +352,13 @@
           "plugin:@angular-eslint/template/recommended"
         ],
         "rules": {
-          "@angular-eslint/template/accessibility-alt-text": "error",
-          "@angular-eslint/template/accessibility-elements-content": "error",
-          "@angular-eslint/template/accessibility-label-for": "error",
-          "@angular-eslint/template/accessibility-table-scope": "error",
-          "@angular-eslint/template/accessibility-valid-aria": "error",
+          "@angular-eslint/template/alt-text": "error",
           "@angular-eslint/template/banana-in-box": "error",
           "@angular-eslint/template/click-events-have-key-events": "error",
           "@angular-eslint/template/conditional-complexity": "error",
           "@angular-eslint/template/cyclomatic-complexity": "error",
+          "@angular-eslint/template/elements-content": "error",
+          "@angular-eslint/template/label-has-associated-control": "error",
           "@angular-eslint/template/mouse-events-have-key-events": "error",
           "@angular-eslint/template/no-any": "error",
           "@angular-eslint/template/no-autofocus": "error",
@@ -358,7 +366,9 @@
           "@angular-eslint/template/no-distracting-elements": "error",
           "@angular-eslint/template/no-negated-async": "error",
           "@angular-eslint/template/no-positive-tabindex": "error",
-          "@angular-eslint/template/use-track-by-function": "error"
+          "@angular-eslint/template/table-scope": "error",
+          "@angular-eslint/template/use-track-by-function": "error",
+          "@angular-eslint/template/valid-aria": "error"
         }
       }
     ]
