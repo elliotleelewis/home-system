@@ -2,7 +2,6 @@
 
 exports[`ShopVacBlastGatesComponent should render 1`] = `
 <app-shop-vac-blast-gates
-  __ngContext__={[Function Number]}
   _subs={[Function SubSink]}
   blastGates={[Function Array]}
   changeDetectorRef={[Function ViewRef$1]}

@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HomeComponent should render 1`] = `
-<app-home
-  __ngContext__={[Function Number]}
->
+<app-home>
   <section
     class="hero is-info is-bold is-small"
   >

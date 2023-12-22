@@ -26,6 +26,6 @@
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "forceConsistentCasingInFileNames": true,
-    "importsNotUsedAsValues": "error"
+    "verbatimModuleSyntax": true
   }
 }
