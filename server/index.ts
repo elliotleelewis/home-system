@@ -1,8 +1,11 @@
+import { ApolloServer } from '@apollo/server';
+import { expressMiddleware } from '@apollo/server/express4';
 import type { Resolvers } from '@app/schema';
 import { GraphQLFileLoader } from '@graphql-tools/graphql-file-loader';
 import { loadSchemaSync } from '@graphql-tools/load';
 import { makeExecutableSchema } from '@graphql-tools/schema';
-import { ApolloServer } from 'apollo-server-express';
+import type { CorsRequest } from 'cors';
+import cors from 'cors';
 import { config } from 'dotenv';
 import express from 'express';
 
@@ -60,13 +63,12 @@ process.on('SIGTERM', () => void PRISMA.$disconnect());
 process.on('SIGINT', () => void PRISMA.$disconnect());
 
 void apolloServer.start().then(() => {
-	apolloServer.applyMiddleware({
-		app,
-		cors: {
-			origin: '*',
-		},
-		path: '/graphql',
-	});
+	app.use(
+		'/graphql',
+		cors<CorsRequest>(),
+		express.json(),
+		expressMiddleware(apolloServer),
+	);
 
 	console.log(
 		`Running a GraphQL API server at http://localhost:${port}/graphql`,
