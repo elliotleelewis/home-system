@@ -14,7 +14,7 @@ export type BlastGatesQuery = {
 };
 
 export type BlastGateQueryVariables = Types.Exact<{
-	blastGateId: Types.Scalars['ID'];
+	blastGateId: Types.Scalars['ID']['input'];
 }>;
 
 export type BlastGateQuery = {
@@ -42,7 +42,7 @@ export type UpsertBlastGateMutation = {
 };
 
 export type DeleteBlastGateMutationVariables = Types.Exact<{
-	blastGateId: Types.Scalars['ID'];
+	blastGateId: Types.Scalars['ID']['input'];
 }>;
 
 export type DeleteBlastGateMutation = {
@@ -51,7 +51,7 @@ export type DeleteBlastGateMutation = {
 };
 
 export type ActivateBlastGateMutationVariables = Types.Exact<{
-	blastGateId: Types.Scalars['ID'];
+	blastGateId: Types.Scalars['ID']['input'];
 }>;
 
 export type ActivateBlastGateMutation = {

@@ -12,46 +12,57 @@ export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
 	[SubKey in K]: Maybe<T[SubKey]>;
 };
+export type MakeEmpty<
+	T extends { [key: string]: unknown },
+	K extends keyof T,
+> = { [_ in K]?: never };
+export type Incremental<T> =
+	| T
+	| {
+			[P in keyof T]?: P extends ' $fragmentName' | '__typename'
+				? T[P]
+				: never;
+	  };
 export type RequireFields<T, K extends keyof T> = Omit<T, K> & {
 	[P in K]-?: NonNullable<T[P]>;
 };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-	ID: string;
-	String: string;
-	Boolean: boolean;
-	Int: number;
-	Float: number;
+	ID: { input: string; output: string };
+	String: { input: string; output: string };
+	Boolean: { input: boolean; output: boolean };
+	Int: { input: number; output: number };
+	Float: { input: number; output: number };
 };
 
 export type BlastGate = {
 	__typename?: 'BlastGate';
-	id: Scalars['ID'];
-	isOpen: Scalars['Boolean'];
-	name: Scalars['String'];
+	id: Scalars['ID']['output'];
+	isOpen: Scalars['Boolean']['output'];
+	name: Scalars['String']['output'];
 };
 
 export type BlastGateInput = {
-	id: InputMaybe<Scalars['ID']>;
-	isOpen: Scalars['Boolean'];
-	name: Scalars['String'];
+	id: InputMaybe<Scalars['ID']['input']>;
+	isOpen: Scalars['Boolean']['input'];
+	name: Scalars['String']['input'];
 };
 
 export type Mutation = {
 	__typename?: 'Mutation';
 	activateBlastGate: Array<BlastGate>;
 	closeAllBlastGates: Array<BlastGate>;
-	deleteBlastGate: Scalars['Boolean'];
+	deleteBlastGate: Scalars['Boolean']['output'];
 	openAllBlastGates: Array<BlastGate>;
 	upsertBlastGate: BlastGate;
 };
 
 export type MutationActivateBlastGateArgs = {
-	blastGateId: Scalars['ID'];
+	blastGateId: Scalars['ID']['input'];
 };
 
 export type MutationDeleteBlastGateArgs = {
-	blastGateId: Scalars['ID'];
+	blastGateId: Scalars['ID']['input'];
 };
 
 export type MutationUpsertBlastGateArgs = {
@@ -65,7 +76,7 @@ export type Query = {
 };
 
 export type QueryBlastGateArgs = {
-	blastGateId: Scalars['ID'];
+	blastGateId: Scalars['ID']['input'];
 };
 
 export type ResolverTypeWrapper<T> = Promise<T> | T;
@@ -177,22 +188,22 @@ export type DirectiveResolverFn<
 export type ResolversTypes = {
 	BlastGate: ResolverTypeWrapper<BlastGate>;
 	BlastGateInput: BlastGateInput;
-	Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
-	ID: ResolverTypeWrapper<Scalars['ID']>;
+	Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
+	ID: ResolverTypeWrapper<Scalars['ID']['output']>;
 	Mutation: ResolverTypeWrapper<{}>;
 	Query: ResolverTypeWrapper<{}>;
-	String: ResolverTypeWrapper<Scalars['String']>;
+	String: ResolverTypeWrapper<Scalars['String']['output']>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
 	BlastGate: BlastGate;
 	BlastGateInput: BlastGateInput;
-	Boolean: Scalars['Boolean'];
-	ID: Scalars['ID'];
+	Boolean: Scalars['Boolean']['output'];
+	ID: Scalars['ID']['output'];
 	Mutation: {};
 	Query: {};
-	String: Scalars['String'];
+	String: Scalars['String']['output'];
 };
 
 export type BlastGateResolvers<
