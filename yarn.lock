@@ -14003,9 +14003,9 @@ zen-observable@0.8.15:
   resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.8.15.tgz#96415c512d8e3ffd920afd3889604e30b9eaac15"
   integrity sha512-PQ2PC7R9rslx84ndNBZB/Dkv8V8fZEpk83RLgXtYd0fwUgEjseMn1Dgajh2x6S8QbZAFa9p2qVCEuYZNgve0dQ==
 
-zone.js@^0.13.0:
-  version "0.13.3"
-  resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.13.3.tgz#344c24098fa047eda6427a4c7ed486e391fd67b5"
-  integrity sha512-MKPbmZie6fASC/ps4dkmIhaT5eonHkEt6eAy80K42tAm0G2W+AahLJjbfi6X9NPdciOE9GRFTTM8u2IiF6O3ww==
+zone.js@^0.14.0:
+  version "0.14.2"
+  resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.14.2.tgz#91b20b24e8ab9a5a74f319ed5a3000f234ffa3b6"
+  integrity sha512-X4U7J1isDhoOmHmFWiLhloWc2lzMkdnumtfQ1LXzf/IOZp5NQYuMUTaviVzG/q1ugMBIXzin2AqeVJUoSEkNyQ==
   dependencies:
     tslib "^2.3.0"
