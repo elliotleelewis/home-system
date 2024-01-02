@@ -28,7 +28,7 @@
     "eslint-plugin-file-progress": "^1.0.0",
     "eslint-plugin-import": "^2.0.0",
     "eslint-plugin-jest": "^27.0.0",
-    "eslint-plugin-jsdoc": "^46.0.0",
+    "eslint-plugin-jsdoc": "^47.0.0",
     "eslint-plugin-prefer-arrow": "^1.0.0",
     "eslint-utils": "^3.0.0",
     "postcss": "^8.0.0",
