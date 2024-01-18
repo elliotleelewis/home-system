@@ -30,16 +30,15 @@
     "eslint-plugin-jest": "^27.0.0",
     "eslint-plugin-jsdoc": "^48.0.0",
     "eslint-plugin-prefer-arrow": "^1.0.0",
+    "eslint-plugin-unicorn": "^50.0.0",
     "eslint-utils": "^3.0.0",
     "postcss": "^8.0.0",
     "postcss-html": "^1.0.0",
     "prettier": "~3.2.0",
     "prettier-plugin-prisma": "~5.0.0",
-    "stylelint": "^15.0.0",
-    "stylelint-config-prettier": "^9.0.0",
-    "stylelint-config-rational-order": "^0.1.0",
-    "stylelint-config-standard-scss": "^12.0.0",
-    "stylelint-order": "^6.0.0",
+    "stylelint": "^16.0.0",
+    "stylelint-config-clean-order": "^5.0.0",
+    "stylelint-config-standard-scss": "^13.0.0",
     "stylelint-use-logical-spec": "^5.0.0",
     "typescript": "~5.3.0"
   },
@@ -71,73 +70,84 @@
   },
   "eslintConfig": {
     "root": true,
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "project": [
+        "tsconfig.json"
+      ],
+      "createDefaultProgram": true
+    },
     "plugins": [
-      "file-progress"
+      "file-progress",
+      "import",
+      "jest",
+      "jsdoc"
     ],
-    "extends": [
-      "eslint:recommended",
-      "plugin:eslint-comments/recommended"
-    ],
-    "rules": {
-      "file-progress/activate": "warn",
-      "curly": "error",
-      "eqeqeq": [
-        "error",
-        "always"
-      ],
-      "lines-between-class-members": [
-        "error",
-        "always",
-        {
-          "exceptAfterSingleLine": true
-        }
-      ],
-      "max-classes-per-file": [
-        "error",
-        1
-      ],
-      "no-empty": "error",
-      "no-restricted-imports": [
-        "error",
-        {
-          "paths": [
-            "rxjs/Rx",
-            "subsink/dist/subsink"
+    "overrides": [
+      {
+        "files": [
+          "*.js"
+        ],
+        "extends": [
+          "eslint:recommended",
+          "plugin:eslint-comments/recommended",
+          "prettier"
+        ],
+        "rules": {
+          "file-progress/activate": "warn",
+          "curly": "error",
+          "eqeqeq": [
+            "error",
+            "always"
           ],
-          "patterns": [
-            "app/*",
-            "rxjs/internal/*"
+          "lines-between-class-members": [
+            "error",
+            "always",
+            {
+              "exceptAfterSingleLine": true
+            }
+          ],
+          "max-classes-per-file": [
+            "error",
+            1
+          ],
+          "no-empty": "error",
+          "no-restricted-imports": [
+            "error",
+            {
+              "paths": [
+                "rxjs/Rx",
+                "subsink/dist/subsink"
+              ],
+              "patterns": [
+                "app/*",
+                "rxjs/internal/*"
+              ]
+            }
+          ],
+          "sort-imports": [
+            "error",
+            {
+              "ignoreDeclarationSort": true
+            }
           ]
         }
-      ],
-      "sort-imports": [
-        "error",
-        {
-          "ignoreDeclarationSort": true
-        }
-      ]
-    },
-    "overrides": [
+      },
       {
         "files": [
           "*.ts"
         ],
-        "parserOptions": {
-          "project": [
-            "tsconfig.json"
-          ],
-          "createDefaultProgram": true
-        },
-        "plugins": [
-          "import",
-          "jest",
-          "jsdoc"
+        "excludedFiles": [
+          "*.generated.ts"
         ],
         "extends": [
-          "plugin:jest/recommended",
-          "plugin:@typescript-eslint/recommended",
-          "plugin:@typescript-eslint/recommended-requiring-type-checking",
           "plugin:@angular-eslint/recommended",
+          "plugin:@typescript-eslint/strict",
+          "plugin:@typescript-eslint/strict-type-checked",
+          "plugin:@typescript-eslint/stylistic",
+          "plugin:@typescript-eslint/stylistic-type-checked",
+          "plugin:jest/recommended",
+          "plugin:unicorn/recommended",
           "prettier"
         ],
         "rules": {
@@ -292,6 +302,7 @@
           "@typescript-eslint/member-ordering": "error",
           "@typescript-eslint/no-empty-function": "error",
           "@typescript-eslint/no-explicit-any": "error",
+          "@typescript-eslint/no-extraneous-class": "off",
           "@typescript-eslint/no-non-null-asserted-optional-chain": "error",
           "@typescript-eslint/no-non-null-assertion": "error",
           "@typescript-eslint/no-unused-vars": "error",
@@ -326,6 +337,10 @@
               "startLines": 1
             }
           ],
+          "unicorn/no-array-reduce": "off",
+          "unicorn/no-null": "off",
+          "unicorn/prefer-top-level-await": "off",
+          "unicorn/prevent-abbreviations": "off",
           "no-underscore-dangle": "off"
         }
       },
@@ -376,8 +391,7 @@
   "stylelint": {
     "extends": [
       "stylelint-config-standard-scss",
-      "stylelint-config-rational-order",
-      "stylelint-config-prettier"
+      "stylelint-config-clean-order/error"
     ],
     "plugins": [
       "stylelint-use-logical-spec"

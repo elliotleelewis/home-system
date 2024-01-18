@@ -4,7 +4,6 @@ import type { Resolvers } from '@app/schema';
 import { GraphQLFileLoader } from '@graphql-tools/graphql-file-loader';
 import { loadSchemaSync } from '@graphql-tools/load';
 import { makeExecutableSchema } from '@graphql-tools/schema';
-import type { CorsRequest } from 'cors';
 import cors from 'cors';
 import { config } from 'dotenv';
 import express from 'express';
@@ -65,7 +64,7 @@ process.on('SIGINT', () => void PRISMA.$disconnect());
 void apolloServer.start().then(() => {
 	app.use(
 		'/graphql',
-		cors<CorsRequest>(),
+		cors(),
 		express.json(),
 		expressMiddleware(apolloServer),
 	);

@@ -1,5 +1,3 @@
 declare module 'vfile-message' {
-	export interface VFileMessage extends Error {
-		[key: string]: unknown;
-	}
+	export type VFileMessage = Error & Record<string, unknown>;
 }
