@@ -70,6 +70,6 @@ void apolloServer.start().then(() => {
 	);
 
 	console.log(
-		`Running a GraphQL API server at http://localhost:${port}/graphql`,
+		`Running a GraphQL API server at http://localhost:${String(port)}/graphql`,
 	);
 });
