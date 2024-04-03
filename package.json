@@ -30,7 +30,7 @@
     "eslint-plugin-jest": "^27.0.0",
     "eslint-plugin-jsdoc": "^48.0.0",
     "eslint-plugin-prefer-arrow": "^1.0.0",
-    "eslint-plugin-unicorn": "^51.0.0",
+    "eslint-plugin-unicorn": "^52.0.0",
     "eslint-utils": "^3.0.0",
     "postcss": "^8.0.0",
     "postcss-html": "^1.0.0",
