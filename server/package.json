@@ -12,9 +12,10 @@
   },
   "dependencies": {
     "@apollo/server": "^4.0.0",
-    "@app/schema": "*",
+    "@app/schema": "workspace:../schema",
     "@graphql-tools/graphql-file-loader": "^8.0.0",
     "@graphql-tools/load": "^8.0.0",
+    "@graphql-tools/schema": "^10.0.0",
     "@prisma/client": "~5.13.0",
     "cors": "^2.0.0",
     "dotenv": "^16.0.0",
@@ -30,6 +31,7 @@
     "nodemon": "^3.0.0",
     "prisma": "~5.13.0",
     "ts-node": "^10.0.0",
+    "tslib": "~2.6.0",
     "typescript": "~5.4.0"
   }
 }

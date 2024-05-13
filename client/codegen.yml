@@ -1,5 +1,5 @@
 overwrite: true
-schema: '../node_modules/@app/schema/schema.graphql'
+schema: './node_modules/@app/schema/schema.graphql'
 hooks:
   afterAllFileWrite:
     - prettier --write --config ../package.json
@@ -9,7 +9,7 @@ generates:
     preset: near-operation-file
     presetConfig:
       extension: .generated.ts
-      baseTypesPath: ../../node_modules/@app/schema
+      baseTypesPath: ../node_modules/@app/schema
     plugins:
       - add:
           content: '/* eslint-disable @typescript-eslint/array-type,@typescript-eslint/ban-types,@typescript-eslint/naming-convention,@typescript-eslint/no-explicit-any,id-blacklist */'

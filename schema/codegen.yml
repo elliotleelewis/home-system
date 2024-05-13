@@ -1,5 +1,5 @@
 overwrite: true
-schema: '../node_modules/@app/schema/schema.graphql'
+schema: './schema.graphql'
 hooks:
   afterAllFileWrite:
     - prettier --write --config ../package.json

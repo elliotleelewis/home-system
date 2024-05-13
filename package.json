@@ -1,11 +1,6 @@
 {
   "private": true,
   "license": "MIT",
-  "workspaces": [
-    "client",
-    "schema",
-    "server"
-  ],
   "scripts": {
     "prettier": "prettier --check \"**/*.{md,ts,js,scss,html,json,yml,prisma}\" --ignore-path .gitignore",
     "prettier:fix": "prettier --write \"**/*.{md,ts,js,scss,html,json,yml,prisma}\" --ignore-path .gitignore",
@@ -20,6 +15,11 @@
     "@angular-eslint/eslint-plugin-template": "~17.4.0",
     "@angular-eslint/schematics": "~17.4.0",
     "@angular-eslint/template-parser": "~17.4.0",
+    "@types/cors": "^2.0.0",
+    "@types/express": "^4.0.0",
+    "@types/jest": "^29.0.0",
+    "@types/node": "^20.0.0",
+    "@types/uuid": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
     "eslint": "^8.0.0",

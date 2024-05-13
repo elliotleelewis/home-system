@@ -2,21 +2,26 @@ FROM node:20-alpine AS build-env
 WORKDIR /app
 
 # Install dependencies
-COPY package.json yarn.lock ./
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY client/package.json ./client/
 COPY schema/package.json ./schema/
 COPY server/package.json ./server/
-RUN yarn --pure-lockfile
+RUN corepack enable
+RUN pnpm install --frozen-lockfile
 
 # Run schema codegen
 COPY ./schema ./schema/
-RUN yarn --cwd ./schema run codegen
+RUN cd ./schema \
+	&& pnpm run codegen \
+	&& cd ../
 
 # Copy everything else
 COPY . .
-RUN yarn --cwd ./server run db:codegen
+RUN cd ./server \
+	&& pnpm run db:codegen \
+	&& cd ../
 
 # Run pipeline
-RUN yarn run prettier \
-    && yarn run lint \
-    && yarn run stylelint
+RUN pnpm run prettier \
+    && pnpm run lint \
+    && pnpm run stylelint
