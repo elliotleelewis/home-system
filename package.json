@@ -10,11 +10,11 @@
     "stylelint:fix": "stylelint \"**/*.{scss,html}\" --fix --ignore-path .gitignore"
   },
   "devDependencies": {
-    "@angular-eslint/builder": "~17.4.0",
-    "@angular-eslint/eslint-plugin": "~17.4.0",
-    "@angular-eslint/eslint-plugin-template": "~17.4.0",
-    "@angular-eslint/schematics": "~17.4.0",
-    "@angular-eslint/template-parser": "~17.4.0",
+    "@angular-eslint/builder": "~17.5.0",
+    "@angular-eslint/eslint-plugin": "~17.5.0",
+    "@angular-eslint/eslint-plugin-template": "~17.5.0",
+    "@angular-eslint/schematics": "~17.5.0",
+    "@angular-eslint/template-parser": "~17.5.0",
     "@types/cors": "^2.0.0",
     "@types/express": "^4.0.0",
     "@types/jest": "^29.0.0",
