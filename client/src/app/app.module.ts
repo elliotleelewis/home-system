@@ -1,4 +1,7 @@
-import { HttpClientModule } from '@angular/common/http';
+import {
+	provideHttpClient,
+	withInterceptorsFromDi,
+} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -21,8 +24,8 @@ import { ShopVacBlastGatesComponent } from './pages/shop-vac-blast-gates/shop-va
 		ShopVacBlastGatesComponent,
 		BlastGateComponent,
 	],
+	bootstrap: [AppComponent],
 	imports: [
-		HttpClientModule,
 		FormsModule,
 		BrowserModule,
 		RouterModule.forRoot(
@@ -51,7 +54,7 @@ import { ShopVacBlastGatesComponent } from './pages/shop-vac-blast-gates/shop-va
 			}),
 			deps: [HttpLink],
 		},
+		provideHttpClient(withInterceptorsFromDi()),
 	],
-	bootstrap: [AppComponent],
 })
 export class AppModule {}
