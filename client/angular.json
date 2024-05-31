@@ -19,11 +19,8 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-builders/custom-webpack:browser",
+          "builder": "@angular-devkit/build-angular:browser-esbuild",
           "options": {
-            "customWebpackConfig": {
-              "path": "./webpack.config.js"
-            },
             "stylePreprocessorOptions": {
               "includePaths": ["./node_modules"]
             },
@@ -71,7 +68,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-builders/custom-webpack:dev-server",
+          "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
               "browserTarget": "client:build:production"
