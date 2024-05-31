@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@angular-builders/jest": "~17.0.0",
-    "@angular/cli": "~17.3.0",
+    "@angular/cli": "~18.0.0",
     "@angular/compiler-cli": "~17.3.0",
     "@angular/language-service": "~17.3.0",
     "@graphql-codegen/add": "^5.0.0",
