@@ -1,6 +1,6 @@
 {
   "private": true,
-  "packageManager": "pnpm@9.1.4",
+  "packageManager": "pnpm@9.2.0",
   "license": "MIT",
   "scripts": {
     "prettier": "prettier --check \"**/*.{md,ts,js,scss,html,json,yml,prisma}\" --ignore-path .gitignore",
