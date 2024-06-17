@@ -22,6 +22,6 @@ RUN cd ./server \
 	&& cd ../
 
 # Run pipeline
-RUN pnpm run prettier \
+RUN pnpm run format \
     && pnpm run lint \
     && pnpm run stylelint
