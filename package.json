@@ -415,7 +415,14 @@
     "rules": {
       "liberty/use-logical-spec": true,
       "scss/at-extend-no-missing-placeholder": null,
-      "scss/at-rule-no-unknown": true,
+      "scss/at-rule-no-unknown": [
+        true,
+        {
+          "ignoreAtRules": [
+            "tailwind"
+          ]
+        }
+      ],
       "at-rule-no-unknown": null,
       "at-rule-no-vendor-prefix": true,
       "media-feature-name-no-vendor-prefix": true,
