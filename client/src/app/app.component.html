@@ -1,33 +1,29 @@
-<section class="section">
-	<div class="container">
-		<div class="columns">
-			<div class="column is-one-quarter">
-				<h1 class="title is-1 has-text-centered">
-					<a class="has-text-dark" [routerLink]="'/'">Home System</a>
-				</h1>
-				<div class="box">
-					<aside class="menu has-background-white">
-						<p class="menu-label">
-							<span class="icon"
-								><i class="fas fa-tools"></i
-							></span>
-							ShopVac
-						</p>
-						<ul class="menu-list">
-							<li>
-								<a
-									[routerLink]="'/shop-vac/blast-gates'"
-									[routerLinkActive]="'is-active'"
-									>Blast Gates</a
-								>
-							</li>
-						</ul>
-					</aside>
-				</div>
-			</div>
-			<div class="column is-three-quarters">
-				<router-outlet></router-outlet>
-			</div>
+<div class="container mx-auto p-12">
+	<div class="grid grid-cols-4 gap-4">
+		<div class="flex flex-col">
+			<a [routerLink]="'/'">
+				<h1 class="p-4 text-center text-3xl font-bold">Home System</h1>
+			</a>
+			<ul class="menu rounded-box bg-base-200">
+				<li>
+					<p class="menu-title">
+						<i class="fas fa-tools mr-1"></i>
+						ShopVac
+					</p>
+					<ul>
+						<li>
+							<a
+								[routerLink]="'/shop-vac/blast-gates'"
+								[routerLinkActive]="'active'"
+								>Blast Gates</a
+							>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="col-span-3">
+			<router-outlet></router-outlet>
 		</div>
 	</div>
-</section>
+</div>
