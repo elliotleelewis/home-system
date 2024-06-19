@@ -91,7 +91,11 @@
     ],
     "settings": {
       "tailwindcss": {
-        "config": "client/tailwind.config.js"
+        "config": "client/tailwind.config.js",
+        "whitelist": [
+          "fas",
+          "fa-.*"
+        ]
       }
     },
     "overrides": [
