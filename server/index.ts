@@ -21,7 +21,7 @@ import { blastGate, blastGates } from './src/queries';
 config();
 
 // Construct a schema, using GraphQL schema language
-const schema = loadSchemaSync('../node_modules/@app/schema/schema.graphql', {
+const schema = loadSchemaSync('./node_modules/@app/schema/schema.graphql', {
 	loaders: [new GraphQLFileLoader()],
 });
 
@@ -56,10 +56,7 @@ const apolloServer = new ApolloServer({
 const port = 8080;
 
 const app = express();
-app.listen(port);
-
-process.on('SIGTERM', () => void PRISMA.$disconnect());
-process.on('SIGINT', () => void PRISMA.$disconnect());
+const server = app.listen(port);
 
 void apolloServer.start().then(() => {
 	app.use(
@@ -73,3 +70,12 @@ void apolloServer.start().then(() => {
 		`Running a GraphQL API server at http://localhost:${String(port)}/graphql`,
 	);
 });
+
+const kill = async () => {
+	await PRISMA.$disconnect();
+	await apolloServer.stop();
+	server.close();
+};
+
+process.on('SIGTERM', () => void kill());
+process.on('SIGINT', () => void kill());

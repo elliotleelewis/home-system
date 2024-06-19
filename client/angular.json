@@ -70,7 +70,8 @@
         "serve": {
           "builder": "@angular/build:dev-server",
           "options": {
-            "buildTarget": "client:build"
+            "buildTarget": "client:build",
+            "proxyConfig": "src/proxy.conf.json"
           }
         },
         "test": {
