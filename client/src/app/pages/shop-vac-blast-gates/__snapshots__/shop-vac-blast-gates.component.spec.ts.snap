@@ -44,7 +44,7 @@ exports[`ShopVacBlastGatesComponent should render 1`] = `
                 class="text-white"
               >
                 <i
-                  class="fas fa-plus"
+                  class="fas fa-plus fa-fw"
                 />
               </span>
             </button>

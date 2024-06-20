@@ -44,7 +44,7 @@ exports[`BlastGateComponent should render 1`] = `
           tabindex="0"
         >
           <i
-            class="fas fa-ellipsis-v"
+            class="fas fa-ellipsis-v fa-fw"
           />
         </div>
         <ul
@@ -58,7 +58,7 @@ exports[`BlastGateComponent should render 1`] = `
               role="button"
             >
               <i
-                class="fas fa-trash-alt"
+                class="fas fa-trash-alt fa-fw"
               />
                Delete 
             </a>

@@ -28,7 +28,7 @@ exports[`AppComponent should render 1`] = `
               class="menu-title"
             >
               <i
-                class="fas fa-tools mr-1"
+                class="fas fa-tools fa-fw mr-1"
               />
                ShopVac 
             </p>
