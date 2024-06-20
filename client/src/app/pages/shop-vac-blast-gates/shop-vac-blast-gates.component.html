@@ -1,5 +1,10 @@
 <div class="card flex flex-col">
-	<div class="rounded-t-2xl bg-base-300 p-2">
+	<div
+		class="rounded-t-2xl bg-base-300 p-2"
+		[ngClass]="{
+			'rounded-b-2xl': !create && blastGates.length === 0,
+		}"
+	>
 		<div class="flex items-center justify-between">
 			<h2 class="p-2 text-lg font-bold">Blast Gates</h2>
 			<div>
@@ -27,17 +32,20 @@
 			</div>
 		</div>
 	</div>
-	<app-blast-gate
+	<div
 		class="card-body bg-base-200"
 		[ngClass]="{
 			'rounded-b-2xl': !create,
 		}"
-		*ngFor="let blastGate of blastGates; trackBy: trackByBlastGatesId"
-		[blastGate]="blastGate"
-		(updateBlastGate)="updateBlastGate($event)"
-		(deleteBlastGate)="deleteBlastGate($event)"
-		(activateBlastGate)="activateBlastGate($event)"
-	></app-blast-gate>
+	>
+		<app-blast-gate
+			*ngFor="let blastGate of blastGates; trackBy: trackByBlastGatesId"
+			[blastGate]="blastGate"
+			(updateBlastGate)="updateBlastGate($event)"
+			(deleteBlastGate)="deleteBlastGate($event)"
+			(activateBlastGate)="activateBlastGate($event)"
+		></app-blast-gate>
+	</div>
 	<form
 		class="flex justify-between rounded-b-2xl bg-base-300 p-2"
 		*ngIf="create"
