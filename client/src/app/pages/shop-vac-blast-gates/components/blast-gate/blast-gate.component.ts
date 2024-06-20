@@ -10,7 +10,6 @@ import type { BlastGate } from '@app/schema';
 @Component({
 	selector: 'app-blast-gate',
 	templateUrl: './blast-gate.component.html',
-	styleUrls: ['./blast-gate.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BlastGateComponent {
