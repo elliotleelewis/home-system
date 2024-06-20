@@ -1,8 +1,8 @@
-<div class="level">
-	<div class="level-left">
+<div class="flex items-center justify-between">
+	<div class="flex items-center gap-2">
 		<input
 			id="blast-gate-{{ blastGate.id }}"
-			class="switch"
+			class="toggle"
 			type="checkbox"
 			name="is-open"
 			[ngModel]="blastGate.isOpen"
@@ -10,34 +10,34 @@
 		/>
 		<label for="blast-gate-{{ blastGate.id }}">{{ blastGate.name }}</label>
 	</div>
-	<div class="level-right">
+	<div class="flex gap-2">
 		<button
-			class="button is-warning"
+			class="btn btn-warning"
 			type="button"
 			(click)="handleActivateBlastGate(blastGate)"
 		>
 			Activate
 		</button>
-		<div class="dropdown is-hoverable is-right ml-2">
-			<div class="dropdown-trigger">
-				<button class="button is-default">
-					<span class="icon"><i class="fas fa-ellipsis-v"></i></span>
-				</button>
+		<div class="dropdown dropdown-end">
+			<div class="btn" tabindex="0" role="button" tabindex="0">
+				<i class="fas fa-ellipsis-v fa-fw"></i>
 			</div>
-			<div class="dropdown-menu" id="dropdown-menu" role="menu">
-				<div class="dropdown-content">
+			<ul
+				class="menu dropdown-content z-[1] w-52 rounded-box bg-base-100 p-2 shadow"
+				tabindex="0"
+				role="menu"
+			>
+				<li>
 					<a
 						href="javascript:void(0)"
 						role="button"
-						class="dropdown-item"
 						(click)="handleDeleteBlastGate(blastGate)"
 					>
-						<span class="icon"
-							><i class="fas fa-trash-alt"></i></span
-						>Delete
+						<i class="fas fa-trash-alt fa-fw"></i>
+						Delete
 					</a>
-				</div>
-			</div>
+				</li>
+			</ul>
 		</div>
 	</div>
 </div>

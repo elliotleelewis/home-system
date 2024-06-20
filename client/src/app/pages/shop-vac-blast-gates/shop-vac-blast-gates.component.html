@@ -1,40 +1,37 @@
-<div class="panel">
-	<div class="panel-heading">
-		<div class="level">
-			<div class="level-left">Blast Gates</div>
-			<div class="level-right">
-				<div class="field is-grouped">
-					<div class="control">
-						<button class="button" (click)="openAllBlastGates()">
-							Open All
-						</button>
-					</div>
-					<div class="control">
-						<button class="button" (click)="closeAllBlastGates()">
-							Close All
-						</button>
-					</div>
-					<p class="control">
-						<button
-							class="button"
-							[ngClass]="{
-								'is-success': !create,
-								'is-danger': create,
-							}"
-							(click)="toggleCreate()"
-						>
-							<span class="icon is-small">
-								<i class="fas fa-plus" *ngIf="!create"></i>
-								<i class="fas fa-ban" *ngIf="create"></i>
-							</span>
-						</button>
-					</p>
+<div class="card flex flex-col">
+	<div class="rounded-t-2xl bg-base-300 p-2">
+		<div class="flex items-center justify-between">
+			<h2 class="p-2 text-lg font-bold">Blast Gates</h2>
+			<div>
+				<div class="flex gap-2">
+					<button class="btn" (click)="openAllBlastGates()">
+						Open All
+					</button>
+					<button class="btn" (click)="closeAllBlastGates()">
+						Close All
+					</button>
+					<button
+						class="btn"
+						[ngClass]="{
+							'btn-success': !create,
+							'btn-error': create,
+						}"
+						(click)="toggleCreate()"
+					>
+						<span class="text-white">
+							<i class="fas fa-plus fa-fw" *ngIf="!create"></i>
+							<i class="fas fa-ban fa-fw" *ngIf="create"></i>
+						</span>
+					</button>
 				</div>
 			</div>
 		</div>
 	</div>
 	<app-blast-gate
-		class="panel-block has-background-white"
+		class="card-body bg-base-200"
+		[ngClass]="{
+			'rounded-b-2xl': !create,
+		}"
 		*ngFor="let blastGate of blastGates; trackBy: trackByBlastGatesId"
 		[blastGate]="blastGate"
 		(updateBlastGate)="updateBlastGate($event)"
@@ -42,41 +39,29 @@
 		(activateBlastGate)="activateBlastGate($event)"
 	></app-blast-gate>
 	<form
-		class="panel-block has-background-white"
+		class="flex justify-between rounded-b-2xl bg-base-300 p-2"
 		*ngIf="create"
 		(ngSubmit)="createBlastGate()"
 	>
-		<div class="level">
-			<div class="level-left">
+		<div class="flex items-center gap-2">
+			<input
+				class="toggle"
+				type="checkbox"
+				name="is-open"
+				[(ngModel)]="createModel.blastGateInput.isOpen"
+			/>
+			<div class="join">
 				<input
-					id="create-blast-gate-switch"
-					class="switch"
-					type="checkbox"
-					name="is-open"
-					[(ngModel)]="createModel.blastGateInput.isOpen"
+					class="input join-item"
+					type="text"
+					name="name"
+					[(ngModel)]="createModel.blastGateInput.name"
 				/>
-				<label for="create-blast-gate-switch">&nbsp;</label>
-				<div class="field has-addons">
-					<div class="control">
-						<input
-							class="input"
-							type="text"
-							name="name"
-							[(ngModel)]="createModel.blastGateInput.name"
-						/>
-					</div>
-					<div class="control">
-						<button class="button is-success" type="submit">
-							Create
-						</button>
-					</div>
-				</div>
-			</div>
-			<div class="level-right">
-				<button class="button is-warning" type="button" disabled>
-					Activate
+				<button class="btn btn-success join-item" type="submit">
+					Create
 				</button>
 			</div>
 		</div>
+		<button class="btn btn-warning" type="button" disabled>Activate</button>
 	</form>
 </div>

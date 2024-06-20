@@ -10,64 +10,50 @@ exports[`ShopVacBlastGatesComponent should render 1`] = `
   shopVacService={[Function Object]}
 >
   <div
-    class="panel"
+    class="card flex flex-col"
   >
     <div
-      class="panel-heading"
+      class="rounded-t-2xl bg-base-300 p-2"
     >
       <div
-        class="level"
+        class="flex items-center justify-between"
       >
-        <div
-          class="level-left"
+        <h2
+          class="p-2 text-lg font-bold"
         >
           Blast Gates
-        </div>
-        <div
-          class="level-right"
-        >
+        </h2>
+        <div>
           <div
-            class="field is-grouped"
+            class="flex gap-2"
           >
-            <div
-              class="control"
+            <button
+              class="btn"
             >
-              <button
-                class="button"
-              >
-                 Open All 
-              </button>
-            </div>
-            <div
-              class="control"
+               Open All 
+            </button>
+            <button
+              class="btn"
             >
-              <button
-                class="button"
-              >
-                 Close All 
-              </button>
-            </div>
-            <p
-              class="control"
+               Close All 
+            </button>
+            <button
+              class="btn btn-success"
             >
-              <button
-                class="button is-success"
+              <span
+                class="text-white"
               >
-                <span
-                  class="icon is-small"
-                >
-                  <i
-                    class="fas fa-plus"
-                  />
-                </span>
-              </button>
-            </p>
+                <i
+                  class="fas fa-plus fa-fw"
+                />
+              </span>
+            </button>
           </div>
         </div>
       </div>
     </div>
     <app-blast-gate
-      class="panel-block has-background-white"
+      class="card-body bg-base-200 rounded-b-2xl"
     />
   </div>
 </app-shop-vac-blast-gates>

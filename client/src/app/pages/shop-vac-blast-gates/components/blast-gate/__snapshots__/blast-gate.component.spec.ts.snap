@@ -9,13 +9,13 @@ exports[`BlastGateComponent should render 1`] = `
   updateBlastGate={[Function EventEmitter_]}
 >
   <div
-    class="level"
+    class="flex items-center justify-between"
   >
     <div
-      class="level-left"
+      class="flex items-center gap-2"
     >
       <input
-        class="switch ng-untouched ng-pristine ng-valid"
+        class="toggle ng-untouched ng-pristine ng-valid"
         id="blast-gate-12345"
         name="is-open"
         type="checkbox"
@@ -27,56 +27,43 @@ exports[`BlastGateComponent should render 1`] = `
       </label>
     </div>
     <div
-      class="level-right"
+      class="flex gap-2"
     >
       <button
-        class="button is-warning"
+        class="btn btn-warning"
         type="button"
       >
          Activate 
       </button>
       <div
-        class="dropdown is-hoverable is-right ml-2"
+        class="dropdown dropdown-end"
       >
         <div
-          class="dropdown-trigger"
+          class="btn"
+          role="button"
+          tabindex="0"
         >
-          <button
-            class="button is-default"
-          >
-            <span
-              class="icon"
-            >
-              <i
-                class="fas fa-ellipsis-v"
-              />
-            </span>
-          </button>
+          <i
+            class="fas fa-ellipsis-v fa-fw"
+          />
         </div>
-        <div
-          class="dropdown-menu"
-          id="dropdown-menu"
+        <ul
+          class="menu dropdown-content z-[1] w-52 rounded-box bg-base-100 p-2 shadow"
           role="menu"
+          tabindex="0"
         >
-          <div
-            class="dropdown-content"
-          >
+          <li>
             <a
-              class="dropdown-item"
               href="javascript:void(0)"
               role="button"
             >
-              <span
-                class="icon"
-              >
-                <i
-                  class="fas fa-trash-alt"
-                />
-              </span>
-              Delete 
+              <i
+                class="fas fa-trash-alt fa-fw"
+              />
+               Delete 
             </a>
-          </div>
-        </div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
