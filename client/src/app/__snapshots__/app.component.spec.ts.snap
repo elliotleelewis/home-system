@@ -2,67 +2,54 @@
 
 exports[`AppComponent should render 1`] = `
 <app-root>
-  <section
-    class="section"
+  <div
+    class="container mx-auto p-12"
   >
     <div
-      class="container"
+      class="grid grid-cols-4 gap-4"
     >
       <div
-        class="columns"
+        class="flex flex-col"
       >
-        <div
-          class="column is-one-quarter"
+        <a
+          href="/"
         >
           <h1
-            class="title is-1 has-text-centered"
+            class="p-4 text-center text-3xl font-bold"
           >
-            <a
-              class="has-text-dark"
-              href="/"
-            >
-              Home System
-            </a>
+            Home System
           </h1>
-          <div
-            class="box"
-          >
-            <aside
-              class="menu has-background-white"
-            >
-              <p
-                class="menu-label"
-              >
-                <span
-                  class="icon"
-                >
-                  <i
-                    class="fas fa-tools"
-                  />
-                </span>
-                 ShopVac 
-              </p>
-              <ul
-                class="menu-list"
-              >
-                <li>
-                  <a
-                    href="/shop-vac/blast-gates"
-                  >
-                    Blast Gates
-                  </a>
-                </li>
-              </ul>
-            </aside>
-          </div>
-        </div>
-        <div
-          class="column is-three-quarters"
+        </a>
+        <ul
+          class="menu rounded-box bg-base-200"
         >
-          <router-outlet />
-        </div>
+          <li>
+            <p
+              class="menu-title"
+            >
+              <i
+                class="fas fa-tools mr-1"
+              />
+               ShopVac 
+            </p>
+            <ul>
+              <li>
+                <a
+                  href="/shop-vac/blast-gates"
+                >
+                  Blast Gates
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div
+        class="col-span-3"
+      >
+        <router-outlet />
       </div>
     </div>
-  </section>
+  </div>
 </app-root>
 `;
