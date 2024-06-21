@@ -28,7 +28,7 @@
               "base": "dist"
             },
             "index": "src/index.html",
-            "polyfills": ["src/polyfills.ts"],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["src/assets", "src/favicon.ico"],
@@ -75,7 +75,10 @@
           }
         },
         "test": {
-          "builder": "@angular-builders/jest:run"
+          "builder": "@angular-builders/jest:run",
+          "options": {
+            "polyfills": ["zone.js", "zone.js/testing"]
+          }
         }
       }
     }
