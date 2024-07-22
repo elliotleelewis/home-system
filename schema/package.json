@@ -1,6 +1,6 @@
 {
   "name": "@app/schema",
-  "packageManager": "pnpm@9.5.0",
+  "packageManager": "pnpm@9.6.0",
   "version": "1.0.0",
   "license": "MIT",
   "main": "./schema.generated.ts",
