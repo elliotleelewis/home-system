@@ -11,12 +11,12 @@
     "format:fix": "pnpm run format --write"
   },
   "devDependencies": {
-    "@angular-eslint/builder": "~18.1.0",
-    "@angular-eslint/eslint-plugin": "~18.1.0",
-    "@angular-eslint/eslint-plugin-template": "~18.1.0",
-    "@angular-eslint/schematics": "~18.1.0",
-    "@angular-eslint/template-parser": "~18.1.0",
-    "@angular-eslint/utils": "~18.1.0",
+    "@angular-eslint/builder": "~18.2.0",
+    "@angular-eslint/eslint-plugin": "~18.2.0",
+    "@angular-eslint/eslint-plugin-template": "~18.2.0",
+    "@angular-eslint/schematics": "~18.2.0",
+    "@angular-eslint/template-parser": "~18.2.0",
+    "@angular-eslint/utils": "~18.2.0",
     "@types/cors": "^2.0.0",
     "@types/express": "^4.0.0",
     "@types/jest": "^29.0.0",
