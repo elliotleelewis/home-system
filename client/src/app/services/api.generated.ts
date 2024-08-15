@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/array-type,@typescript-eslint/ban-types,@typescript-eslint/naming-convention,@typescript-eslint/no-explicit-any,id-blacklist */
+/* eslint-disable @typescript-eslint/array-type,@typescript-eslint/naming-convention,@typescript-eslint/no-explicit-any,id-blacklist */
 import type * as Types from '../../../node_modules/@app/schema';
 
 export type BlastGatesQueryVariables = Types.Exact<{ [key: string]: never }>;
