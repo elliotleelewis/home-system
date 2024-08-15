@@ -12,7 +12,7 @@ generates:
       baseTypesPath: ../node_modules/@app/schema
     plugins:
       - add:
-          content: '/* eslint-disable @typescript-eslint/array-type,@typescript-eslint/ban-types,@typescript-eslint/naming-convention,@typescript-eslint/no-explicit-any,id-blacklist */'
+          content: '/* eslint-disable @typescript-eslint/array-type,@typescript-eslint/naming-convention,@typescript-eslint/no-explicit-any,id-blacklist */'
       - add:
           placement: 'append'
           content: '/* eslint-enable */'

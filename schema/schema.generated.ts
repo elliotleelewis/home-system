@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/array-type,@typescript-eslint/ban-types,@typescript-eslint/naming-convention,@typescript-eslint/no-explicit-any,id-blacklist */
+/* eslint-disable @typescript-eslint/array-type,@typescript-eslint/naming-convention,@typescript-eslint/no-explicit-any,id-blacklist */
 import type { GraphQLResolveInfo } from 'graphql';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
