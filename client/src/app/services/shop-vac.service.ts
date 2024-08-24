@@ -1,15 +1,13 @@
 import { Inject, Injectable } from '@angular/core';
-import type {
-	BlastGate,
-	MutationActivateBlastGateArgs,
-	MutationDeleteBlastGateArgs,
-	MutationUpsertBlastGateArgs,
-	QueryBlastGateArgs,
+import {
+	type BlastGate,
+	type MutationActivateBlastGateArgs,
+	type MutationDeleteBlastGateArgs,
+	type MutationUpsertBlastGateArgs,
+	type QueryBlastGateArgs,
 } from '@app/schema';
-import type { QueryRef } from 'apollo-angular';
-import { Apollo } from 'apollo-angular';
-import type { Observable } from 'rxjs';
-import { map, tap } from 'rxjs';
+import { Apollo, type QueryRef } from 'apollo-angular';
+import { type Observable, map, tap } from 'rxjs';
 
 import {
 	ACTIVATE_BLAST_GATE,
@@ -20,21 +18,21 @@ import {
 	OPEN_ALL_BLAST_GATES,
 	UPSERT_BLAST_GATE,
 } from './api';
-import type {
-	ActivateBlastGateMutation,
-	ActivateBlastGateMutationVariables,
-	BlastGateQuery,
-	BlastGateQueryVariables,
-	BlastGatesQuery,
-	BlastGatesQueryVariables,
-	CloseAllBlastGatesMutation,
-	CloseAllBlastGatesMutationVariables,
-	DeleteBlastGateMutation,
-	DeleteBlastGateMutationVariables,
-	OpenAllBlastGatesMutation,
-	OpenAllBlastGatesMutationVariables,
-	UpsertBlastGateMutation,
-	UpsertBlastGateMutationVariables,
+import {
+	type ActivateBlastGateMutation,
+	type ActivateBlastGateMutationVariables,
+	type BlastGateQuery,
+	type BlastGateQueryVariables,
+	type BlastGatesQuery,
+	type BlastGatesQueryVariables,
+	type CloseAllBlastGatesMutation,
+	type CloseAllBlastGatesMutationVariables,
+	type DeleteBlastGateMutation,
+	type DeleteBlastGateMutationVariables,
+	type OpenAllBlastGatesMutation,
+	type OpenAllBlastGatesMutationVariables,
+	type UpsertBlastGateMutation,
+	type UpsertBlastGateMutationVariables,
 } from './api.generated';
 
 @Injectable({

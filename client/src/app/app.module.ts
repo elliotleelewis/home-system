@@ -20,13 +20,13 @@ import { ShopVacBlastGatesComponent } from './pages/shop-vac-blast-gates/shop-va
 @NgModule({
 	declarations: [
 		AppComponent,
+		BlastGateComponent,
 		HomeComponent,
 		ShopVacBlastGatesComponent,
-		BlastGateComponent,
 	],
 	bootstrap: [AppComponent],
 	imports: [
-		FormsModule,
+		ApolloModule,
 		BrowserModule,
 		RouterModule.forRoot(
 			[
@@ -40,7 +40,7 @@ import { ShopVacBlastGatesComponent } from './pages/shop-vac-blast-gates/shop-va
 				useHash: true,
 			},
 		),
-		ApolloModule,
+		FormsModule,
 	],
 	providers: [
 		{

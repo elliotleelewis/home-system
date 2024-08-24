@@ -1,4 +1,4 @@
-import type { MutationDeleteBlastGateArgs } from '../../../schema';
+import { type MutationDeleteBlastGateArgs } from '../../../schema';
 import { PRISMA } from '../../prisma';
 
 export const deleteBlastGate = async (

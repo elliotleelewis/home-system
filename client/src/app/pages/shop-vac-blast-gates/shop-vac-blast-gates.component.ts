@@ -1,7 +1,12 @@
-import type { OnDestroy, OnInit } from '@angular/core';
-import { ChangeDetectorRef } from '@angular/core';
-import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
-import type { BlastGate, MutationUpsertBlastGateArgs } from '@app/schema';
+import {
+	ChangeDetectionStrategy,
+	ChangeDetectorRef,
+	Component,
+	Inject,
+	type OnDestroy,
+	type OnInit,
+} from '@angular/core';
+import { type BlastGate, type MutationUpsertBlastGateArgs } from '@app/schema';
 import { SubSink } from 'subsink';
 
 import { ShopVacService } from '../../services/shop-vac.service';

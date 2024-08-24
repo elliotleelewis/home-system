@@ -1,5 +1,8 @@
-import type { ComponentFixture } from '@angular/core/testing';
-import { TestBed, waitForAsync } from '@angular/core/testing';
+import {
+	type ComponentFixture,
+	TestBed,
+	waitForAsync,
+} from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
 
