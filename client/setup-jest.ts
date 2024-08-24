@@ -1,9 +1,7 @@
 import 'jest-preset-angular/setup-jest';
 import { ngMocks } from 'ng-mocks';
 
-/**
- * Monkey patch console warn and error to fail if a test makes calls to console.warn or console.error.
- */
+// Monkey patch console warn and error to fail if a test makes calls to console.warn or console.error.
 console.warn = (message?: unknown, ...optionalParams: unknown[]): void => {
 	const params = `\nParams: ${String(optionalParams)}`;
 	throw new Error(
