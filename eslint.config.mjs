@@ -62,7 +62,7 @@ export default tseslint.config(
 				},
 			},
 			tailwindcss: {
-				config: 'client/tailwind.config.js',
+				config: 'client/tailwind.config.mjs',
 				whitelist: ['fas', 'fa-.*'],
 			},
 		},
@@ -212,7 +212,7 @@ export default tseslint.config(
 		],
 		settings: {
 			tailwindcss: {
-				config: 'client/tailwind.config.js',
+				config: 'client/tailwind.config.mjs',
 				whitelist: ['fas', 'fa-.*'],
 			},
 		},
