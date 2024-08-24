@@ -1,0 +1,8 @@
+{
+  "extends": "../tsconfig.json",
+  "files": ["./schema.generated.ts"],
+  "compilerOptions": {
+    "declaration": true,
+    "outDir": "dist"
+  }
+}

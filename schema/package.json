@@ -3,8 +3,10 @@
   "packageManager": "pnpm@9.8.0",
   "version": "1.0.0",
   "license": "MIT",
-  "main": "./schema.generated.ts",
+  "main": "./dist/schema.generated.js",
+  "types": "./dist/schema.generated.d.ts",
   "scripts": {
+    "build": "tsc",
     "codegen": "graphql-codegen --config codegen.yml",
     "codegen:watch": "graphql-codegen --config codegen.yml --watch"
   },

@@ -13,6 +13,7 @@ RUN pnpm install --frozen-lockfile
 COPY ./schema ./schema/
 RUN cd ./schema \
 	&& pnpm run codegen \
+	&& pnpm run build \
 	&& cd ../
 
 # Copy everything else

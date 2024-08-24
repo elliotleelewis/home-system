@@ -3,6 +3,7 @@
   "files": ["./index.ts"],
   "include": ["src/**/*.d.ts"],
   "compilerOptions": {
+    "noEmit": true,
     "module": "commonjs",
     "verbatimModuleSyntax": false
   }
