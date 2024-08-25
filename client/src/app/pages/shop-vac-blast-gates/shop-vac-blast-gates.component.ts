@@ -2,9 +2,9 @@ import {
 	ChangeDetectionStrategy,
 	ChangeDetectorRef,
 	Component,
-	Inject,
 	type OnDestroy,
 	type OnInit,
+	inject,
 } from '@angular/core';
 import { type BlastGate, type MutationUpsertBlastGateArgs } from '@app/schema';
 import { SubSink } from 'subsink';
@@ -17,6 +17,9 @@ import { ShopVacService } from '../../services/shop-vac.service';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ShopVacBlastGatesComponent implements OnInit, OnDestroy {
+	private readonly _changeDetectorRef = inject(ChangeDetectorRef);
+	private readonly _shopVacService = inject(ShopVacService);
+
 	create = false;
 	createModel: MutationUpsertBlastGateArgs = {
 		blastGateInput: {
@@ -30,17 +33,12 @@ export class ShopVacBlastGatesComponent implements OnInit, OnDestroy {
 
 	private _subs = new SubSink();
 
-	constructor(
-		@Inject(ChangeDetectorRef) private changeDetectorRef: ChangeDetectorRef,
-		@Inject(ShopVacService) private shopVacService: ShopVacService,
-	) {}
-
 	ngOnInit(): void {
-		this._subs.sink = this.shopVacService
+		this._subs.sink = this._shopVacService
 			.getBlastGates()
 			.subscribe((blastGates) => {
 				this.blastGates = blastGates;
-				this.changeDetectorRef.detectChanges();
+				this._changeDetectorRef.detectChanges();
 			});
 	}
 
@@ -57,7 +55,7 @@ export class ShopVacBlastGatesComponent implements OnInit, OnDestroy {
 	}
 
 	createBlastGate(): void {
-		this._subs.sink = this.shopVacService
+		this._subs.sink = this._shopVacService
 			.upsertBlastGate(this.createModel)
 			.subscribe();
 		this.create = false;
@@ -71,7 +69,7 @@ export class ShopVacBlastGatesComponent implements OnInit, OnDestroy {
 	}
 
 	updateBlastGate({ id, name, isOpen }: BlastGate): void {
-		this._subs.sink = this.shopVacService
+		this._subs.sink = this._shopVacService
 			.upsertBlastGate({
 				blastGateInput: {
 					id,
@@ -83,22 +81,22 @@ export class ShopVacBlastGatesComponent implements OnInit, OnDestroy {
 	}
 
 	deleteBlastGate(blastGate: BlastGate): void {
-		this._subs.sink = this.shopVacService
+		this._subs.sink = this._shopVacService
 			.deleteBlastGate({ blastGateId: blastGate.id })
 			.subscribe();
 	}
 
 	activateBlastGate(blastGate: BlastGate): void {
-		this._subs.sink = this.shopVacService
+		this._subs.sink = this._shopVacService
 			.activateBlastGate({ blastGateId: blastGate.id })
 			.subscribe();
 	}
 
 	openAllBlastGates(): void {
-		this._subs.sink = this.shopVacService.openAllBlastGates().subscribe();
+		this._subs.sink = this._shopVacService.openAllBlastGates().subscribe();
 	}
 
 	closeAllBlastGates(): void {
-		this._subs.sink = this.shopVacService.closeAllBlastGates().subscribe();
+		this._subs.sink = this._shopVacService.closeAllBlastGates().subscribe();
 	}
 }

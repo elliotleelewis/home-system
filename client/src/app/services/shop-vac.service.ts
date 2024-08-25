@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
 	type BlastGate,
 	type MutationActivateBlastGateArgs,
@@ -39,12 +39,12 @@ import {
 	providedIn: 'root',
 })
 export class ShopVacService {
+	private readonly _apollo = inject(Apollo);
+
 	getBlastGatesQuery?: QueryRef<BlastGatesQuery, BlastGatesQueryVariables>;
 
-	constructor(@Inject(Apollo) private apollo: Apollo) {}
-
 	getBlastGates(): Observable<BlastGate[]> {
-		this.getBlastGatesQuery ??= this.apollo.watchQuery<
+		this.getBlastGatesQuery ??= this._apollo.watchQuery<
 			BlastGatesQuery,
 			BlastGatesQueryVariables
 		>({
@@ -56,7 +56,7 @@ export class ShopVacService {
 	}
 
 	getBlastGate({ blastGateId }: QueryBlastGateArgs): Observable<BlastGate> {
-		return this.apollo
+		return this._apollo
 			.watchQuery<BlastGateQuery, BlastGateQueryVariables>({
 				query: BLAST_GATE,
 				variables: {
@@ -69,7 +69,7 @@ export class ShopVacService {
 	upsertBlastGate({
 		blastGateInput,
 	}: MutationUpsertBlastGateArgs): Observable<BlastGate | null> {
-		return this.apollo
+		return this._apollo
 			.mutate<UpsertBlastGateMutation, UpsertBlastGateMutationVariables>({
 				mutation: UPSERT_BLAST_GATE,
 				variables: {
@@ -89,7 +89,7 @@ export class ShopVacService {
 	deleteBlastGate({
 		blastGateId,
 	}: MutationDeleteBlastGateArgs): Observable<boolean | null> {
-		return this.apollo
+		return this._apollo
 			.mutate<DeleteBlastGateMutation, DeleteBlastGateMutationVariables>({
 				mutation: DELETE_BLAST_GATE,
 				variables: {
@@ -99,7 +99,7 @@ export class ShopVacService {
 			.pipe(
 				map((mutation) => mutation.data?.deleteBlastGate ?? null),
 				tap(() =>
-					this.apollo.client.cache.evict({
+					this._apollo.client.cache.evict({
 						id: blastGateId,
 						broadcast: true,
 					}),
@@ -110,7 +110,7 @@ export class ShopVacService {
 	activateBlastGate({
 		blastGateId,
 	}: MutationActivateBlastGateArgs): Observable<BlastGate[] | null> {
-		return this.apollo
+		return this._apollo
 			.mutate<
 				ActivateBlastGateMutation,
 				ActivateBlastGateMutationVariables
@@ -124,7 +124,7 @@ export class ShopVacService {
 	}
 
 	openAllBlastGates(): Observable<BlastGate[] | null> {
-		return this.apollo
+		return this._apollo
 			.mutate<
 				OpenAllBlastGatesMutation,
 				OpenAllBlastGatesMutationVariables
@@ -135,7 +135,7 @@ export class ShopVacService {
 	}
 
 	closeAllBlastGates(): Observable<BlastGate[] | null> {
-		return this.apollo
+		return this._apollo
 			.mutate<
 				CloseAllBlastGatesMutation,
 				CloseAllBlastGatesMutationVariables
