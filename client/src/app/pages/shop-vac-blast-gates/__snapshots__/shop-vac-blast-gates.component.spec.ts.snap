@@ -2,12 +2,12 @@
 
 exports[`ShopVacBlastGatesComponent should render 1`] = `
 <app-shop-vac-blast-gates
+  _changeDetectorRef={[Function ViewRef$1]}
+  _shopVacService={[Function Object]}
   _subs={[Function SubSink]}
   blastGates={[Function Array]}
-  changeDetectorRef={[Function ViewRef$1]}
   create="false"
   createModel={[Function Object]}
-  shopVacService={[Function Object]}
 >
   <div
     class="card flex flex-col"
