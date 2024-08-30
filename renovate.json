@@ -1,5 +1,6 @@
 {
-  "extends": ["config:base", ":preserveSemverRanges"],
+  "repositories": ["elliotleelewis/home-system"],
+  "extends": ["config:recommended", ":preserveSemverRanges"],
   "lockFileMaintenance": {
     "enabled": true
   }
