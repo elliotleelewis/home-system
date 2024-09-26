@@ -5,12 +5,15 @@ import {
 	Input,
 	Output,
 } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { type BlastGate } from '@app/schema';
 
 @Component({
 	selector: 'app-blast-gate',
 	templateUrl: './blast-gate.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
+	standalone: true,
+	imports: [FormsModule],
 })
 export class BlastGateComponent {
 	@Input()

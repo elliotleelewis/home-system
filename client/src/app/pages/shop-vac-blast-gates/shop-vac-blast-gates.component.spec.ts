@@ -1,15 +1,9 @@
-import {
-	type ComponentFixture,
-	TestBed,
-	waitForAsync,
-} from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
-import { MockComponents } from 'ng-mocks';
+import { type ComponentFixture } from '@angular/core/testing';
+import { MockBuilder, MockRender } from 'ng-mocks';
 import { of } from 'rxjs';
 
 import { ShopVacService } from '../../services/shop-vac.service';
 
-import { BlastGateComponent } from './components/blast-gate/blast-gate.component';
 import { ShopVacBlastGatesComponent } from './shop-vac-blast-gates.component';
 
 describe('ShopVacBlastGatesComponent', () => {
@@ -18,7 +12,7 @@ describe('ShopVacBlastGatesComponent', () => {
 
 	let mockShopVacService: Partial<ShopVacService>;
 
-	beforeEach(waitForAsync(() => {
+	beforeEach(() => {
 		mockShopVacService = {
 			getBlastGates: jest.fn(() =>
 				of([
@@ -31,22 +25,15 @@ describe('ShopVacBlastGatesComponent', () => {
 			),
 		};
 
-		void TestBed.configureTestingModule({
-			declarations: [
-				ShopVacBlastGatesComponent,
-				MockComponents(BlastGateComponent),
-			],
-			imports: [FormsModule],
-			providers: [
-				{ provide: ShopVacService, useValue: mockShopVacService },
-			],
-		}).compileComponents();
-	}));
+		return MockBuilder(ShopVacBlastGatesComponent).provide({
+			provide: ShopVacService,
+			useValue: mockShopVacService,
+		});
+	});
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(ShopVacBlastGatesComponent);
+		fixture = MockRender(ShopVacBlastGatesComponent);
 		component = fixture.componentInstance;
-		fixture.detectChanges();
 	});
 
 	it('should create', () => {

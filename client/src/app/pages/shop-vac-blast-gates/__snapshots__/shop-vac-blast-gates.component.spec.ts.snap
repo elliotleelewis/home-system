@@ -1,62 +1,57 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ShopVacBlastGatesComponent should render 1`] = `
-<app-shop-vac-blast-gates
-  _changeDetectorRef={[Function ViewRef$1]}
-  _shopVacService={[Function Object]}
-  _subs={[Function SubSink]}
-  blastGates={[Function Array]}
-  create="false"
-  createModel={[Function Object]}
->
-  <div
-    class="card flex flex-col"
-  >
+<mock-render>
+  <app-shop-vac-blast-gates>
     <div
-      class="rounded-t-2xl bg-base-300 p-2"
+      class="card flex flex-col"
     >
       <div
-        class="flex items-center justify-between"
+        class="rounded-t-2xl bg-base-300 p-2"
       >
-        <h2
-          class="p-2 text-lg font-bold"
+        <div
+          class="flex items-center justify-between"
         >
-          Blast Gates
-        </h2>
-        <div>
-          <div
-            class="flex gap-2"
+          <h2
+            class="p-2 text-lg font-bold"
           >
-            <button
-              class="btn"
+            Blast Gates
+          </h2>
+          <div>
+            <div
+              class="flex gap-2"
             >
-               Open All 
-            </button>
-            <button
-              class="btn"
-            >
-               Close All 
-            </button>
-            <button
-              class="btn btn-success"
-            >
-              <span
-                class="text-white"
+              <button
+                class="btn"
               >
-                <i
-                  class="fas fa-plus fa-fw"
-                />
-              </span>
-            </button>
+                 Open All 
+              </button>
+              <button
+                class="btn"
+              >
+                 Close All 
+              </button>
+              <button
+                class="btn"
+              >
+                <span
+                  class="text-white"
+                >
+                  <i
+                    class="fas fa-plus fa-fw"
+                  />
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
+      <div
+        class="card-body bg-base-200"
+      >
+        <app-blast-gate />
+      </div>
     </div>
-    <div
-      class="card-body bg-base-200 rounded-b-2xl"
-    >
-      <app-blast-gate />
-    </div>
-  </div>
-</app-shop-vac-blast-gates>
+  </app-shop-vac-blast-gates>
+</mock-render>
 `;

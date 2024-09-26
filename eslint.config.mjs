@@ -88,8 +88,6 @@ export default tseslint.config(
 					prefixes: ['app'],
 				},
 			],
-			'@angular-eslint/prefer-standalone': 'off',
-			'@angular-eslint/prefer-standalone-component': 'off',
 			'@typescript-eslint/naming-convention': [
 				'error',
 				{

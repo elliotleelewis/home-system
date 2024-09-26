@@ -1,3 +1,4 @@
+import { NgClass } from '@angular/common';
 import {
 	ChangeDetectionStrategy,
 	ChangeDetectorRef,
@@ -6,15 +7,20 @@ import {
 	type OnInit,
 	inject,
 } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { type BlastGate, type MutationUpsertBlastGateArgs } from '@app/schema';
 import { SubSink } from 'subsink';
 
 import { ShopVacService } from '../../services/shop-vac.service';
 
+import { BlastGateComponent } from './components/blast-gate/blast-gate.component';
+
 @Component({
 	selector: 'app-shop-vac-blast-gates',
 	templateUrl: './shop-vac-blast-gates.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
+	standalone: true,
+	imports: [NgClass, BlastGateComponent, FormsModule],
 })
 export class ShopVacBlastGatesComponent implements OnInit, OnDestroy {
 	private readonly _changeDetectorRef = inject(ChangeDetectorRef);
@@ -44,10 +50,6 @@ export class ShopVacBlastGatesComponent implements OnInit, OnDestroy {
 
 	ngOnDestroy(): void {
 		this._subs.unsubscribe();
-	}
-
-	trackByBlastGatesId(_: number, blastGate: BlastGate): string {
-		return blastGate.id;
 	}
 
 	toggleCreate(): void {

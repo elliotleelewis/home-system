@@ -24,8 +24,11 @@
 						(click)="toggleCreate()"
 					>
 						<span class="text-white">
-							<i class="fas fa-plus fa-fw" *ngIf="!create"></i>
-							<i class="fas fa-ban fa-fw" *ngIf="create"></i>
+							@if (create) {
+								<i class="fas fa-ban fa-fw"></i>
+							} @else {
+								<i class="fas fa-plus fa-fw"></i>
+							}
 						</span>
 					</button>
 				</div>
@@ -38,38 +41,42 @@
 			'rounded-b-2xl': !create,
 		}"
 	>
-		<app-blast-gate
-			*ngFor="let blastGate of blastGates; trackBy: trackByBlastGatesId"
-			[blastGate]="blastGate"
-			(updateBlastGate)="updateBlastGate($event)"
-			(deleteBlastGate)="deleteBlastGate($event)"
-			(activateBlastGate)="activateBlastGate($event)"
-		></app-blast-gate>
+		@for (blastGate of blastGates; track blastGate.id) {
+			<app-blast-gate
+				[blastGate]="blastGate"
+				(updateBlastGate)="updateBlastGate($event)"
+				(deleteBlastGate)="deleteBlastGate($event)"
+				(activateBlastGate)="activateBlastGate($event)"
+			></app-blast-gate>
+		}
 	</div>
-	<form
-		class="flex justify-between rounded-b-2xl bg-base-300 p-2"
-		*ngIf="create"
-		(ngSubmit)="createBlastGate()"
-	>
-		<div class="flex items-center gap-2">
-			<input
-				class="toggle"
-				type="checkbox"
-				name="is-open"
-				[(ngModel)]="createModel.blastGateInput.isOpen"
-			/>
-			<div class="join">
+	@if (create) {
+		<form
+			class="flex justify-between rounded-b-2xl bg-base-300 p-2"
+			(ngSubmit)="createBlastGate()"
+		>
+			<div class="flex items-center gap-2">
 				<input
-					class="input join-item"
-					type="text"
-					name="name"
-					[(ngModel)]="createModel.blastGateInput.name"
+					class="toggle"
+					type="checkbox"
+					name="is-open"
+					[(ngModel)]="createModel.blastGateInput.isOpen"
 				/>
-				<button class="btn btn-success join-item" type="submit">
-					Create
-				</button>
+				<div class="join">
+					<input
+						class="input join-item"
+						type="text"
+						name="name"
+						[(ngModel)]="createModel.blastGateInput.name"
+					/>
+					<button class="btn btn-success join-item" type="submit">
+						Create
+					</button>
+				</div>
 			</div>
-		</div>
-		<button class="btn btn-warning" type="button" disabled>Activate</button>
-	</form>
+			<button class="btn btn-warning" type="button" disabled>
+				Activate
+			</button>
+		</form>
+	}
 </div>
