@@ -1,9 +1,6 @@
-import {
-	type ComponentFixture,
-	TestBed,
-	waitForAsync,
-} from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { type ComponentFixture } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
+import { MockBuilder, MockRender } from 'ng-mocks';
 
 import { AppComponent } from './app.component';
 
@@ -11,17 +8,13 @@ describe('AppComponent', () => {
 	let component: AppComponent;
 	let fixture: ComponentFixture<AppComponent>;
 
-	beforeEach(waitForAsync(() => {
-		void TestBed.configureTestingModule({
-			imports: [RouterTestingModule],
-			declarations: [AppComponent],
-		}).compileComponents();
-	}));
+	beforeEach(() => {
+		return MockBuilder(AppComponent).provide(provideRouter([]));
+	});
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(AppComponent);
+		fixture = MockRender(AppComponent);
 		component = fixture.componentInstance;
-		fixture.detectChanges();
 	});
 
 	it('should create the app', () => {

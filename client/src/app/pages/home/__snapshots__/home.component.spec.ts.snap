@@ -1,35 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HomeComponent should render 1`] = `
-<app-home>
-  <section
-    class="card bg-secondary text-secondary-content"
-  >
-    <div
-      class="card-body"
+<mock-render>
+  <app-home>
+    <section
+      class="card bg-secondary text-secondary-content"
     >
       <div
-        class="card-title text-xl"
+        class="card-body"
       >
-        Hello.
+        <div
+          class="card-title text-xl"
+        >
+          Hello.
+        </div>
+        <p>
+          I hope you are having a great day!
+        </p>
       </div>
-      <p>
-        I hope you are having a great day!
-      </p>
-    </div>
-  </section><section
-    class="hero min-h-[50vh]"
-  >
-    <div
-      class="hero-content flex-col p-8"
+    </section>
+    <section
+      class="hero min-h-[50vh]"
     >
-      <i
-        class="fas fa-hand-point-left fa-fw fa-2x"
-      />
-      <p>
-        Select a link from the menu...
-      </p>
-    </div>
-  </section>
-</app-home>
+      <div
+        class="hero-content flex-col p-8"
+      >
+        <i
+          class="fas fa-hand-point-left fa-fw fa-2x"
+        />
+        <p>
+          Select a link from the menu...
+        </p>
+      </div>
+    </section>
+  </app-home>
+</mock-render>
 `;

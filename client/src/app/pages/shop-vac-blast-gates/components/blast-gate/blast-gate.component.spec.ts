@@ -1,5 +1,5 @@
-import { type ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
+import { type ComponentFixture } from '@angular/core/testing';
+import { MockBuilder, MockRender } from 'ng-mocks';
 
 import { BlastGateComponent } from './blast-gate.component';
 
@@ -7,24 +7,20 @@ describe('BlastGateComponent', () => {
 	let component: BlastGateComponent;
 	let fixture: ComponentFixture<BlastGateComponent>;
 
-	beforeEach(async () => {
-		await TestBed.configureTestingModule({
-			declarations: [BlastGateComponent],
-			imports: [FormsModule],
-		}).compileComponents();
+	beforeEach(() => {
+		return MockBuilder(BlastGateComponent);
 	});
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(BlastGateComponent);
-		component = fixture.componentInstance;
-
-		component.blastGate = {
-			id: '12345',
-			name: 'Test',
-			isOpen: true,
+		const params: Partial<BlastGateComponent> = {
+			blastGate: {
+				id: '12345',
+				name: 'Test',
+				isOpen: true,
+			},
 		};
-
-		fixture.detectChanges();
+		fixture = MockRender(BlastGateComponent, params as BlastGateComponent);
+		component = fixture.componentInstance;
 	});
 
 	it('should create', () => {

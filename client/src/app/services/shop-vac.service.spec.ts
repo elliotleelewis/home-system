@@ -1,17 +1,18 @@
-import { TestBed } from '@angular/core/testing';
-import { ApolloTestingModule } from 'apollo-angular/testing';
+import { InMemoryCache } from '@apollo/client/core';
+import { provideApollo } from 'apollo-angular';
+import { MockBuilder, MockRender } from 'ng-mocks';
 
 import { ShopVacService } from './shop-vac.service';
 
 describe('ShopVacService', () => {
-	beforeEach(() =>
-		TestBed.configureTestingModule({
-			imports: [ApolloTestingModule],
-		}),
-	);
+	beforeEach(() => {
+		return MockBuilder(ShopVacService).provide(
+			provideApollo(() => ({ cache: new InMemoryCache() })),
+		);
+	});
 
 	it('should be created', () => {
-		const service: ShopVacService = TestBed.inject(ShopVacService);
+		const service = MockRender(ShopVacService).point.componentInstance;
 
 		expect(service).toBeTruthy();
 	});

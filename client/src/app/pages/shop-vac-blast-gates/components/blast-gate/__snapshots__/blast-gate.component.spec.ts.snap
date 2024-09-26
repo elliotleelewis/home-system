@@ -1,71 +1,67 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BlastGateComponent should render 1`] = `
-<app-blast-gate
-  activateBlastGate={[Function EventEmitter_]}
-  blastGate={[Function Object]}
-  deleteBlastGate={[Function EventEmitter_]}
-  isMenuOpen="false"
-  updateBlastGate={[Function EventEmitter_]}
->
-  <div
-    class="flex items-center justify-between"
-  >
+<mock-render>
+  <app-blast-gate>
     <div
-      class="flex items-center gap-2"
+      class="flex items-center justify-between"
     >
-      <input
-        class="toggle ng-untouched ng-pristine ng-valid"
-        id="blast-gate-12345"
-        name="is-open"
-        type="checkbox"
-      />
-      <label
-        for="blast-gate-12345"
-      >
-        Test
-      </label>
-    </div>
-    <div
-      class="flex gap-2"
-    >
-      <button
-        class="btn btn-warning"
-        type="button"
-      >
-         Activate 
-      </button>
       <div
-        class="dropdown dropdown-end"
+        class="flex items-center gap-2"
       >
+        <input
+          class="toggle"
+          id="blast-gate-12345"
+          name="is-open"
+          type="checkbox"
+        />
+        <label
+          for="blast-gate-12345"
+        >
+          Test
+        </label>
+      </div>
+      <div
+        class="flex gap-2"
+      >
+        <button
+          class="btn btn-warning"
+          type="button"
+        >
+           Activate 
+        </button>
         <div
-          class="btn"
-          role="button"
-          tabindex="0"
+          class="dropdown dropdown-end"
         >
-          <i
-            class="fas fa-ellipsis-v fa-fw"
-          />
+          <div
+            class="btn"
+            role="button"
+            tabindex="0"
+          >
+            <i
+              class="fas fa-ellipsis-v fa-fw"
+            />
+          </div>
+          <ul
+            class="menu dropdown-content z-[1] w-52 rounded-box bg-base-100 p-2 shadow"
+            role="menu"
+            tabindex="0"
+          >
+            <li>
+              <a
+                href="javascript:void(0)"
+                role="button"
+              >
+                <i
+                  class="fas fa-trash-alt fa-fw"
+                />
+                 Delete 
+              </a>
+            </li>
+          </ul>
         </div>
-        <ul
-          class="menu dropdown-content z-[1] w-52 rounded-box bg-base-100 p-2 shadow"
-          role="menu"
-          tabindex="0"
-        >
-          <li>
-            <a
-              href="javascript:void(0)"
-              role="button"
-            >
-              <i
-                class="fas fa-trash-alt fa-fw"
-              />
-               Delete 
-            </a>
-          </li>
-        </ul>
       </div>
     </div>
-  </div>
-</app-blast-gate>
+  </app-blast-gate>
+</mock-render>
 `;
