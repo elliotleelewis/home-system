@@ -1,6 +1,6 @@
 {
   "name": "@app/client",
-  "packageManager": "pnpm@9.11.0",
+  "packageManager": "pnpm@9.12.0",
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
