@@ -60,8 +60,8 @@ importers:
         specifier: ^3.0.0
         version: 3.17.4(tailwindcss@3.4.13(ts-node@10.9.2(@types/node@20.16.10)(typescript@5.5.4)))
       eslint-plugin-unicorn:
-        specifier: ^55.0.0
-        version: 55.0.0(eslint@9.11.1(jiti@1.21.6))
+        specifier: ^56.0.0
+        version: 56.0.0(eslint@9.11.1(jiti@1.21.6))
       globals:
         specifier: ^15.0.0
         version: 15.9.0
@@ -4043,8 +4043,8 @@ packages:
     peerDependencies:
       tailwindcss: ^3.4.0
 
-  eslint-plugin-unicorn@55.0.0:
-    resolution: {integrity: sha512-n3AKiVpY2/uDcGrS3+QsYDkjPfaOrNrsfQxU9nt5nitd9KuvVXrfAvgCO9DYPSfap+Gqjw9EOrXIsBp5tlHZjA==}
+  eslint-plugin-unicorn@56.0.0:
+    resolution: {integrity: sha512-aXpddVz/PQMmd69uxO98PA4iidiVNvA0xOtbpUoz1WhBd4RxOQQYqN618v68drY0hmy5uU2jy1bheKEVWBjlPw==}
     engines: {node: '>=18.18'}
     peerDependencies:
       eslint: '>=8.56.0'
@@ -11500,12 +11500,12 @@ snapshots:
 
   css-loader@7.1.2(webpack@5.94.0(esbuild@0.23.0)):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.4.41)
-      postcss: 8.4.41
-      postcss-modules-extract-imports: 3.1.0(postcss@8.4.41)
-      postcss-modules-local-by-default: 4.0.5(postcss@8.4.41)
-      postcss-modules-scope: 3.2.0(postcss@8.4.41)
-      postcss-modules-values: 4.0.0(postcss@8.4.41)
+      icss-utils: 5.1.0(postcss@8.4.47)
+      postcss: 8.4.47
+      postcss-modules-extract-imports: 3.1.0(postcss@8.4.47)
+      postcss-modules-local-by-default: 4.0.5(postcss@8.4.47)
+      postcss-modules-scope: 3.2.0(postcss@8.4.47)
+      postcss-modules-values: 4.0.0(postcss@8.4.47)
       postcss-value-parser: 4.2.0
       semver: 7.6.3
     optionalDependencies:
@@ -11953,7 +11953,7 @@ snapshots:
       debug: 4.3.7(supports-color@5.5.0)
       enhanced-resolve: 5.17.1
       eslint: 9.11.1(jiti@1.21.6)
-      eslint-module-utils: 2.12.0(@typescript-eslint/parser@8.7.0(eslint@9.11.1(jiti@1.21.6))(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3(@typescript-eslint/parser@8.7.0(eslint@9.11.1(jiti@1.21.6))(typescript@5.5.4))(eslint-plugin-import@2.30.0)(eslint@9.11.1(jiti@1.21.6)))(eslint@9.11.1(jiti@1.21.6))
+      eslint-module-utils: 2.12.0(@typescript-eslint/parser@8.7.0(eslint@9.11.1(jiti@1.21.6))(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3)(eslint@9.11.1(jiti@1.21.6))
       fast-glob: 3.3.2
       get-tsconfig: 4.8.1
       is-bun-module: 1.2.1
@@ -11966,7 +11966,7 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-module-utils@2.12.0(@typescript-eslint/parser@8.7.0(eslint@9.11.1(jiti@1.21.6))(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3(@typescript-eslint/parser@8.7.0(eslint@9.11.1(jiti@1.21.6))(typescript@5.5.4))(eslint-plugin-import@2.30.0)(eslint@9.11.1(jiti@1.21.6)))(eslint@9.11.1(jiti@1.21.6)):
+  eslint-module-utils@2.12.0(@typescript-eslint/parser@8.7.0(eslint@9.11.1(jiti@1.21.6))(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3)(eslint@9.11.1(jiti@1.21.6)):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
@@ -11988,7 +11988,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 9.11.1(jiti@1.21.6)
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.12.0(@typescript-eslint/parser@8.7.0(eslint@9.11.1(jiti@1.21.6))(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3(@typescript-eslint/parser@8.7.0(eslint@9.11.1(jiti@1.21.6))(typescript@5.5.4))(eslint-plugin-import@2.30.0)(eslint@9.11.1(jiti@1.21.6)))(eslint@9.11.1(jiti@1.21.6))
+      eslint-module-utils: 2.12.0(@typescript-eslint/parser@8.7.0(eslint@9.11.1(jiti@1.21.6))(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3)(eslint@9.11.1(jiti@1.21.6))
       hasown: 2.0.2
       is-core-module: 2.15.1
       is-glob: 4.0.3
@@ -12039,7 +12039,7 @@ snapshots:
       postcss: 8.4.47
       tailwindcss: 3.4.13(ts-node@10.9.2(@types/node@20.16.10)(typescript@5.5.4))
 
-  eslint-plugin-unicorn@55.0.0(eslint@9.11.1(jiti@1.21.6)):
+  eslint-plugin-unicorn@56.0.0(eslint@9.11.1(jiti@1.21.6)):
     dependencies:
       '@babel/helper-validator-identifier': 7.24.7
       '@eslint-community/eslint-utils': 4.4.0(eslint@9.11.1(jiti@1.21.6))
@@ -12696,9 +12696,9 @@ snapshots:
     dependencies:
       safer-buffer: 2.1.2
 
-  icss-utils@5.1.0(postcss@8.4.41):
+  icss-utils@5.1.0(postcss@8.4.47):
     dependencies:
-      postcss: 8.4.41
+      postcss: 8.4.47
 
   ieee754@1.2.1: {}
 
@@ -14282,26 +14282,26 @@ snapshots:
 
   postcss-media-query-parser@0.2.3: {}
 
-  postcss-modules-extract-imports@3.1.0(postcss@8.4.41):
+  postcss-modules-extract-imports@3.1.0(postcss@8.4.47):
     dependencies:
-      postcss: 8.4.41
+      postcss: 8.4.47
 
-  postcss-modules-local-by-default@4.0.5(postcss@8.4.41):
+  postcss-modules-local-by-default@4.0.5(postcss@8.4.47):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.4.41)
-      postcss: 8.4.41
+      icss-utils: 5.1.0(postcss@8.4.47)
+      postcss: 8.4.47
       postcss-selector-parser: 6.1.2
       postcss-value-parser: 4.2.0
 
-  postcss-modules-scope@3.2.0(postcss@8.4.41):
+  postcss-modules-scope@3.2.0(postcss@8.4.47):
     dependencies:
-      postcss: 8.4.41
+      postcss: 8.4.47
       postcss-selector-parser: 6.1.2
 
-  postcss-modules-values@4.0.0(postcss@8.4.41):
+  postcss-modules-values@4.0.0(postcss@8.4.47):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.4.41)
-      postcss: 8.4.41
+      icss-utils: 5.1.0(postcss@8.4.47)
+      postcss: 8.4.47
 
   postcss-nested@6.2.0(postcss@8.4.47):
     dependencies:
@@ -14490,7 +14490,7 @@ snapshots:
 
   regenerator-transform@0.15.2:
     dependencies:
-      '@babel/runtime': 7.25.0
+      '@babel/runtime': 7.25.6
 
   regex-parser@2.3.0: {}
 
@@ -14559,7 +14559,7 @@ snapshots:
       adjust-sourcemap-loader: 4.0.0
       convert-source-map: 1.9.0
       loader-utils: 2.0.4
-      postcss: 8.4.41
+      postcss: 8.4.47
       source-map: 0.6.1
 
   resolve.exports@2.0.2: {}
