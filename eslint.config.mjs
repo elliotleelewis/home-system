@@ -1,22 +1,17 @@
 import path from 'node:path';
 
 import { includeIgnoreFile } from '@eslint/compat';
-import { FlatCompat } from '@eslint/eslintrc';
-import eslint from '@eslint/js';
-import comments from '@eslint-community/eslint-plugin-eslint-comments/configs';
-import angular from 'angular-eslint';
 import configPrettier from 'eslint-config-prettier';
-import jest from 'eslint-plugin-jest';
-import jsdoc from 'eslint-plugin-jsdoc';
-import tailwind from 'eslint-plugin-tailwindcss';
-import unicorn from 'eslint-plugin-unicorn';
+import eslint from '@eslint/js';
+import pluginAngular from 'angular-eslint';
+import pluginComments from '@eslint-community/eslint-plugin-eslint-comments/configs';
+import pluginImport from 'eslint-plugin-import';
+import pluginJest from 'eslint-plugin-jest';
+import pluginJsdoc from 'eslint-plugin-jsdoc';
+import pluginTailwind from 'eslint-plugin-tailwindcss';
+import pluginUnicorn from 'eslint-plugin-unicorn';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
-
-const compat = new FlatCompat({
-	baseDirectory: import.meta.dirname,
-	recommendedConfig: eslint.configs.recommended,
-});
 
 export default tseslint.config(
 	includeIgnoreFile(path.resolve(import.meta.dirname, '.gitignore')),
@@ -24,16 +19,16 @@ export default tseslint.config(
 		files: ['**/*.ts'],
 		extends: [
 			eslint.configs.recommended,
-			...angular.configs.tsAll,
+			...pluginAngular.configs.tsAll,
 			...tseslint.configs.strictTypeChecked,
 			...tseslint.configs.stylisticTypeChecked,
-			comments.recommended,
-			...compat.extends('plugin:import/recommended'),
-			...compat.extends('plugin:import/typescript'),
-			jest.configs['flat/recommended'],
-			jsdoc.configs['flat/recommended-typescript-error'],
-			...tailwind.configs['flat/recommended'],
-			unicorn.configs['flat/recommended'],
+			pluginComments.recommended,
+			pluginImport.flatConfigs['recommended'],
+			pluginImport.flatConfigs['typescript'],
+			pluginJest.configs['flat/recommended'],
+			pluginJsdoc.configs['flat/recommended-typescript-error'],
+			...pluginTailwind.configs['flat/recommended'],
+			pluginUnicorn.configs['flat/recommended'],
 		],
 		languageOptions: {
 			parserOptions: {
@@ -187,9 +182,9 @@ export default tseslint.config(
 	{
 		files: ['**/*.html'],
 		extends: [
-			...angular.configs.templateRecommended,
-			...angular.configs.templateAccessibility,
-			...tailwind.configs['flat/recommended'],
+			...pluginAngular.configs.templateRecommended,
+			...pluginAngular.configs.templateAccessibility,
+			...pluginTailwind.configs['flat/recommended'],
 		],
 		settings: {
 			tailwindcss: {
