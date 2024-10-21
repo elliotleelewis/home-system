@@ -1,5 +1,4 @@
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 
 import { includeIgnoreFile } from '@eslint/compat';
 import { FlatCompat } from '@eslint/eslintrc';
@@ -14,26 +13,15 @@ import unicorn from 'eslint-plugin-unicorn';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 const compat = new FlatCompat({
-	baseDirectory: __dirname,
+	baseDirectory: import.meta.dirname,
 	recommendedConfig: eslint.configs.recommended,
 });
 
 export default tseslint.config(
-	includeIgnoreFile(path.resolve(__dirname, '.gitignore')),
-	{
-		extends: [eslint.configs.recommended],
-		languageOptions: {
-			globals: {
-				...globals.node,
-			},
-		},
-	},
+	includeIgnoreFile(path.resolve(import.meta.dirname, '.gitignore')),
 	{
 		files: ['**/*.ts'],
-		ignores: ['**/*.generated.ts'],
 		extends: [
 			eslint.configs.recommended,
 			...angular.configs.tsAll,
@@ -42,15 +30,17 @@ export default tseslint.config(
 			comments.recommended,
 			...compat.extends('plugin:import/recommended'),
 			...compat.extends('plugin:import/typescript'),
-			jest.configs['flag/recommended'],
+			jest.configs['flat/recommended'],
 			jsdoc.configs['flat/recommended-typescript-error'],
 			...tailwind.configs['flat/recommended'],
 			unicorn.configs['flat/recommended'],
 		],
-		processor: angular.processInlineTemplates,
 		languageOptions: {
 			parserOptions: {
-				project: './tsconfig.json',
+				projectService: true,
+			},
+			globals: {
+				...globals.node,
 			},
 		},
 		settings: {
@@ -192,12 +182,6 @@ export default tseslint.config(
 					ignoreDeclarationSort: true,
 				},
 			],
-
-			// TODO: Enable once rules support ESLint 9
-			'import/namespace': 'off',
-			'import/newline-after-import': 'off',
-			'import/no-named-as-default': 'off',
-			'import/no-named-as-default-member': 'off',
 		},
 	},
 	{
@@ -215,4 +199,7 @@ export default tseslint.config(
 		},
 	},
 	configPrettier,
+	{
+		ignores: ['**/*.generated.ts', 'eslint.config.mjs'],
+	},
 );
