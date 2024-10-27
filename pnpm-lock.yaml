@@ -256,8 +256,8 @@ importers:
         specifier: ^16.0.0
         version: 16.9.0
       uuid:
-        specifier: ^10.0.0
-        version: 10.0.0
+        specifier: ^11.0.0
+        version: 11.0.0
     devDependencies:
       '@types/cors':
         specifier: ^2.0.0
@@ -7082,8 +7082,8 @@ packages:
     resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}
     engines: {node: '>= 0.4.0'}
 
-  uuid@10.0.0:
-    resolution: {integrity: sha512-8XkAphELsDnEGrDxUOHB3RGvXz6TeuYSGEZBOjtTtPm2lwhGBjLgOzLHB63IUWfBpNucQjND6d3AOudO+H3RWQ==}
+  uuid@11.0.0:
+    resolution: {integrity: sha512-iE8Fa5fgBY4rN5GvNUJ8TSwO1QG7TzdPfhrJczf6XJ6mZUxh/GX433N70fCiJL9h8EKP5ayEIo0Q6EBQGWHFqA==}
     hasBin: true
 
   uuid@8.3.2:
@@ -11696,12 +11696,12 @@ snapshots:
 
   css-loader@7.1.2(webpack@5.94.0(esbuild@0.23.0)):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.4.41)
-      postcss: 8.4.41
-      postcss-modules-extract-imports: 3.1.0(postcss@8.4.41)
-      postcss-modules-local-by-default: 4.0.5(postcss@8.4.41)
-      postcss-modules-scope: 3.2.0(postcss@8.4.41)
-      postcss-modules-values: 4.0.0(postcss@8.4.41)
+      icss-utils: 5.1.0(postcss@8.4.47)
+      postcss: 8.4.47
+      postcss-modules-extract-imports: 3.1.0(postcss@8.4.47)
+      postcss-modules-local-by-default: 4.0.5(postcss@8.4.47)
+      postcss-modules-scope: 3.2.0(postcss@8.4.47)
+      postcss-modules-values: 4.0.0(postcss@8.4.47)
       postcss-value-parser: 4.2.0
       semver: 7.6.3
     optionalDependencies:
@@ -12885,9 +12885,9 @@ snapshots:
     dependencies:
       safer-buffer: 2.1.2
 
-  icss-utils@5.1.0(postcss@8.4.41):
+  icss-utils@5.1.0(postcss@8.4.47):
     dependencies:
-      postcss: 8.4.41
+      postcss: 8.4.47
 
   ieee754@1.2.1: {}
 
@@ -14477,26 +14477,26 @@ snapshots:
 
   postcss-media-query-parser@0.2.3: {}
 
-  postcss-modules-extract-imports@3.1.0(postcss@8.4.41):
+  postcss-modules-extract-imports@3.1.0(postcss@8.4.47):
     dependencies:
-      postcss: 8.4.41
+      postcss: 8.4.47
 
-  postcss-modules-local-by-default@4.0.5(postcss@8.4.41):
+  postcss-modules-local-by-default@4.0.5(postcss@8.4.47):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.4.41)
-      postcss: 8.4.41
+      icss-utils: 5.1.0(postcss@8.4.47)
+      postcss: 8.4.47
       postcss-selector-parser: 6.1.2
       postcss-value-parser: 4.2.0
 
-  postcss-modules-scope@3.2.0(postcss@8.4.41):
+  postcss-modules-scope@3.2.0(postcss@8.4.47):
     dependencies:
-      postcss: 8.4.41
+      postcss: 8.4.47
       postcss-selector-parser: 6.1.2
 
-  postcss-modules-values@4.0.0(postcss@8.4.41):
+  postcss-modules-values@4.0.0(postcss@8.4.47):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.4.41)
-      postcss: 8.4.41
+      icss-utils: 5.1.0(postcss@8.4.47)
+      postcss: 8.4.47
 
   postcss-nested@6.2.0(postcss@8.4.47):
     dependencies:
@@ -14679,7 +14679,7 @@ snapshots:
 
   regenerator-transform@0.15.2:
     dependencies:
-      '@babel/runtime': 7.25.0
+      '@babel/runtime': 7.25.7
 
   regex-parser@2.3.0: {}
 
@@ -14750,7 +14750,7 @@ snapshots:
       adjust-sourcemap-loader: 4.0.0
       convert-source-map: 1.9.0
       loader-utils: 2.0.4
-      postcss: 8.4.41
+      postcss: 8.4.47
       source-map: 0.6.1
 
   resolve.exports@2.0.2: {}
@@ -15700,7 +15700,7 @@ snapshots:
 
   utils-merge@1.0.1: {}
 
-  uuid@10.0.0: {}
+  uuid@11.0.0: {}
 
   uuid@8.3.2: {}
 
