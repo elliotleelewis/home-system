@@ -61,6 +61,7 @@
 		class="card-body bg-base-200"
 		[ngClass]="{
 			'rounded-b-2xl': !create,
+			hidden: blastGates.length === 0,
 		}"
 	>
 		@for (blastGate of blastGates; track blastGate.id) {
