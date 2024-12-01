@@ -1,12 +1,10 @@
 import { ApolloServer } from '@apollo/server';
-import { expressMiddleware } from '@apollo/server/express4';
+import { startStandaloneServer } from '@apollo/server/standalone';
 import { type Resolvers } from '@app/schema';
 import { GraphQLFileLoader } from '@graphql-tools/graphql-file-loader';
 import { loadSchemaSync } from '@graphql-tools/load';
 import { makeExecutableSchema } from '@graphql-tools/schema';
-import cors from 'cors';
 import { config } from 'dotenv';
-import express from 'express';
 
 import { PRISMA } from './prisma';
 import {
@@ -49,23 +47,12 @@ const resolvers: Resolvers = {
 
 const executableSchema = makeExecutableSchema({ typeDefs: schema, resolvers });
 
-const apolloServer = new ApolloServer({
+const server = new ApolloServer({
 	schema: executableSchema,
 });
 
 const port = 8080;
-
-const app = express();
-const server = app.listen(port);
-
-void apolloServer.start().then(() => {
-	app.use(
-		'/graphql',
-		cors(),
-		express.json(),
-		expressMiddleware(apolloServer),
-	);
-
+void startStandaloneServer(server, { listen: { port } }).then(() => {
 	console.log(
 		`Running a GraphQL API server at http://localhost:${String(port)}/graphql`,
 	);
@@ -73,8 +60,7 @@ void apolloServer.start().then(() => {
 
 const kill = async () => {
 	await PRISMA.$disconnect();
-	await apolloServer.stop();
-	server.close();
+	await server.stop();
 };
 
 process.on('SIGTERM', () => void kill());
