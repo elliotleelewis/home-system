@@ -12,7 +12,6 @@ import { type BlastGate } from '@app/schema';
 	selector: 'app-blast-gate',
 	templateUrl: './blast-gate.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [FormsModule],
 })
 export class BlastGateComponent {

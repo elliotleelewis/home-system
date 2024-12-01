@@ -19,7 +19,6 @@ import { BlastGateComponent } from './components/blast-gate/blast-gate.component
 	selector: 'app-shop-vac-blast-gates',
 	templateUrl: './shop-vac-blast-gates.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [NgClass, BlastGateComponent, FormsModule],
 })
 export class ShopVacBlastGatesComponent implements OnInit, OnDestroy {

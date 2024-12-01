@@ -4,6 +4,5 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 	selector: 'app-home',
 	templateUrl: './home.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 })
 export class HomeComponent {}
