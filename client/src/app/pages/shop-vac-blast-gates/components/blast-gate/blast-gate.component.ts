@@ -1,9 +1,8 @@
 import {
 	ChangeDetectionStrategy,
 	Component,
-	EventEmitter,
-	Input,
-	Output,
+	input,
+	output,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { type BlastGate } from '@app/schema';
@@ -15,20 +14,11 @@ import { type BlastGate } from '@app/schema';
 	imports: [FormsModule],
 })
 export class BlastGateComponent {
-	@Input()
-	blastGate!: BlastGate;
+	readonly blastGate = input.required<BlastGate>();
 
-	@Output()
-	readonly updateBlastGate: EventEmitter<BlastGate> =
-		new EventEmitter<BlastGate>();
-
-	@Output()
-	readonly deleteBlastGate: EventEmitter<BlastGate> =
-		new EventEmitter<BlastGate>();
-
-	@Output()
-	readonly activateBlastGate: EventEmitter<BlastGate> =
-		new EventEmitter<BlastGate>();
+	readonly updateBlastGate = output<BlastGate>();
+	readonly deleteBlastGate = output<BlastGate>();
+	readonly activateBlastGate = output<BlastGate>();
 
 	isMenuOpen = false;
 
