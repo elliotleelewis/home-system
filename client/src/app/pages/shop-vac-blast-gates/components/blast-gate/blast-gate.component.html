@@ -1,20 +1,22 @@
 <div class="flex items-center justify-between">
 	<div class="flex items-center gap-2">
 		<input
-			id="blast-gate-{{ blastGate.id }}"
+			id="blast-gate-{{ blastGate().id }}"
 			class="toggle"
 			type="checkbox"
 			name="is-open"
-			[ngModel]="blastGate.isOpen"
-			(change)="handleToggleBlastGate(blastGate)"
+			[ngModel]="blastGate().isOpen"
+			(change)="handleToggleBlastGate(blastGate())"
 		/>
-		<label for="blast-gate-{{ blastGate.id }}">{{ blastGate.name }}</label>
+		<label for="blast-gate-{{ blastGate().id }}">{{
+			blastGate().name
+		}}</label>
 	</div>
 	<div class="flex gap-2">
 		<button
 			class="btn btn-warning"
 			type="button"
-			(click)="handleActivateBlastGate(blastGate)"
+			(click)="handleActivateBlastGate(blastGate())"
 		>
 			Activate
 		</button>
@@ -42,7 +44,7 @@
 					<a
 						href="javascript:void(0)"
 						role="button"
-						(click)="handleDeleteBlastGate(blastGate)"
+						(click)="handleDeleteBlastGate(blastGate())"
 					>
 						<svg
 							class="size-4"
