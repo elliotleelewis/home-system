@@ -1,4 +1,6 @@
+import { input } from '@angular/core';
 import { type ComponentFixture } from '@angular/core/testing';
+import { type BlastGate } from '@app/schema';
 import { MockBuilder, MockRender } from 'ng-mocks';
 
 import { BlastGateComponent } from './blast-gate.component';
@@ -12,13 +14,13 @@ describe('BlastGateComponent', () => {
 	});
 
 	beforeEach(() => {
-		const params: Partial<BlastGateComponent> = {
-			blastGate: {
+		const params = {
+			blastGate: input<BlastGate>({
 				id: '12345',
 				name: 'Test',
 				isOpen: true,
-			},
-		};
+			}),
+		} as const satisfies Partial<BlastGateComponent>;
 		fixture = MockRender(BlastGateComponent, params as BlastGateComponent);
 		component = fixture.componentInstance;
 	});

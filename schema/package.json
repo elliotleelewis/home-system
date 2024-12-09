@@ -11,6 +11,7 @@
     "codegen:watch": "graphql-codegen --config codegen.yml --watch"
   },
   "devDependencies": {
+    "@graphql-codegen/add": "^5.0.0",
     "@graphql-codegen/cli": "^5.0.0",
     "@graphql-codegen/typescript": "^4.0.0",
     "@graphql-codegen/typescript-resolvers": "^4.0.0",
