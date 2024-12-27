@@ -13,6 +13,7 @@ services:
     depends_on:
       - client
       - server
+    restart: unless-stopped
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
       - ./logs/nginx:/var/log/nginx
@@ -23,6 +24,7 @@ services:
       - proxy
   database:
     image: postgres:alpine
+    restart: unless-stopped
     volumes:
       - database-data:/var/lib/postgresql/data
     expose:
@@ -37,6 +39,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile.client
+    restart: unless-stopped
     expose:
       - '80'
     networks:
@@ -47,6 +50,7 @@ services:
       dockerfile: Dockerfile.server
     depends_on:
       - database
+    restart: unless-stopped
     volumes:
       - /app
     expose:
