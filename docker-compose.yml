@@ -9,7 +9,7 @@ volumes:
 
 services:
   proxy:
-    image: nginx
+    image: nginx:alpine
     depends_on:
       - client
       - server
@@ -22,7 +22,7 @@ services:
     networks:
       - proxy
   database:
-    image: postgres
+    image: postgres:alpine
     volumes:
       - database-data:/var/lib/postgresql/data
     expose:
