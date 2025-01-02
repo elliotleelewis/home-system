@@ -1,6 +1,6 @@
 import { input } from '@angular/core';
-import { type ComponentFixture } from '@angular/core/testing';
-import { type BlastGate } from '@app/schema';
+import type { ComponentFixture } from '@angular/core/testing';
+import type { BlastGate } from '@app/schema';
 import { MockBuilder, MockRender } from 'ng-mocks';
 
 import { BlastGateComponent } from './blast-gate.component';

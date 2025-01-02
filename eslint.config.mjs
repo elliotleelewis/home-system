@@ -126,12 +126,7 @@ export default tseslint.config(
 				'prefer-top-level',
 			],
 			'import/first': 'error',
-			'import/no-duplicates': [
-				'error',
-				{
-					'prefer-inline': true,
-				},
-			],
+			'import/no-duplicates': 'error',
 			'import/order': [
 				'error',
 				{

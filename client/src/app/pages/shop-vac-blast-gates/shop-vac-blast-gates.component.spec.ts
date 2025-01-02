@@ -1,4 +1,4 @@
-import { type ComponentFixture } from '@angular/core/testing';
+import type { ComponentFixture } from '@angular/core/testing';
 import { MockBuilder, MockRender } from 'ng-mocks';
 import { of } from 'rxjs';
 

@@ -1,9 +1,6 @@
 import { provideHttpClient } from '@angular/common/http';
-import {
-	type ApplicationConfig,
-	inject,
-	provideZoneChangeDetection,
-} from '@angular/core';
+import { inject, provideZoneChangeDetection } from '@angular/core';
+import type { ApplicationConfig } from '@angular/core';
 import {
 	provideClientHydration,
 	withEventReplay,

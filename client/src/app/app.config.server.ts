@@ -1,4 +1,5 @@
-import { type ApplicationConfig, mergeApplicationConfig } from '@angular/core';
+import { mergeApplicationConfig } from '@angular/core';
+import type { ApplicationConfig } from '@angular/core';
 import { provideServerRendering } from '@angular/platform-server';
 
 import { APP_CONFIG } from './app.config';
