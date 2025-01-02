@@ -13,5 +13,5 @@ import 'zone.js/plugins/zone-error';
 
 export const ENVIRONMENT = {
 	production: false,
-	serverUrl: 'http://localhost:8080',
+	serverUrl: 'http://pi.elliotleelewis.com:8080',
 };

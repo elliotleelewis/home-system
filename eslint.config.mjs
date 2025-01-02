@@ -123,7 +123,7 @@ export default tseslint.config(
 			'@typescript-eslint/no-extraneous-class': 'off',
 			'import/consistent-type-specifier-style': [
 				'error',
-				'prefer-inline',
+				'prefer-top-level',
 			],
 			'import/first': 'error',
 			'import/no-duplicates': [
