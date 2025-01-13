@@ -9,38 +9,7 @@ exports[`AppComponent should render 1`] = `
       <div
         class="grid grid-cols-4 gap-4"
       >
-        <div
-          class="flex flex-col"
-        >
-          <a>
-            <h1
-              class="p-4 text-center text-3xl font-bold"
-            >
-              Home System
-            </h1>
-          </a>
-          <ul
-            class="menu rounded-box bg-base-200"
-          >
-            <li>
-              <p
-                class="menu-title"
-              >
-                <i
-                  class="fas fa-tools fa-fw mr-1"
-                />
-                 ShopVac 
-              </p>
-              <ul>
-                <li>
-                  <a>
-                    Blast Gates
-                  </a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
+        <app-menu />
         <div
           class="col-span-3"
         >
