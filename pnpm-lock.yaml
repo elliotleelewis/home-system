@@ -78,8 +78,8 @@ importers:
         specifier: ^16.0.0
         version: 16.13.1(typescript@5.6.3)
       stylelint-config-clean-order:
-        specifier: ^6.0.0
-        version: 6.1.0(stylelint@16.13.1(typescript@5.6.3))
+        specifier: ^7.0.0
+        version: 7.0.0(stylelint@16.13.1(typescript@5.6.3))
       stylelint-config-standard-scss:
         specifier: ^14.0.0
         version: 14.0.0(postcss@8.5.0)(stylelint@16.13.1(typescript@5.6.3))
@@ -7007,8 +7007,8 @@ packages:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
     engines: {node: '>=8'}
 
-  stylelint-config-clean-order@6.1.0:
-    resolution: {integrity: sha512-Xe1U0stw57Evdcx+7q7XYAniyE7XAKv/bwfH9LcsFCcKTPZflzTiJLXGkQUsPMlA4cfMyxEebqm5bRN2doTD3w==}
+  stylelint-config-clean-order@7.0.0:
+    resolution: {integrity: sha512-R28w1xNliIbem3o+VIrNjAU8cMgxrGlDoXVqWW7lJ1OvSDsmNGj5aKSW6Xm7i5PK4E99T3Hs19BJFni5IbE56g==}
     peerDependencies:
       stylelint: '>=14'
 
@@ -15703,7 +15703,7 @@ snapshots:
 
   strip-json-comments@3.1.1: {}
 
-  stylelint-config-clean-order@6.1.0(stylelint@16.13.1(typescript@5.6.3)):
+  stylelint-config-clean-order@7.0.0(stylelint@16.13.1(typescript@5.6.3)):
     dependencies:
       stylelint: 16.13.1(typescript@5.6.3)
       stylelint-order: 6.0.4(stylelint@16.13.1(typescript@5.6.3))
