@@ -6,7 +6,7 @@ COPY package.json pnpm-lock.yaml pnpm-workspace.yaml tsconfig.json ./
 COPY client/package.json ./client/
 COPY schema/package.json ./schema/
 COPY server/package.json ./server/
-RUN corepack enable && corepack prepare --activate
+RUN npm i -g corepack@latest && corepack enable && corepack prepare --activate
 RUN pnpm install --frozen-lockfile
 
 # Run schema codegen
