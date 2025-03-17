@@ -1,6 +1,6 @@
 {
   "name": "@app/schema",
-  "packageManager": "pnpm@10.6.3",
+  "packageManager": "pnpm@10.6.4",
   "version": "1.0.0",
   "license": "MIT",
   "main": "./dist/schema.generated.js",
