@@ -5,9 +5,9 @@ import { LocationRef } from '../refs/location.ref';
 
 @Component({
 	selector: 'app-menu',
+	imports: [RouterLink, RouterLinkActive],
 	templateUrl: './menu.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [RouterLink, RouterLinkActive],
 })
 export class MenuComponent {
 	private readonly _locationRef = inject(LocationRef);

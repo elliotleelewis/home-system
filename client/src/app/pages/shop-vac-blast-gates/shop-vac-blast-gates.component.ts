@@ -16,9 +16,9 @@ import { BlastGateComponent } from './components/blast-gate/blast-gate.component
 
 @Component({
 	selector: 'app-shop-vac-blast-gates',
+	imports: [NgClass, BlastGateComponent, FormsModule],
 	templateUrl: './shop-vac-blast-gates.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [NgClass, BlastGateComponent, FormsModule],
 })
 export class ShopVacBlastGatesComponent implements OnInit, OnDestroy {
 	private readonly _changeDetectorRef = inject(ChangeDetectorRef);
