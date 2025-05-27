@@ -9,9 +9,9 @@ import type { BlastGate } from '@app/schema';
 
 @Component({
 	selector: 'app-blast-gate',
+	imports: [FormsModule],
 	templateUrl: './blast-gate.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [FormsModule],
 })
 export class BlastGateComponent {
 	readonly blastGate = input.required<BlastGate>();

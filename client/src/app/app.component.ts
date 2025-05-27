@@ -5,8 +5,8 @@ import { MenuComponent } from './menu/menu.component';
 
 @Component({
 	selector: 'app-root',
+	imports: [RouterOutlet, MenuComponent],
 	templateUrl: './app.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [RouterOutlet, MenuComponent],
 })
 export class AppComponent {}
