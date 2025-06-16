@@ -132,8 +132,8 @@ importers:
         specifier: workspace:../schema
         version: link:../schema
       apollo-angular:
-        specifier: ^10.0.0
-        version: 10.0.3(@angular/core@19.2.14(rxjs@7.8.2)(zone.js@0.15.1))(@apollo/client@3.13.8(graphql-ws@6.0.5(graphql@16.11.0)(ws@8.18.2))(graphql@16.11.0))(graphql@16.11.0)(rxjs@7.8.2)
+        specifier: ^11.0.0
+        version: 11.0.0(@angular/core@19.2.14(rxjs@7.8.2)(zone.js@0.15.1))(@apollo/client@3.13.8(graphql-ws@6.0.5(graphql@16.11.0)(ws@8.18.2))(graphql@16.11.0))(graphql@16.11.0)(rxjs@7.8.2)
       daisyui:
         specifier: ^5.0.0
         version: 5.0.43
@@ -3432,13 +3432,13 @@ packages:
     resolution: {integrity: sha512-KMReFUr0B4t+D+OBkjR3KYqvocp2XaSzO55UcB6mgQMd3KbcE+mWTyvVV7D/zsdEbNnV6acZUutkiHQXvTr1Rw==}
     engines: {node: '>= 8'}
 
-  apollo-angular@10.0.3:
-    resolution: {integrity: sha512-gBNxKVraflbEG5tcFHEklCYjmer6vlOQ8sOw3EfD8SvIlYqTQ0DqES7oOau9lnHDgINnCtFYDZ3/c2SjLsXxVg==}
+  apollo-angular@11.0.0:
+    resolution: {integrity: sha512-8esMQ7Y/avjodz5G0vMlPy58KHrMetzx/I6Xp1Zn1AnYhBbbv7cEc25fZrdMWKwi0c061Fux3HWfu8iCk1OpDg==}
     engines: {node: '>=16'}
     peerDependencies:
-      '@angular/core': ^17.0.0 || ^18.0.0 || ^19.0.0
+      '@angular/core': ^18.0.0 || ^19.0.0 || ^20.0.0
       '@apollo/client': ^3.13.1
-      graphql: ^15.0.0 || ^16.0.0
+      graphql: ^16.0.0
       rxjs: ^6.0.0 || ^7.0.0
 
   are-docs-informative@0.1.1:
@@ -11970,7 +11970,7 @@ snapshots:
       normalize-path: 3.0.0
       picomatch: 2.3.1
 
-  apollo-angular@10.0.3(@angular/core@19.2.14(rxjs@7.8.2)(zone.js@0.15.1))(@apollo/client@3.13.8(graphql-ws@6.0.5(graphql@16.11.0)(ws@8.18.2))(graphql@16.11.0))(graphql@16.11.0)(rxjs@7.8.2):
+  apollo-angular@11.0.0(@angular/core@19.2.14(rxjs@7.8.2)(zone.js@0.15.1))(@apollo/client@3.13.8(graphql-ws@6.0.5(graphql@16.11.0)(ws@8.18.2))(graphql@16.11.0))(graphql@16.11.0)(rxjs@7.8.2):
     dependencies:
       '@angular/core': 19.2.14(rxjs@7.8.2)(zone.js@0.15.1)
       '@apollo/client': 3.13.8(graphql-ws@6.0.5(graphql@16.11.0)(ws@8.18.2))(graphql@16.11.0)
