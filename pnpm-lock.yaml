@@ -160,7 +160,7 @@ importers:
         version: 0.15.1
     devDependencies:
       '@angular-builders/jest':
-        specifier: 20.0.0
+        specifier: ^20.0.0
         version: 20.0.0(b65b25f9139ee33e591cc754b219e218)
       '@angular/build':
         specifier: ^20.0.0
