@@ -52,7 +52,7 @@ export default tseslint.config(
 			'better-tailwindcss': pluginTailwind,
 		},
 		rules: {
-			...pluginTailwind.configs["recommended-error"].rules,
+			...pluginTailwind.configs['recommended-error'].rules,
 			'@angular-eslint/component-selector': [
 				'error',
 				{
@@ -191,7 +191,7 @@ export default tseslint.config(
 			},
 		},
 		rules: {
-			...pluginTailwind.configs["recommended-error"].rules,
+			...pluginTailwind.configs['recommended-error'].rules,
 		},
 	},
 	configPrettier,
