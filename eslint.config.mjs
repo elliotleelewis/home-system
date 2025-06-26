@@ -5,10 +5,10 @@ import configPrettier from 'eslint-config-prettier';
 import eslint from '@eslint/js';
 import pluginAngular from 'angular-eslint';
 import pluginComments from '@eslint-community/eslint-plugin-eslint-comments/configs';
+import pluginTailwind from 'eslint-plugin-better-tailwindcss';
 import pluginImport from 'eslint-plugin-import';
 import pluginJest from 'eslint-plugin-jest';
 import pluginJsdoc from 'eslint-plugin-jsdoc';
-import pluginTailwind from 'eslint-plugin-tailwindcss';
 import pluginUnicorn from 'eslint-plugin-unicorn';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
@@ -27,7 +27,6 @@ export default tseslint.config(
 			pluginImport.flatConfigs['typescript'],
 			pluginJest.configs['flat/recommended'],
 			pluginJsdoc.configs['flat/recommended-typescript-error'],
-			...pluginTailwind.configs['flat/recommended'],
 			pluginUnicorn.configs['flat/recommended'],
 		],
 		languageOptions: {
@@ -45,12 +44,15 @@ export default tseslint.config(
 					project: './tsconfig.json',
 				},
 			},
-			tailwindcss: {
-				config: 'client/tailwind.config.mjs',
-				whitelist: ['fas', 'fa-.*'],
+			'better-tailwindcss': {
+				tailwindConfig: 'client/tailwind.config.mjs',
 			},
 		},
+		plugins: {
+			'better-tailwindcss': pluginTailwind,
+		},
 		rules: {
+			...pluginTailwind.configs['recommended-error'].rules,
 			'@angular-eslint/component-selector': [
 				'error',
 				{
@@ -179,13 +181,17 @@ export default tseslint.config(
 		extends: [
 			...pluginAngular.configs.templateRecommended,
 			...pluginAngular.configs.templateAccessibility,
-			...pluginTailwind.configs['flat/recommended'],
 		],
+		plugins: {
+			'better-tailwindcss': pluginTailwind,
+		},
 		settings: {
-			tailwindcss: {
-				config: 'client/tailwind.config.mjs',
-				whitelist: ['fas', 'fa-.*'],
+			'better-tailwindcss': {
+				tailwindConfig: 'client/tailwind.config.mjs',
 			},
+		},
+		rules: {
+			...pluginTailwind.configs['recommended-error'].rules,
 		},
 	},
 	configPrettier,
