@@ -45,7 +45,7 @@ export default tseslint.config(
 				},
 			},
 			'better-tailwindcss': {
-				tailwindConfig: 'client/tailwind.config.mjs',
+				entryFile: 'client/src/styles.css',
 			},
 		},
 		plugins: {
@@ -123,6 +123,12 @@ export default tseslint.config(
 				},
 			],
 			'@typescript-eslint/no-extraneous-class': 'off',
+			"better-tailwindcss/no-unregistered-classes": [
+				"error",
+				{
+					"detectComponentClasses": true,
+				},
+			],
 			'import/consistent-type-specifier-style': [
 				'error',
 				'prefer-top-level',
@@ -187,11 +193,17 @@ export default tseslint.config(
 		},
 		settings: {
 			'better-tailwindcss': {
-				tailwindConfig: 'client/tailwind.config.mjs',
+				entryFile: 'client/src/styles.css',
 			},
 		},
 		rules: {
 			...pluginTailwind.configs['recommended-error'].rules,
+			"better-tailwindcss/no-unregistered-classes": [
+				"error",
+				{
+					"detectComponentClasses": true,
+				},
+			],
 		},
 	},
 	configPrettier,

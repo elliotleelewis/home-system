@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/array-type,@typescript-eslint/naming-convention,@typescript-eslint/no-explicit-any,id-blacklist */
-import type { GraphQLResolveInfo } from 'graphql';
+import type { GraphQLResolveInfo } from "graphql";
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = {
@@ -18,7 +18,7 @@ export type MakeEmpty<
 export type Incremental<T> =
 	| T
 	| {
-			[P in keyof T]?: P extends ' $fragmentName' | '__typename'
+			[P in keyof T]?: P extends " $fragmentName" | "__typename"
 				? T[P]
 				: never;
 	  };
@@ -35,33 +35,33 @@ export type Scalars = {
 };
 
 export type BlastGate = {
-	__typename?: 'BlastGate';
-	id: Scalars['ID']['output'];
-	isOpen: Scalars['Boolean']['output'];
-	name: Scalars['String']['output'];
+	__typename?: "BlastGate";
+	id: Scalars["ID"]["output"];
+	isOpen: Scalars["Boolean"]["output"];
+	name: Scalars["String"]["output"];
 };
 
 export type BlastGateInput = {
-	id: InputMaybe<Scalars['ID']['input']>;
-	isOpen: Scalars['Boolean']['input'];
-	name: Scalars['String']['input'];
+	id: InputMaybe<Scalars["ID"]["input"]>;
+	isOpen: Scalars["Boolean"]["input"];
+	name: Scalars["String"]["input"];
 };
 
 export type Mutation = {
-	__typename?: 'Mutation';
+	__typename?: "Mutation";
 	activateBlastGate: Array<BlastGate>;
 	closeAllBlastGates: Array<BlastGate>;
-	deleteBlastGate: Scalars['Boolean']['output'];
+	deleteBlastGate: Scalars["Boolean"]["output"];
 	openAllBlastGates: Array<BlastGate>;
 	upsertBlastGate: BlastGate;
 };
 
 export type MutationActivateBlastGateArgs = {
-	blastGateId: Scalars['ID']['input'];
+	blastGateId: Scalars["ID"]["input"];
 };
 
 export type MutationDeleteBlastGateArgs = {
-	blastGateId: Scalars['ID']['input'];
+	blastGateId: Scalars["ID"]["input"];
 };
 
 export type MutationUpsertBlastGateArgs = {
@@ -69,13 +69,13 @@ export type MutationUpsertBlastGateArgs = {
 };
 
 export type Query = {
-	__typename?: 'Query';
+	__typename?: "Query";
 	blastGate: BlastGate;
 	blastGates: Array<BlastGate>;
 };
 
 export type QueryBlastGateArgs = {
-	blastGateId: Scalars['ID']['input'];
+	blastGateId: Scalars["ID"]["input"];
 };
 
 export type ResolverTypeWrapper<T> = Promise<T> | T;
@@ -187,83 +187,83 @@ export type DirectiveResolverFn<
 export type ResolversTypes = {
 	BlastGate: ResolverTypeWrapper<BlastGate>;
 	BlastGateInput: BlastGateInput;
-	Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
-	ID: ResolverTypeWrapper<Scalars['ID']['output']>;
+	Boolean: ResolverTypeWrapper<Scalars["Boolean"]["output"]>;
+	ID: ResolverTypeWrapper<Scalars["ID"]["output"]>;
 	Mutation: ResolverTypeWrapper<{}>;
 	Query: ResolverTypeWrapper<{}>;
-	String: ResolverTypeWrapper<Scalars['String']['output']>;
+	String: ResolverTypeWrapper<Scalars["String"]["output"]>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
 	BlastGate: BlastGate;
 	BlastGateInput: BlastGateInput;
-	Boolean: Scalars['Boolean']['output'];
-	ID: Scalars['ID']['output'];
+	Boolean: Scalars["Boolean"]["output"];
+	ID: Scalars["ID"]["output"];
 	Mutation: {};
 	Query: {};
-	String: Scalars['String']['output'];
+	String: Scalars["String"]["output"];
 };
 
 export type BlastGateResolvers<
 	ContextType = any,
 	ParentType extends
-		ResolversParentTypes['BlastGate'] = ResolversParentTypes['BlastGate'],
+		ResolversParentTypes["BlastGate"] = ResolversParentTypes["BlastGate"],
 > = {
-	id: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-	isOpen: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
-	name: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+	id: Resolver<ResolversTypes["ID"], ParentType, ContextType>;
+	isOpen: Resolver<ResolversTypes["Boolean"], ParentType, ContextType>;
+	name: Resolver<ResolversTypes["String"], ParentType, ContextType>;
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type MutationResolvers<
 	ContextType = any,
 	ParentType extends
-		ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation'],
+		ResolversParentTypes["Mutation"] = ResolversParentTypes["Mutation"],
 > = {
 	activateBlastGate: Resolver<
-		Array<ResolversTypes['BlastGate']>,
+		Array<ResolversTypes["BlastGate"]>,
 		ParentType,
 		ContextType,
-		RequireFields<MutationActivateBlastGateArgs, 'blastGateId'>
+		RequireFields<MutationActivateBlastGateArgs, "blastGateId">
 	>;
 	closeAllBlastGates: Resolver<
-		Array<ResolversTypes['BlastGate']>,
+		Array<ResolversTypes["BlastGate"]>,
 		ParentType,
 		ContextType
 	>;
 	deleteBlastGate: Resolver<
-		ResolversTypes['Boolean'],
+		ResolversTypes["Boolean"],
 		ParentType,
 		ContextType,
-		RequireFields<MutationDeleteBlastGateArgs, 'blastGateId'>
+		RequireFields<MutationDeleteBlastGateArgs, "blastGateId">
 	>;
 	openAllBlastGates: Resolver<
-		Array<ResolversTypes['BlastGate']>,
+		Array<ResolversTypes["BlastGate"]>,
 		ParentType,
 		ContextType
 	>;
 	upsertBlastGate: Resolver<
-		ResolversTypes['BlastGate'],
+		ResolversTypes["BlastGate"],
 		ParentType,
 		ContextType,
-		RequireFields<MutationUpsertBlastGateArgs, 'blastGateInput'>
+		RequireFields<MutationUpsertBlastGateArgs, "blastGateInput">
 	>;
 };
 
 export type QueryResolvers<
 	ContextType = any,
 	ParentType extends
-		ResolversParentTypes['Query'] = ResolversParentTypes['Query'],
+		ResolversParentTypes["Query"] = ResolversParentTypes["Query"],
 > = {
 	blastGate: Resolver<
-		ResolversTypes['BlastGate'],
+		ResolversTypes["BlastGate"],
 		ParentType,
 		ContextType,
-		RequireFields<QueryBlastGateArgs, 'blastGateId'>
+		RequireFields<QueryBlastGateArgs, "blastGateId">
 	>;
 	blastGates: Resolver<
-		Array<ResolversTypes['BlastGate']>,
+		Array<ResolversTypes["BlastGate"]>,
 		ParentType,
 		ContextType
 	>;

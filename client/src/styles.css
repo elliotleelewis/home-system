@@ -1,0 +1,6 @@
+/* Tailwind */
+@import "tailwindcss";
+@plugin "daisyui" {
+    themes: emerald --default;
+    logs: false;
+}
