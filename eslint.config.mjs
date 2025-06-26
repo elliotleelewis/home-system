@@ -123,10 +123,10 @@ export default tseslint.config(
 				},
 			],
 			'@typescript-eslint/no-extraneous-class': 'off',
-			"better-tailwindcss/no-unregistered-classes": [
-				"error",
+			'better-tailwindcss/no-unregistered-classes': [
+				'error',
 				{
-					"detectComponentClasses": true,
+					detectComponentClasses: true,
 				},
 			],
 			'import/consistent-type-specifier-style': [
@@ -198,10 +198,10 @@ export default tseslint.config(
 		},
 		rules: {
 			...pluginTailwind.configs['recommended-error'].rules,
-			"better-tailwindcss/no-unregistered-classes": [
-				"error",
+			'better-tailwindcss/no-unregistered-classes': [
+				'error',
 				{
-					"detectComponentClasses": true,
+					detectComponentClasses: true,
 				},
 			],
 		},
